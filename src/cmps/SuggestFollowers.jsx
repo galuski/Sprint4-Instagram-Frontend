@@ -6,8 +6,7 @@ export  function SuggestFollowers({users}) {
     return (
         <>
 <h4 style={{padding:'10px',margin:'0'}}>Suggested to you</h4>
-             {users.map(user=><UserPreview user={user}/>)}
-
+             {users.map(user=><UserPreview  key={user._id} user={user}/>)}
         </>
     )
 }

@@ -1,6 +1,6 @@
 
 import { Sidebar } from "../cmps/Sidebar"
-import { PostList } from "../cmps/postList"
+import { PostList } from "../cmps/PostList"
 import { SuggestFollowers } from "../cmps/SuggestFollowers"
 import React, { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
