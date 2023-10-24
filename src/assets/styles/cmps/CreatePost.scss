@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+}
+
+.create-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 2;
+    background: rgba(7, 7, 7, 0.5);
+    // opacity: 50%;
+}
+
+.modal {
+    // position: relative;
+    background-color: white;
+    border-radius: 8px;
+    width: 35vw;
+    margin: auto;
+    height: 75vh;
+    // overflow-y:2 ;
+    display: grid;
+    grid-template-rows: 25px 1fr;
+}
+.modal-img{
+        // position: relative;
+        background-color: white;
+        border-radius: 8px;
+        width: 60vw;
+        margin: auto;
+        height: 75vh;
+        // overflow-y:2 ;
+        display: grid;
+        grid-template-rows: 25px 1fr;
+
+}
+
+.add-files {
+    display: flex;
+    flex-direction: column;
+    // flex-grow: 2;
+    margin-top: 20vh;
+}
+
+.modal-header h4 {
+    text-align: center;
+    margin: 9px;
+    line-height: 18px;
+
+}
+
+.label-upload {
+
+    background-color: #0095f6;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    align-self: center;
+    width: 177px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 15px;
+    padding: 8px;
+    text-align: center;
+    letter-spacing: normal;
+    cursor: pointer;
+}
+
+.label-upload:hover {
+    background-color: #1877f2;
+}
+
+.modal-header-share {
+    display: flex;
+}
+
+.modal-header-share {
+    display: flex;
+    align-items: center;
+}
+
+.modal-header-share p {
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    margin-inline-start: auto;
+}
+
+.btn-upload {
+    display: none;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+}
+
+.btn-share {
+    background: none;
+    border: none;
+    // font-size: 14px;
+    border-radius: 2px;
+    box-shadow: none;
+    color: #0095f6;
+    margin-inline-start: auto;
+}
+
+.btn-share:hover {
+    color: #00376b
+}
+
+.close-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2px;
+    font-weight: 900;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+}
+
+.close-modal:hover {
+    cursor: pointer;
+
+}
+
+.loader-line {
+    width: 200px;
+    height: 2px;
+    position: relative;
+    overflow: hidden;
+    background-color: #ddd;
+    margin: 10px auto;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.loader-line:before {
+    content: "";
+    position: absolute;
+    left: -50%;
+    height: 3px;
+    width: 40px;
+    background-color: coral;
+    -webkit-animation: lineAnim 1s linear infinite;
+    -moz-animation: lineAnim 1s linear infinite;
+    animation: lineAnim 1s linear infinite;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+@keyframes lineAnim {
+    0% {
+        left: -40%;
+    }
+
+    50% {
+        left: 20%;
+        width: 80%;
+    }
+
+    100% {
+        left: 100%;
+        width: 100%;
+    }
+}
