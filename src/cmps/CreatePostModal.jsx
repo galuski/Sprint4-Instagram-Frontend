@@ -31,7 +31,7 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
 
     if (isLoading) {
         return (
-            <section className="modal">
+            <section className="create-modal-container">
                 <div className="modal-header">
                     <h4>Create new post</h4>
                     <hr />
@@ -42,20 +42,16 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
     }
     else if (selectedFile) {
         return (
-            <section className="modal-img">
-                {/* <div >
-                    <button onClick={() => setSelectedFile(null)} >another</button>
-                    <button onClick={() => onAddPost(postTitle, selectedFile)}>Share</button>
+            <section className="create-modal-img-edit">
 
-                </div> */}
                 <div className="modal-header-share" >
                     <button className="btn-back" onClick={() => setSelectedFile(null)} ><img src={backSvg} alt="back" /></button>
                     <p><strong>Create new post</strong></p>
                     <button className="btn-share" onClick={() => onAddPost(postTitle, selectedFile)}>Share</button>
                 </div>
-                <div style={{ display: 'flex' }}>
+                <div className="create-img-container">
 
-                    <img style={{ width: '70%', objectFit: 'fill' }} src={selectedFile} alt="Uploaded" />
+                    <img className="create-img" src={selectedFile} alt="Uploaded" />
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', margin: '15px' }}>
                             <img style={{
@@ -75,7 +71,7 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
         )
 
     } else return (
-        <section className="modal">
+        <section className="create-modal-container">
             <div className="modal-header">
                 <h4>Create new post</h4>
                 <hr />

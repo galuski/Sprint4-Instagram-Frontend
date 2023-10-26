@@ -8,17 +8,13 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     position: fixed;
     z-index: 2;
     background: rgba(7, 7, 7, 0.5);
     // opacity: 50%;
 }
 
-.modal {
+.create-modal-container {
     // position: relative;
     background-color: white;
     border-radius: 8px;
@@ -29,17 +25,25 @@
     display: grid;
     grid-template-rows: 25px 1fr;
 }
-.modal-img{
+.create-modal-img-edit{
         // position: relative;
         background-color: white;
         border-radius: 8px;
         width: 60vw;
         margin: auto;
         height: 75vh;
-        // overflow-y:2 ;
         display: grid;
         grid-template-rows: 25px 1fr;
 
+}
+
+.create-img-container{
+    display: flex;
+
+}
+.create-img{
+    width: 70%;
+    object-fit: fill;
 }
 
 .add-files {

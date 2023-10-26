@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import logo from '../assets/img/logo.png'
 import { CHANGE_COUNT } from '../store/user.reducer'
 import { utilService } from '../services/util.service'
 import { httpService } from '../services/http.service'
@@ -142,17 +141,18 @@ export function LoginPage() {
   }
 
   return (
-    <section className='login-container' >
-      <img className='image' src="src\assets\img\instagram-logo-login.jpg" alt="" />
-      <div className='login-data' >
+    <section className='login-page-container'>
+      <div className="banner-side">
+        <img className='img-banner' src=".\src\assets\img\mobile.png" alt="" />
+      </div>
+      <div className='form-side'>
         <div >
-          <div>
-            <Logo />
-            <p className='grey'> Sign up to see photos and videos from your friends.</p>
-          </div>
+          <Logo />
+          <p className='p-primary'>
+            Sign up to see photos and videos <br /> from your friends.
+          </p>
           <Button onClick={onQuickLogin} title={'Quick login'} />
-          <hr />
-
+          <h6>OR</h6>
           <Form onSubmitForm={handleSignUp} />
         </div>
         <div>
@@ -167,8 +167,7 @@ export function LoginPage() {
 
 function Logo() {
   return (
-    <h2 className="logo">Instagram</h2>
-
+    <img className='logo' src='.\src\assets\icons\logo.svg'></img>
   )
 }
 
@@ -201,7 +200,7 @@ function Form({ onSubmitForm }) {
       <p>People who use our service may have uploaded your contact information to Instagram. Learn More
       </p>
       <p>By signing up, you agree to our Terms , Privacy Policy and Cookies Policy .</p>
-      <Button title={'Sign up'} bgcolor={'#4CB5F9'} />
+      <Button title={'Sign up'} />
     </form>
 
   )
