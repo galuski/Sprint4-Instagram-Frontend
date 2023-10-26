@@ -151,8 +151,8 @@ async function save(post) {
   } else {
     // Later, owner is set by the backend
     post.by = {
-      fullname: 'shayel Moalem',
-      imgUrl: './src/assets/img/posts/post3.jpg'
+      fullname: 'guest user',
+      imgUrl: './src/assets/img/users/guest-user.jpg'
     }
     post._id = utilService.makeId()
     savedPost = await storageService.post(STORAGE_KEY, post)

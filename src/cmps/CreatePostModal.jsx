@@ -58,8 +58,8 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
                                 width: '30px',
                                 height: '30px',
                                 borderRadius: '50%'
-                            }} src='./src/assets/img/posts/post2.jpg' alt="profile" />
-                            <strong className="userName-preview">userName</strong>
+                            }} src='./src/assets/img/users/guest-user.jpg' alt="profile" />
+                            <strong className="userName-preview">   guest user</strong>
                         </div>
                         <input onChange={(ev) => handleInput(ev)} value={postTitle} type="text" placeholder="Write a caption..." style={{ border: 'none', margin: '15px', }} />
                     </div>
