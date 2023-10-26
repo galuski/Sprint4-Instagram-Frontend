@@ -3,6 +3,106 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
+export const postsDemo = [
+  {
+    _id: "s101",
+    txt: "El momento de mi vida ⭐⭐⭐",
+    imgUrl: "./src/assets/img/posts/messiworldcup.jpg",
+    by: {
+      _id: "u101",
+      fullname: "Lionel Messi",
+      imgUrl: "./src/assets/img/users/messi1.avif"
+    },
+    loc: { // Optional
+      lat: 11.11,
+      lng: 22.22,
+      name: "Tel Aviv"
+    },
+    comments: [],
+    likedBy: [],
+    tags: []
+  },
+  {
+    _id: "s102",
+    txt: "La boca, Bs As",
+    imgUrl: "./src/assets/img/posts/laboca.jpg",
+    by: {
+      _id: "u101",
+      fullname: "Gal Luski",
+      imgUrl: "./src/assets/img/users/luski.jpg"
+    },
+    loc: { // Optional
+      lat: 11.11,
+      lng: 22.22,
+      name: "Tel Aviv"
+    },
+    comments: [],
+    likedBy: [],
+    tags: []
+  },
+  {
+    _id: "s103",
+    txt: "Copa Libertadores final: Superclasico",
+    imgUrl: "./src/assets/img/posts/olesuperclasico.jpg",
+    by: {
+      _id: "u102",
+      fullname: "Ole",
+      imgUrl: "./src/assets/img/users/ole.png"
+    },
+    loc: { // Optional
+      lat: 11.11,
+      lng: 22.22,
+      name: "Tel Aviv"
+    },
+    comments: [],
+    likedBy: [],
+    tags: []
+  }
+]
+
+const userDemo = [
+  {
+    _id: "u101",
+    username: "Vacations",
+    password: "dodli",
+    fullname: "Muki Muka",
+    imgUrl: "./src/assets/img/posts/post1.jpg",
+    following: [],
+    followers: [],
+    savedStoryIds: []
+  },
+  {
+    _id: "u102",
+    username: "shayel12",
+    password: "mukmuk",
+    fullname: "Shayel moalem",
+    imgUrl: "./src/assets/img/posts/post2.jpg",
+    following: [],
+    followers: [],
+    savedStoryIds: []
+  },
+  {
+    _id: "u103",
+    username: "luski",
+    password: "mukmuk",
+    fullname: "Gal luski",
+    imgUrl: "./src/assets/img/posts/post3.jpg",
+    following: [],
+    followers: [],
+    savedStoryIds: []
+  },
+  {
+    _id: "u104",
+    username: "Mukoasf",
+    password: "mukmuk",
+    fullname: "danirel",
+    imgUrl: "./src/assets/img/posts/post4.jpg",
+    following: [],
+    followers: [],
+    savedStoryIds: []
+  }
+]
+
 const STORAGE_KEY = 'post'
 
 export const postService = {
@@ -18,6 +118,11 @@ window.cs = postService
 
 async function query(filterBy = { txt: '', price: 0 }) {
   var posts = await storageService.query(STORAGE_KEY)
+  if (!posts || !posts.length) {
+    utilService.saveToStorage(STORAGE_KEY,postsDemo)
+    posts = await storageService.query(STORAGE_KEY)
+  }
+
   if (filterBy.txt) {
     const regex = new RegExp(filterBy.txt, 'i')
     posts = posts.filter(post => regex.test(post.vendor) || regex.test(post.description))
@@ -25,6 +130,7 @@ async function query(filterBy = { txt: '', price: 0 }) {
   if (filterBy.price) {
     posts = posts.filter(post => post.price <= filterBy.price)
   }
+
   return posts
 }
 
@@ -44,9 +150,9 @@ async function save(post) {
     savedPost = await storageService.put(STORAGE_KEY, post)
   } else {
     // Later, owner is set by the backend
-    post.by= {
-      fullname:'shayel Moalem',
-      imgUrl:'./src/assets/img/posts/post3.jpg'
+    post.by = {
+      fullname: 'shayel Moalem',
+      imgUrl: './src/assets/img/posts/post3.jpg'
     }
     post._id = utilService.makeId()
     savedPost = await storageService.post(STORAGE_KEY, post)
@@ -75,9 +181,9 @@ function getEmptyPost() {
     txt: '',
     imgUrl: '',
     by: null,
-    comments:[],
+    comments: [],
     likedBy: [],
-    tags:[]
+    tags: []
 
   }
 }
