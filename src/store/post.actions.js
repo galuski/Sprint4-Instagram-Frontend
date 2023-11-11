@@ -29,7 +29,6 @@ export async function loadPosts() {
     try {
         const posts = await postService.query()
 
-        console.log('posts from DB:', posts)
         store.dispatch({
             type: SET_POSTS,
             posts

@@ -49,7 +49,7 @@ export function LoginPage() {
 
 function Logo() {
   return (
-    <img className='logo' src='.\src\assets\icons\logo.svg'></img>
+    <img className='logo-login' src='.\src\assets\icons\logo.svg'></img>
   )
 }
 

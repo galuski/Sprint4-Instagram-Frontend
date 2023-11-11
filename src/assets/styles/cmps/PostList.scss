@@ -1,20 +1,24 @@
 .post-preview {
     width: 100%;
-    padding-block-start: 50px;
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid #737373;
 }
 
 .post-preview-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1em;
+    margin-bottom: 12px;
 }
 
 .post-preview-header img {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    margin-right: 10px;
+}
+
+.userName-preview{
+    margin-inline-start: 10px;
 }
 
 .post-preview-header div {
@@ -24,11 +28,14 @@
 
 .userName-preview {
     font-size: 14px;
-    color: #00376b
+    color: $clr-fill;
+}
+
+.dots{
+    cursor: pointer;
 }
 
 .post-img-container {
-    // margin-bottom: 10px;
     width: 100%;
     height: 500px;
 
@@ -46,7 +53,7 @@
 }
 
 .like-comment-send img {
-    padding: 8px;
+    padding: 8px 8px 8px 0;
 
 }
 
@@ -72,6 +79,25 @@
     font-size: 14px;
     color:#737373
 }
-.comment-input{
+
+.comment{
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="text"].comment-input{
+    height: 8px;
     border: none;
+    outline: none; 
+    padding: 12px 0;
+}
+
+.btn-post{
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    color: #0095f6;
+    cursor: pointer;
 }

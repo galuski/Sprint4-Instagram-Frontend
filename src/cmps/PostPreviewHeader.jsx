@@ -1,7 +1,22 @@
 import dotsSvg from '/src/assets/icons/dots.svg'
-export default PostPreviewHeader
+import { EllipsisModal } from "./EllipsisModal"
+import React from 'react';
+const { useState } = React
 
-function PostPreviewHeader({ post, onDeletePost }) {
+
+
+
+// export default PostPreviewHeader
+
+export default function PostPreviewHeader({ post, onEllipsis}) {
+    const [isEllipsisModalOpen, setIsEllipsisModalOpen] = useState(false)
+
+    function openEllipsisModal() {
+        setIsEllipsisModalOpen(true)
+    }
+    function closeEllipsisModal() {
+        setIsEllipsisModalOpen(false)
+    }
 
     return (
         <div className="post-preview-header">
@@ -10,7 +25,11 @@ function PostPreviewHeader({ post, onDeletePost }) {
                 <strong className="userName-preview">{post.by?.fullname}</strong>
             </div>
 
-            <img title='Delete post' onClick={() => onDeletePost(post._id)} src={dotsSvg} alt="" />
+            <img className='dots' title='Ellipsis' onClick= { openEllipsisModal } src={dotsSvg} alt="" />
+            {isEllipsisModalOpen && <EllipsisModal closeEllipsisModal={closeEllipsisModal} pst={post}></EllipsisModal>}
+
         </div>
     )
 }
+
+// onClick={() => onDeletePost(post._id)} src={dotsSvg} alt=""

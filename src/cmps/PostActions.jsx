@@ -6,8 +6,10 @@ import likedSvg from '/src/assets/icons/liked.svg'
 import { postService } from '../services/post.service.local'
 import { updatePost } from '../store/post.actions'
 import { useState } from 'react'
+import { PostPreview } from './PostPreview'
 
 export default PostActions
+
 
 function PostActions({ post }) {
     const [isLike, setIsLike] = useState(false)
@@ -32,7 +34,7 @@ function PostActions({ post }) {
         }
     }
     return (
-
+        // {openPreview ? <div className="post-preview"><PostPreview onCloseModal={ToggleModal} /></div> : null}
         <div className="actions-container">
             <div className="like-comment-send">
                 <img onClick={() => onLikePost(post._id)} src={isLike ? likedSvg : likeSvg} alt="" />

@@ -24,6 +24,12 @@ export function HomePage() {
         setOpenCreate(state => !state)
     }
 
+    const [openEllipsis, setOpenEllipsis] = useState(false)
+    function ToggleModal(ev) {
+        ev.preventDefault()
+        setOpenEllipsis(state => !state)
+    }
+
     async function onDeletePost(id) {
         try {
             await removePost(id)
@@ -48,22 +54,25 @@ export function HomePage() {
     return (
         <>
             {openCreate ? <div className="create-modal"><CreatePostModal onAddPost={onAddPost} onCloseModal={ToggleModal} /></div> : null}
-            <div className={`home-page-container `} >
+            {openEllipsis ? <div className="ellipsis-modal"><EllipsisModal onCloseModal={ToggleModal} /></div> : null}
+            <section className={`home-page-container `} >
                 <section className="side-bar">
                     <Sidebar onCreate={setOpenCreate} />
                 </section>
                 <main className="post-list">
-                    <PostList onDeletePost={onDeletePost} posts={posts} />
+                    <PostList posts={posts} />
                 </main>
                 <section className="suggest-followers">
                     <SuggestFollowers users={users} />
                 </section>
-            </div>
+            </section>
         </>
     )
 }
 
 
+
+{/* <PostList onDeletePost={onDeletePost} posts={posts} /> */}
 
 
 
