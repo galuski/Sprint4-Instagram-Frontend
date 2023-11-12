@@ -8,7 +8,7 @@ export function PostPreview({ post, onDeletePost }) {
 
     return (
         <article className="post-preview">
-            <PostPreviewHeader onDeletePost={onDeletePost} post={post} />
+            <PostPreviewHeader post={post} />
             <PostImage img={post.imgUrl} />
             <PostActions post={post} />
             <PostStats post={post} />

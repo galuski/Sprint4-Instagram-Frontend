@@ -69,12 +69,3 @@ export function HomePage() {
         </>
     )
 }
-
-
-
-{/* <PostList onDeletePost={onDeletePost} posts={posts} /> */}
-
-
-
-
-

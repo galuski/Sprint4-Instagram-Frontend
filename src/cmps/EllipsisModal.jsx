@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { removePost } from "../store/post.actions";
 
-export function EllipsisModal({ closeEllipsisModal,pst}) {
-  console.log('psttttt',pst)
-
+export function EllipsisModal({ closeEllipsisModal, pst}) {
+  
     const modalRef = useRef(null);
 
     useEffect(() => {
@@ -13,10 +12,10 @@ export function EllipsisModal({ closeEllipsisModal,pst}) {
         }
       }
   
-      // Add event listener when the component mounts
+    
       document.addEventListener('mousedown', handleClickOutside);
   
-      // Remove event listener when the component unmounts
+     
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
