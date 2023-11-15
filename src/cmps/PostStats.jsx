@@ -6,9 +6,9 @@ function PostStats({ post }) {
     return (
         <>
             {post.likedBy?.length > 0 && (
-                <p className="likes-stats">
+                <p className="likes-stats"><strong>
                     {post.likedBy?.length} {post.likedBy?.length === 1 ? 'like' : 'likes'}
-                </p>
+                </strong></p>
             )}
             {post.likedBy?.length === 0 && (
                 <p className="likes-stats">

@@ -8,6 +8,7 @@ import { systemReducer, LOADING_DONE, LOADING_START } from "../store/system.redu
 import { useDispatch, useSelector } from "react-redux";
 import EmojiPicker from 'emoji-picker-react';
 
+
 export function CreatePostModal({ onCloseModal, onAddPost }) {
     const dispatch = useDispatch()
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)

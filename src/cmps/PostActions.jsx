@@ -42,7 +42,9 @@ function PostActions({ post }) {
                 <img src={commentSvg} alt="" />
                 <img src={sendSvg} alt="" />
             </div>
+            <div className='save'>
             <img src={saveSvg} alt="" />
+            </div>
 
         </div>
     )

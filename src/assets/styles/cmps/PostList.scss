@@ -10,6 +10,10 @@
 
 }
 
+.post-preview p{
+    margin: 0.2rem 0;
+}
+
 .post-preview-header {
     display: flex;
     align-items: center;
@@ -18,8 +22,8 @@
 }
 
 .post-preview-header img {
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
 }
 
@@ -33,7 +37,6 @@
 }
 
 .userName-preview {
-    font-size: 14px;
     color: $clr-fill;
 }
 
@@ -64,18 +67,13 @@
 
 }
 
+.save{
+    padding: 8px 0 8px 8px;
+}
+
 .actions-container img:hover {
     cursor: pointer;
     opacity: .5;
-}
-
-.likes-stats {
-    font-size: 14px;
-}
-
-.name-stats {
-    font-size: 14px;
-
 }
 
 .name-color {
@@ -83,7 +81,6 @@
 }
 
 .comments-stats {
-    font-size: 14px;
     color:#737373
 }
 
@@ -95,10 +92,9 @@
 }
 
 input[type="text"].comment-input{
-    height: 8px;
     border: none;
     outline: none; 
-    padding: 12px 0;
+    padding: 0;
 }
 
 .btn-post{
