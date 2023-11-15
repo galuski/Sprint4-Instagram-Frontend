@@ -24,8 +24,8 @@ export function EllipsisModal({ closeEllipsisModal, pst}) {
     return (
         <div className="modal-overlay">
         <section className="ellipsis-modal" ref={modalRef}>
-            <button className="ellipsis-btn" style={{ color: 'red',fontWeight: 'bold'  }} onClick={()=>{removePost(pst._id)}}>Delete</button>
-            <button className="ellipsis-btn" style={{ color: 'red',fontWeight: 'bold'  }}>Report</button>
+            <button className="ellipsis-btn" style={{ color: '#ed4956',fontWeight: 'bold'  }} onClick={()=>{removePost(pst._id)}}>Delete</button>
+            <button className="ellipsis-btn" style={{ color: '#ed4956',fontWeight: 'bold'  }}>Report</button>
             <button className="ellipsis-btn">Unfollow</button>
             <button className="ellipsis-btn">Add to favorites</button>
             <button className="ellipsis-btn">Not Interested</button>

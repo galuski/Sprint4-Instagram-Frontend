@@ -1,17 +1,17 @@
 .home-page-container{
     background-color: $clr-bg;
     display: grid;
-    grid-template-columns: 244px 1fr 630px 64px 320px 1fr;
-    grid-template-rows: 101px 1fr  ;
+    grid-template-columns: 244px 1fr 468px 1fr 320px 1fr;
+    grid-template-rows: 29px 72px 1fr;
     
 
 }
 
 .post-list{
     grid-column:3/4 ;
-    grid-row: 2/2;
+    grid-row: 2/4;
 }
 .suggest-followers{
     grid-column: 5/6;
-    grid-row: 1/-1;
+    grid-row: 2/4;
 }
