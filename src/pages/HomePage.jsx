@@ -24,21 +24,6 @@ export function HomePage() {
         setOpenCreate(state => !state)
     }
 
-    const [openEllipsis, setOpenEllipsis] = useState(false)
-    function ToggleModal(ev) {
-        ev.preventDefault()
-        setOpenEllipsis(state => !state)
-    }
-
-    async function onDeletePost(id) {
-        try {
-            await removePost(id)
-
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
     async function onAddPost(txt, file) {
         try {
         const newPost = postService.getEmptyPost()
@@ -54,7 +39,6 @@ export function HomePage() {
     return (
         <>
             {openCreate ? <div className="create-modal"><CreatePostModal onAddPost={onAddPost} onCloseModal={ToggleModal} /></div> : null}
-            {openEllipsis ? <div className="ellipsis-modal"><EllipsisModal onCloseModal={ToggleModal} /></div> : null}
             <section className={`home-page-container `} >
                 <section className="side-bar">
                     <Sidebar onCreate={setOpenCreate} />
