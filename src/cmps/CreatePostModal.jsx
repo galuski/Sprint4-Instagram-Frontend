@@ -1,25 +1,36 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import createModalSvg from '/src/assets/icons/create-modal.svg'
+import createModalBlueSvg from '/src/assets/icons/create-modal-blue.svg'
 import backSvg from '/src/assets/icons/back.svg'
 import close from '/src/assets/icons/close.svg'
 import emojiSvg from '../assets/icons/emoji.svg'
 import { uploadService } from "../services/upload.service";
 import { systemReducer, LOADING_DONE, LOADING_START } from "../store/system.reducer";
 import { useDispatch, useSelector } from "react-redux";
-import EmojiPicker from 'emoji-picker-react';
+import { EmojiModal } from "./EmojiModal";
+import { useDropzone } from 'react-dropzone'
+
 
 
 export function CreatePostModal({ onCloseModal, onAddPost }) {
     const dispatch = useDispatch()
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
     const [selectedFile, setSelectedFile] = useState(null);
+    
 
     const [text, setText] = useState('')
+
+    const onDrop = useCallback(acceptedFiles => {
+        // Do something with the files
+        handleAddPhoto(acceptedFiles[0])
+    }, [])
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
     const handleChange = (event) => {
         setText(event.target.value);
     }
     async function handleAddPhoto(ev) {
+        console.log('ev', ev)
         try {
             dispatch({
                 type: LOADING_START
@@ -63,7 +74,8 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
                     <textarea className="text-area" rows={10} maxLength={2200} onChange={handleChange} value={text} type="text" placeholder="Write a caption..." ></textarea>
                     <div className="div-chars-emoji">
                         <span className="count-chars">{text.length}/{2200}</span>
-                        <button className="emoji-btn"><img src= {emojiSvg} alt="emoji" /></button>
+                        <button className="emoji-btn"><img src={emojiSvg} alt="emoji" /></button>
+                       
 
                     </div>
                     <button onClick={onCloseModal} className="close-modal"><img src={close} alt="close" /></button>
@@ -79,9 +91,16 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
                 <h4>Create new post</h4>
             </div>
             <div className="add-files">
-                <img className="create-svg" src={createModalSvg} alt="" />
+
+                {
+                    isDragActive ?
+                        <img className="create-svg" src={createModalBlueSvg} alt="" /> :
+                        <img className="create-svg" src={createModalSvg} alt="" />
+                }
+
+                <p {...getRootProps()}>Drag a photo here</p>
                 <label htmlFor="btn-upload" className="label-upload">Select from computer</label>
-                <input id="btn-upload" className="btn-upload" onChange={handleAddPhoto} type="file" />
+                <input id="btn-upload" className="btn-upload" {...getInputProps()} type="file" />
             </div>
             <button onClick={onCloseModal} className="close-modal">X</button>
         </section>
