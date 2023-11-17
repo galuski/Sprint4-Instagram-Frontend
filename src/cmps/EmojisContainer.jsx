@@ -3,10 +3,12 @@ const { useState, useEffect, useRef } = React
 import EmojiPicker from 'emoji-picker-react';
 import { Emoji, EmojiStyle } from 'emoji-picker-react';
 
-export function EmojiModal({ onEmojiSelect }) {
+export default function EmojiContainer({ onEmojiSelect }) {
     const [showEmojiPicker, setShowEmojiPicker] = useState(false)
     const [selectedEmoji, setSelectedEmoji] = useState("")
     const [inputValue, setInputValue] = useState("")
+    const emojiPickerRef = useRef(null);
+
     useEffect(() => {
         function handleClickOutside(event) {
             if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
@@ -21,28 +23,16 @@ export function EmojiModal({ onEmojiSelect }) {
         }
     }, [])
 
-    function openMenuEmoji() {
-        setShowEmojiPicker(!showEmojiPicker)
-    }
-
     function onClick(emojiData, event) {
         const emoji = emojiData.isCustom ? emojiData.unified : emojiData.emoji
         onEmojiSelect(emoji)
-
     }
 
-
     return (
-        <div className="emoji-modal-add-text" style={{ marginLeft: '758px', marginTop: '-523px' }}>
-
+        <div className='emojis-container'>
             {<Emoji unified={selectedEmoji} size={28} />}
 
-            <button onClick={openMenuEmoji} className="emoji-add-text"><img className="emjoi-btn-add-text" style={{ marginTop: '-5px' }} src="emjoi-btn.svg"></img></button>
-
-            <div className="emoji-picker-modal">
-                {showEmojiPicker && <EmojiPicker onEmojiClick={onClick} />}
-            </div>
-
+            <EmojiPicker height={350} width={250}  onEmojiClick={onClick} />
         </div>
-    )
+    );
 }
