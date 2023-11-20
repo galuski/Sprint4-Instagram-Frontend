@@ -1,11 +1,28 @@
 import { useState } from 'react'
 import { updatePost } from '../store/post.actions'
+import emojiSvg from '../assets/icons/emoji.svg'
+import EmojisContainer  from "./EmojisContainer";
 
-export default InputComment
 
 
-function InputComment({ post }) {
-    const [inputComment, setInputComment] = useState('')
+
+export  default function InputComment({ post }) {
+    const [text, setText] = useState('')
+    const [showEmojis, setShowEmojis] = useState(false)
+
+
+    const handleShowEmojis = () => {
+        if (showEmojis == true) {
+            setShowEmojis(false)
+        } else {
+            setShowEmojis(true)
+        }
+    }
+
+    const handleEmojiSelect = (emoji) => {
+        setText(prevText => prevText + emoji);
+    };
+
     async function sendComment(txt) {
         post.comments.push({
             Id: '12',
@@ -13,13 +30,16 @@ function InputComment({ post }) {
             fullname: 'Gal'
         })
         await updatePost(post)
-        setInputComment('')
-        console.log(post)
+        setText('')
     }
     return (
         <article className='comment'>
-            <input value={inputComment} onChange={(ev) => setInputComment(ev.target.value)} className="comment-input" type="text" placeholder="Add a comment..." />
-            <button className="btn-post" onClick={() => sendComment(inputComment, post)}>Post</button>
+            <input value={text} onChange={(ev) => setText(ev.target.value)} className="comment-input" type="text" placeholder="Add a comment..." />
+            <button className="btn-post" onClick={() => sendComment(text, post)}>Post</button>
+            <button className="emoji-btn"><img src={emojiSvg} onClick={handleShowEmojis} alt="emoji" /></button>
+                            {
+                                showEmojis && (<EmojisContainer onEmojiSelect={handleEmojiSelect} />)
+                            }
         </article>
     )
 }
