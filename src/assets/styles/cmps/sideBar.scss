@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-section.side-bar{
+section.side-bar {
     border-right: 1px solid #c7c7c7;
     margin-inline-start: 12px;
 }
@@ -12,18 +12,18 @@ section.side-bar{
     grid-row: 1/-1;
     position: sticky;
     top: 0;
-    
+
 }
 
-.logo-side-bar{
+.logo-side-bar {
     display: flex;
     align-items: center;
     width: 220px;
     height: 92px;
-    padding: 12px;  
+    padding: 12px;
 }
 
-.navbar-btn{
+.navbar-btn {
     display: flex;
     align-items: center;
     background-color: $clr-bg;
@@ -34,20 +34,21 @@ section.side-bar{
     border: none;
     text-align: start;
     font-family: Arial, Helvetica, sans-serif;
-    
+
 }
-.navbar-btn:hover{
+
+.navbar-btn:hover {
     transition: .3s;
     cursor: pointer;
     background-color: #F2F2F2;
     border-radius: 8px;
 }
 
-.icon{
+.icon {
     margin-inline-end: 16px;
 }
 
-.title{
+.title {
     font-size: rem(16px);
     line-height: 1.25;
 }

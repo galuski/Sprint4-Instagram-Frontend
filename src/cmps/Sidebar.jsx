@@ -5,10 +5,18 @@ import exploreSvg from '/src/assets/icons/explorer.svg'
 import reelsSvg from '/src/assets/icons/reels.svg'
 import messagesSvg from '/src/assets/icons/message.svg'
 import createSvg from '/src/assets/icons/create.svg'
-import profile from '/src/assets/icons/profile.svg'
-
+import {userService} from '../services/user.service'
 import { NavbarButton } from './NavbarButton'
+
 export function Sidebar({ onCreate }) {
+
+    // let userImgProfile = user.imgUrl
+    const user = userService.getLoggedinUser()
+
+    let profileImg = user.imgUrl
+
+
+
     return (
         <nav className='side-bar'>
                 <div className='logo-side-bar'><img src={logo} alt="Instagram" /></div>
@@ -18,7 +26,7 @@ export function Sidebar({ onCreate }) {
                     <NavbarButton icon={reelsSvg} title={'Reels'} />
                     <NavbarButton icon={messagesSvg} title={'Messages'} />
                     <NavbarButton onClick={onCreate} icon={createSvg} title={'Create'} />
-        
+                    <NavbarButton icon={profileImg} title={'Profile'} isProfile={true} />        
         </nav>
     )
 }
