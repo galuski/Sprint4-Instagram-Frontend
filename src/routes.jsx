@@ -1,11 +1,11 @@
-import { LoginPage } from './pages/LoginPage.jsx'
+import { LoginSignupPage } from './pages/LoginSignUpPage.jsx'
 import {  HomePage } from './pages/HomePage.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
         path: '/',
-        component: <LoginPage />,
+        component: <LoginSignupPage />,
         label: 'Home 🏠',
     },
     // {
@@ -19,7 +19,7 @@ const routes = [
     //     label: 'Take our survey'
     // },
     {
-        path: 'home',
+        path: '/pst',
         component: <HomePage/>,
         label: 'Instagram home page'
     },

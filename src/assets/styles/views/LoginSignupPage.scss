@@ -1,4 +1,4 @@
-.login-page-container {
+.login-signup-page-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -10,6 +10,9 @@
 }
 
 .banner-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 700px;
     width: 430px;
     margin-inline-end: 50px;
@@ -23,6 +26,36 @@
     align-items: stretch;
     justify-content: center;
     width: 350px;
+}
+
+.form-side-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.continue-btn {
+    display: block;
+    width: 159px;
+    height: 32px;
+    padding: 7px 16px 7px 16px;
+    background-color: $clr-Btn ;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    font-weight: bolder;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: none;
+    color: $clr-Btn;
+    cursor: pointer;
 }
 
 .logo-login {
@@ -46,6 +79,16 @@
     color: #ffffff;
     border: none;
     border-radius: 5px;
+}
+
+.profile-login-img {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 24px 0 24px 0;
 }
 
 .login-btn:hover {

@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from './ImgUploader'
 
+// import { LoginSocialFacebook } from "reactjs-social-login";
+// import { FacebookLoginButton } from "react-social-login-buttons";
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
+    const [profile, setProfile] = useState(null);
 
     useEffect(() => {
         loadUsers()
@@ -41,20 +44,20 @@ export function LoginSignup(props) {
         clearState()
     }
 
-    function toggleSignup() {
-        setIsSignup(!isSignup)
-    }
-
     function onUploaded(imgUrl) {
         setCredentials({ ...credentials, imgUrl })
     }
 
     return (
         <div className="login-page">
-            <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-            </p>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
+            {/* <div className="logo">
+                <img src="logo.svg"></img>
+            </div> */}
+                <p className='p-primary'>
+                    Sign up to see photos and videos <br /> from your friends.
+                </p>
+
+            {<form className="login-form" onSubmit={onLogin}>
                 <select
                     name="username"
                     value={credentials.username}
@@ -63,32 +66,18 @@ export function LoginSignup(props) {
                     <option value="">Select User</option>
                     {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
                 </select>
-                {/* <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    /> */}
-                <button>Login!</button>
+
+                <button className='login-btn'>Quick Login by user</button>
+
+                <h6>OR</h6>
             </form>}
             <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
+                {<form className="signup-form" onSubmit={onSignup}>
                     <input
                         type="text"
                         name="fullname"
                         value={credentials.fullname}
-                        placeholder="Fullname"
+                        placeholder="Full Name"
                         onChange={handleChange}
                         required
                     />
@@ -108,8 +97,8 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    <ImgUploader onUploaded={onUploaded} />
-                    <button >Signup!</button>
+                    {/* <ImgUploader onUploaded={onUploaded} /> */}
+                    <button className='login-btn'>Sign up</button>
                 </form>}
             </div>
         </div>
