@@ -1,4 +1,4 @@
-import dotsSvg from '/src/assets/icons/dots.svg'
+import dotsSvg from '../../public/icons/dots.svg'
 import { EllipsisModal } from './EllipsisModal'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import React, { useState, useEffect } from 'react'

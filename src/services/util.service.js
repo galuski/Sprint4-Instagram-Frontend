@@ -6,7 +6,8 @@ export const utilService = {
     randomPastTime,
     saveToStorage,
     loadFromStorage,
-    getAssetSrc
+    getAssetSrc,
+    randomTimeString
 }
 
 function makeId(length = 6) {
@@ -69,4 +70,26 @@ function getAssetSrc(name) {
     const modules = import.meta.glob('/src/assets/*', { eager: true })
     const mod = modules[path]
     return mod.default
+}
+
+function randomTimeString() {
+    const types = ['m', 'h', 'd']; // minutes, hours, days
+    const randomType = types[Math.floor(Math.random() * types.length)];
+
+    let maxValue;
+
+    switch (randomType) {
+        case 'm':
+            maxValue = 30
+            break;
+        case 'h':
+            maxValue = 15; // up to 23 hours
+            break
+        case 'd':
+            maxValue = 4
+            break
+    }
+
+    const randomValue = Math.floor(Math.random() * maxValue) + 1; // +1 ensures we don't get zero
+    return `${randomValue}${randomType}`;
 }

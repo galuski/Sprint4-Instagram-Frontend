@@ -1,45 +1,86 @@
-import { useState } from 'react'
-import { updatePost } from '../store/post.actions'
-import emojiSvg from '../assets/icons/emoji.svg'
-import EmojisContainer  from "./EmojisContainer";
+import { useState, useRef, useEffect } from 'react';
+import { updatePost } from '../store/post.actions';
+import emojiSvg from '../../public/icons/emoji.svg';
+import EmojiPicker from 'emoji-picker-react';
+import { useDispatch } from 'react-redux';
+import { Emoji } from 'emoji-picker-react';
+import { postService } from "../services/post.service.local";
 
+import { SET_SELECTED_POST } from '../store/post.reducer';
 
+export default function InputComment({ post }) {
+    const [text, setText] = useState('');
+    const [showEmojis, setShowEmojis] = useState(false);
+    const [selectedEmoji, setSelectedEmoji] = useState(null); // Define selectedEmoji state
+    const emojiPickerRef = useRef(null);
+    const [comment, setComment] = useState('');
+    const [countComment, setCountComment] = useState(post.comments?.length || 0);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
+                setShowEmojis(false);
+            }
+        }
 
-export  default function InputComment({ post }) {
-    const [text, setText] = useState('')
-    const [showEmojis, setShowEmojis] = useState(false)
+        document.addEventListener('mousedown', handleClickOutside);
 
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     const handleShowEmojis = () => {
-        if (showEmojis == true) {
-            setShowEmojis(false)
-        } else {
-            setShowEmojis(true)
-        }
-    }
-
-    const handleEmojiSelect = (emoji) => {
-        setText(prevText => prevText + emoji);
+        setShowEmojis(!showEmojis);
     };
 
-    async function sendComment(txt) {
-        post.comments.push({
-            Id: '12',
-            imgUrl: './src/assets/img/posts/post2.jpg',
-            fullname: 'Gal'
-        })
-        await updatePost(post)
-        setText('')
+    function handleEmojiSelect(emojiData, event) {
+        setComment((inputValue) => inputValue + (emojiData.isCustom ? emojiData.unified : emojiData.emoji));
     }
+
+    async function onSendComment() {
+        setCountComment((prevCount) => prevCount + 1);
+        const updatedPost = await postService.addComment(post._id, comment);
+        dispatch({ type: SET_SELECTED_POST, post: updatedPost });
+        setComment('');
+        setSelectedEmoji(null);
+    }
+
     return (
-        <article className='comment'>
-            <input value={text} onChange={(ev) => setText(ev.target.value)} className="comment-input" type="text" placeholder="Add a comment..." />
-            <button className="btn-post" onClick={() => sendComment(text, post)}>Post</button>
-            <button className="emoji-btn"><img src={emojiSvg} onClick={handleShowEmojis} alt="emoji" /></button>
-                            {
-                                showEmojis && (<EmojisContainer onEmojiSelect={handleEmojiSelect} />)
-                            }
+        <article className="comment" ref={emojiPickerRef}>
+            <input
+                type="text"
+                placeholder="Add a comment..."
+                value={comment}
+                onChange={(e) => {
+                    setComment(e.target.value);
+                    setText(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        onSendComment();
+                    }
+                }}
+            />
+
+            <div>
+                {selectedEmoji && <Emoji unified={selectedEmoji} size={28} />}
+                {comment.length > 0 || selectedEmoji ? (
+                    <button className="btn-post" onClick={onSendComment}>
+                        Post
+                    </button>
+                ) : null}
+
+                <button onClick={handleShowEmojis} className="emoji">
+                    <img src={emojiSvg} alt="emoji" />
+                </button>
+
+                <div className="emoji-btn">
+                    {showEmojis && <EmojiPicker onEmojiClick={handleEmojiSelect} />}
+                </div>
+            </div>
         </article>
-    )
+    );
 }

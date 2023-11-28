@@ -4,21 +4,22 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 
-const STORAGE_KEY = 'post'
+const STORAGE_KEY = 'postDB'
+const BASE_URL = 'pst/'
 
 export const postService = {
     query,
     getById,
     save,
     remove,
-    getEmptypost,
+    getEmptyPost,
     addpostMsg
 }
-window.cs = postService
+// window.cs = postService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    return httpService.get(STORAGE_KEY, filterBy)
+async function query() {
+    return httpService.get(BASE_URL)
 }
 
 function getById(postId) {
@@ -45,10 +46,35 @@ async function addpostMsg(postId, txt) {
 }
 
 
-function getEmptypost() {
+function getEmptyPost() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        _id: utilService.makeId(),
+        txt: "",
+        imgUrl: "",
+        by: {
+            _id: utilService.makeId(),
+            fullName: "",
+            imgUrl: ""
+        },
+
+        comments: [
+            {
+                id: utilService.makeId(),
+                by: {
+                    _id: utilService.makeId(),
+                    fullname: "",
+                    imgUrl: ""
+                },
+                txt: "good one!",
+                likedBy: [
+                    {
+                        "_id": utilService.makeId(),
+                        "fullname": "",
+                        "imgUrl": ""
+                    }
+                ]
+            }],
+        tags: ["fun", "romantic"]
     }
 }
 

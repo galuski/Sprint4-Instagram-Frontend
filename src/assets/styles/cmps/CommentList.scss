@@ -1,0 +1,11 @@
+.comment-list{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  .list{
+    height: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+}

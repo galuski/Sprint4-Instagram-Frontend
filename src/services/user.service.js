@@ -1,5 +1,6 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
+import { utilService } from './util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -15,6 +16,8 @@ export const userService = {
     update,
     changeScore
 }
+
+createUsers()
 
 window.userService = userService
 
@@ -37,10 +40,10 @@ function remove(userId) {
     // return httpService.delete(`user/${userId}`)
 }
 
-async function update({_id, score}) {
-    const user = await storageService.get('user', _id)
-    user.score = score
-    await storageService.put('user', user)
+async function update({ _id, score }) {
+    const user = getLoggedinUser()
+    user.imgUrl = imgUrl
+    // await storageService.put('user', user)
 
     // const user = await httpService.put(`user/${_id}`, {_id, score})
     // // Handle case in which admin updates other user's details
@@ -80,8 +83,9 @@ async function changeScore(by) {
 
 
 function saveLocalUser(user) {
-    user = {_id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score}
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    const { _id, fullname, imgUrl, username } = user;
+    const userToSave = { _id, fullname, imgUrl, username, score: user.score }
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
     return user
 }
 
@@ -89,6 +93,27 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+
+
+function createUsers() {
+    let users = utilService.loadFromStorage('user')
+    if (!users || !users.length) {
+        users = [
+              {
+                _id: "u103",
+                username: "luski",
+                password: "123456",
+                fullname: "Gal luski",
+                imgUrl: "../public/img/users/luski.jpg",
+                following: [],
+                followers: [],
+                savedStoryIds: []
+              },
+            ]
+    
+        utilService.saveToStorage('user', users)
+    }
+}
 
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})

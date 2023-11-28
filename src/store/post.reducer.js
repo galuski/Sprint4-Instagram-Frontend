@@ -2,6 +2,10 @@ export const SET_POSTS = 'SET_POSTS'
 export const REMOVE_POST = 'REMOVE_POST'
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
+export const SET_SELECTED_POST = 'SET_SELECTED_POST'
+export const OPEN_MODAL = 'OPEN_MODAL'
+export const CLOSE_MODAL = 'CLOSE_MODAL'
+
 // export const UNDO_REMOVE_CAR = 'UNDO_REMOVE_CAR'
 
 const initialState = {
@@ -30,6 +34,15 @@ export function postReducer(state = initialState, action) {
             posts = state.posts.map(post => (post._id === action.post._id) ? action.post : post)
             newState = { ...state, posts }
             break
+        case SET_SELECTED_POST:
+            newState = { ...state, selectedPost: action.post }
+            break
+            case OPEN_MODAL:
+                newState = { ...state, isModalOpen: true }
+                break
+            case CLOSE_MODAL:
+                newState = { ...state, isModalOpen: false }
+                break
         // case ADD_TO_postT:
         //     newState = { ...state, cart: [...state.cart, action.car] }
         //     break

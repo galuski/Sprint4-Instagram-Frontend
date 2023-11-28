@@ -3,107 +3,9 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-export const postsDemo = [
-  {
-    _id: "s101",
-    txt: "El momento de mi vida ⭐⭐⭐",
-    imgUrl: "./src/assets/img/posts/messiworldcup.jpg",
-    by: {
-      _id: "u101",
-      fullname: "Lionel Messi",
-      imgUrl: "./src/assets/img/users/messi1.avif"
-    },
-    loc: { // Optional
-      lat: 11.11,
-      lng: 22.22,
-      name: "Tel Aviv"
-    },
-    comments: [],
-    likedBy: [],
-    tags: []
-  },
-  {
-    _id: "s102",
-    txt: "La boca, Bs As",
-    imgUrl: "./src/assets/img/posts/laboca.jpg",
-    by: {
-      _id: "u101",
-      fullname: "Gal Luski",
-      imgUrl: "./src/assets/img/users/luski.jpg"
-    },
-    loc: { // Optional
-      lat: 11.11,
-      lng: 22.22,
-      name: "Tel Aviv"
-    },
-    comments: [],
-    likedBy: [],
-    tags: []
-  },
-  {
-    _id: "s103",
-    txt: "Copa Libertadores final: Superclasico",
-    imgUrl: "./src/assets/img/posts/olesuperclasico.jpg",
-    by: {
-      _id: "u102",
-      fullname: "Ole",
-      imgUrl: "./src/assets/img/users/ole.png"
-    },
-    loc: { // Optional
-      lat: 11.11,
-      lng: 22.22,
-      name: "Tel Aviv"
-    },
-    comments: [],
-    likedBy: [],
-    tags: []
-  }
-]
-
-const userDemo = [
-  {
-    _id: "u101",
-    username: "Vacations",
-    password: "dodli",
-    fullname: "Muki Muka",
-    imgUrl: "./src/assets/img/posts/post1.jpg",
-    following: [],
-    followers: [],
-    savedStoryIds: []
-  },
-  {
-    _id: "u102",
-    username: "shayel12",
-    password: "mukmuk",
-    fullname: "Shayel moalem",
-    imgUrl: "./src/assets/img/posts/post2.jpg",
-    following: [],
-    followers: [],
-    savedStoryIds: []
-  },
-  {
-    _id: "u103",
-    username: "luski",
-    password: "mukmuk",
-    fullname: "Gal luski",
-    imgUrl: "./src/assets/img/posts/post3.jpg",
-    following: [],
-    followers: [],
-    savedStoryIds: []
-  },
-  {
-    _id: "u104",
-    username: "Mukoasf",
-    password: "mukmuk",
-    fullname: "danirel",
-    imgUrl: "./src/assets/img/posts/post4.jpg",
-    following: [],
-    followers: [],
-    savedStoryIds: []
-  }
-]
-
 const STORAGE_KEY = 'post'
+
+var posts = createPost()
 
 export const postService = {
   query,
@@ -111,37 +13,124 @@ export const postService = {
   save,
   remove,
   getEmptyPost,
-  addPostMsg
+  addPostMsg,
+  posts,
+  addComment,
+  getDefaultFilter,
+  removeComment,
+  getUserPostCount
 }
+
 window.cs = postService
 
-
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = {}) {
   var posts = await storageService.query(STORAGE_KEY)
-  if (!posts || !posts.length) {
-    utilService.saveToStorage(STORAGE_KEY,postsDemo)
-    posts = await storageService.query(STORAGE_KEY)
-  }
+  // if (!posts || !posts.length) {
+  //   utilService.saveToStorage(STORAGE_KEY,postsDemo)
+  //   posts = await storageService.query(STORAGE_KEY)
+  // }
 
-  if (filterBy.txt) {
-    const regex = new RegExp(filterBy.txt, 'i')
-    posts = posts.filter(post => regex.test(post.vendor) || regex.test(post.description))
-  }
-  if (filterBy.price) {
-    posts = posts.filter(post => post.price <= filterBy.price)
-  }
+  // if (filterBy.txt) {
+  //   const regex = new RegExp(filterBy.txt, 'i')
+  //   posts = posts.filter(post => regex.test(post.vendor) || regex.test(post.description))
+  // }
+  // if (filterBy.price) {
+  //   posts = posts.filter(post => post.price <= filterBy.price)
+  // }
 
+  if (filterBy.by) {
+    posts = posts.filter(post => post.by._id === filterBy.by)
+  }
   return posts
+}
+
+async function getUserPostCount(userId) {
+  const posts = await query()
+  let postCount = 0
+  posts.forEach(pst => { if (pst.by._id === userId) postCount++ })
+  return postCount
 }
 
 function getById(postId) {
   return storageService.get(STORAGE_KEY, postId)
 }
-
 async function remove(postId) {
   // throw new Error('Nope')
   await storageService.remove(STORAGE_KEY, postId)
 }
+
+async function removeComment(commentId) {
+  // 1. Find the post containing the comment
+  let allPosts = await storageService.query(STORAGE_KEY);
+  let foundPost = allPosts.find(post => post.comments.some(comment => comment.id === commentId));
+
+  // 2. If post found, remove the comment from it
+  if (foundPost) {
+      foundPost.comments = foundPost.comments.filter(comment => comment.id !== commentId);
+      // 3. Save the modified post back to storage
+      const updatedPost = await storageService.put(STORAGE_KEY, foundPost);
+      return updatedPost
+  } else {
+      throw new Error('Comment not found!');
+  }
+}
+
+// export const postsDemo = [
+//   {
+//     _id: "s101",
+//     txt: "El momento de mi vida ⭐⭐⭐",
+//     imgUrl: "./src/assets/img/posts/messiworldcup.jpg",
+//     by: {
+//       _id: "u101",
+//       fullname: "Lionel Messi",
+//       imgUrl: "./src/assets/img/users/messi1.avif"
+//     },
+//     loc: { // Optional
+//       lat: 11.11,
+//       lng: 22.22,
+//       name: "Tel Aviv"
+//     },
+//     comments: [],
+//     likedBy: [],
+//     tags: []
+//   },
+//   {
+//     _id: "s102",
+//     txt: "La boca, Bs As",
+//     imgUrl: "./src/assets/img/posts/laboca.jpg",
+//     by: {
+//       _id: "u101",
+//       fullname: "Gal Luski",
+//       imgUrl: "./src/assets/img/users/luski.jpg"
+//     },
+//     loc: { // Optional
+//       lat: 11.11,
+//       lng: 22.22,
+//       name: "Tel Aviv"
+//     },
+//     comments: [],
+//     likedBy: [],
+//     tags: []
+//   },
+//   {
+//     _id: "s103",
+//     txt: "Copa Libertadores final: Superclasico",
+//     imgUrl: "./src/assets/img/posts/olesuperclasico.jpg",
+//     by: {
+//       _id: "u102",
+//       fullname: "Ole",
+//       imgUrl: "./src/assets/img/users/ole.png"
+//     },
+//     loc: { // Optional
+//       lat: 11.11,
+//       lng: 22.22,
+//       name: "Tel Aviv"
+//     },
+//     comments: [],
+//     likedBy: [],
+//     tags: []
+//   }
+// ]
 
 async function save(post) {
 
@@ -150,13 +139,9 @@ async function save(post) {
     savedPost = await storageService.put(STORAGE_KEY, post)
   } else {
     // Later, owner is set by the backend
-    post.by = {
-      fullname: 'guest user',
-      imgUrl: './src/assets/img/users/guest-user.jpg'
-    }
-    post._id = utilService.makeId()
     savedPost = await storageService.post(STORAGE_KEY, post)
   }
+
   return savedPost
 }
 
@@ -176,16 +161,43 @@ async function addPostMsg(postId, txt) {
   return msg
 }
 
+async function addComment(postId, comment) {
+const post = await getById(postId);
+if (!post.comments) post.comments = [];
+
+const newComment = {
+    id: utilService.makeId(),
+    by: userService.getLoggedinUser(),
+    txt: comment
+};
+
+post.comments.push(newComment);
+const updatedPost = await storageService.put(STORAGE_KEY, post);
+return updatedPost
+}
+
+function getDefaultFilter() {
+return { id: '' }
+}
+
 function getEmptyPost() {
   return {
-    txt: '',
-    imgUrl: '',
-    by: null,
-    comments: [],
-    likedBy: [],
-    tags: []
+    txt: "",
+    imgUrl: "",
+    uploadTime: "now",
+    by: userService.getLoggedinUser(),
+    loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv"
+    },
 
-  }
+    comments: [
+    ],
+    likedBy: [
+    ],
+    tags: []
+}
 }
 
 
@@ -194,61 +206,118 @@ function getEmptyPost() {
 
 
 
-const story = {
-  _id: "s101",
-  txt: "Best trip ever",
-  imgUrl: "http://some-img",
-  by: {
-    _id: "u101",
-    fullname: "Ulash Ulashi",
-    imgUrl: "http://some-img"
-  },
-  loc: { // Optional
-    lat: 11.11,
-    lng: 22.22,
-    name: "Tel Aviv"
-  },
-  comments: [
-    {
-      id: "c1001",
-      by: {
-        _id: "u105",
-        fullname: "Bob",
-        imgUrl: "http://some-img"
-      },
-      txt: "good one!",
-      likedBy: [ // Optional
-        {
-          "_id": "u105",
-          "fullname": "Bob",
-          "imgUrl": "http://some-img"
-        }
-      ]
-    },
-    {
-      id: "c1002",
-      by: {
-        _id: "u106",
-        fullname: "Dob",
-        imgUrl: "http://some-img"
-      },
-      txt: "not good!",
-    }
-  ],
-  likedBy: [
-    {
-      _id: "u105",
-      fullname: "Bob",
-      imgUrl: "http://some-img"
-    },
-    {
-      _id: "u106",
-      fullname: "Dob",
-      imgUrl: "http://some-img"
-    }
-  ],
-  tags: ["fun", "romantic"]
+function createPost() {
+  let posts = utilService.loadFromStorage(STORAGE_KEY);
+  console.log('posts', posts);
+  if (!posts || !posts.length) {
+    posts = [
+      {
+        _id: "s101",
+        txt: "El momento de mi vida ⭐⭐⭐",
+        imgUrl: "../public/img/posts/messiworldcup.jpg",
+        uploadTime: utilService.randomTimeString(),
+        by: {
+      _id: "u101",
+      fullname: "Lionel Messi",
+      imgUrl: "../public/img/users/messi1.avif"
+        },
+        loc: {
+          lat: 11.11,
+          lng: 22.22,
+          name: "Tel Aviv"
+        },
+        comments: [
+          {
+            id: "c1",
+            by: {
+              _id: "u103",
+              fullname: "Gal Luski",
+              imgUrl: "../public/img/users/luski.jpg"
+            },
+            txt: "וואו",
+            likedBy: [
+              {
+                "_id": "u3",
+                "fullname": "Bob",
+                "imgUrl": "http://some-img"
+              },
+              {
+                "_id": "u3",
+                "fullname": "Bob",
+                "imgUrl": "http://some-img"
+              },
+              {
+                "_id": "u3",
+                "fullname": "Bob",
+                "imgUrl": "http://some-img"
+              },
+              {
+                "_id": "u3",
+                "fullname": "Bob",
+                "imgUrl": "http://some-img"
+              },
+            ]
+          },
+          {
+            id: "c2",
+            by: {
+              _id: "u4",
+              fullname: "Tomer12",
+              imgUrl: "tomer.jpg"
+            },
+            txt: "מדהיםםםםםםם",
+          },
+          {
+            id: "c3",
+            by: {
+              _id: "u5",
+              fullname: "Yovel",
+              imgUrl: "yoval.jpg"
+            },
+            txt: "מדהיםם",
+          }
+        ],
+        likedBy: [
+          {
+            _id: "u3",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+          },
+          {
+            _id: "u3",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+          },
+          {
+            _id: "u3",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+          },
+          {
+            _id: "u3",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+          },
+          {
+            _id: "u3",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+          },
+          {
+            _id: "u3",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+          },
+        ],
+        tags: ["fun", "romantic"]
+      }
+    ];
+    utilService.saveToStorage(STORAGE_KEY, posts)
+    return posts
+  }
+  return posts;
 }
+
 
 //   const user = {
 //     _id: "u101",

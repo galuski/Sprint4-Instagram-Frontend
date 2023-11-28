@@ -2,7 +2,7 @@ import { postService } from "../services/post.service.local.js";
 import { userService } from "../services/user.service.js";
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_POST, REMOVE_POST, SET_POSTS, UPDATE_POST} from "./post.reducer.js";
+import { ADD_POST, REMOVE_POST, SET_POSTS, UPDATE_POST, OPEN_MODAL, CLOSE_MODAL, SET_SELECTED_POST } from "./post.reducer.js";
 import { SET_SCORE } from "./user.reducer.js";
 
 // Action Creators:
@@ -41,6 +41,17 @@ export async function loadPosts() {
 
 }
 
+export async function loadPost(postId) {
+    try {
+        // showLoader()
+        const post = await postService.getById(postId)
+        // hideLoader()
+        store.dispatch({ type: SET_SELECTED_POST, post })
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 export async function removePost(postId) {
     try {
         await postService.remove(postId)
@@ -52,7 +63,7 @@ export async function removePost(postId) {
 }
 
 export async function addPost(post) {
-    
+
     try {
         const savedPost = await postService.save(post)
         store.dispatch(getActionAddPost(savedPost))
@@ -73,6 +84,29 @@ export async function updatePost(post) {
         console.error('An error occurred:', err);
         throw err;
     }
+}
+
+export async function removeComment(commentId) {
+    try {
+        const updatedPost = await postService.removeComment(commentId)
+        console.log('updatepost', updatedPost)
+        store.dispatch(getActionRemoveComment(commentId))
+    } catch (err) {
+        console.log('err', err)
+        throw err
+    }
+}
+
+export function openModal() {
+    store.dispatch({
+        type: OPEN_MODAL,
+    })
+}
+
+export function closeModal() {
+    store.dispatch({
+        type: CLOSE_MODAL,
+    })
 }
 
 

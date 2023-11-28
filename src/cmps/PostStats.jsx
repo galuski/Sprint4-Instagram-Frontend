@@ -1,7 +1,4 @@
-export default PostStats
-
-
-function PostStats({ post }) {
+export default function PostStats({ post }) {
 
     return (
         <>

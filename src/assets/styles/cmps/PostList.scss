@@ -28,16 +28,13 @@
 }
 
 .userName-preview{
-    margin-inline-start: 10px;
+    color: $clr-fill;
+    font-weight: bold;
 }
 
 .post-preview-header div {
     display: flex;
     align-items: center;
-}
-
-.userName-preview {
-    color: $clr-fill;
 }
 
 .dots{

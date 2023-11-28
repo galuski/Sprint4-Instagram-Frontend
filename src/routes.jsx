@@ -1,5 +1,6 @@
 import { LoginSignupPage } from './pages/LoginSignUpPage.jsx'
 import {  HomePage } from './pages/HomePage.jsx'
+import { PostDetails } from './pages/PostDetails.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -22,6 +23,11 @@ const routes = [
         path: '/pst',
         component: <HomePage/>,
         label: 'Instagram home page'
+    },
+    {
+        path: '/pst/:pstId',
+        component: <PostDetails />,
+        label: 'Post Details'
     },
     // {
     //     path: 'review',
