@@ -18,6 +18,7 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
     const user = useSelector(storeState => storeState.userModule.user)
     const userId = user._id
 
+
     function closeModalWithRouter() {
         navigate(-1)
     }
@@ -35,54 +36,52 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
 
     function getRandomTimeStringV2() {
         // Decide randomly whether to return hours or minutes
-        const isHour = Math.random() < 0.5; 
-      
+        const isHour = Math.random() < 0.5;
+
         if (isHour) {
-          // Generate a random hour between 1 and 3
-          const hour = Math.floor(Math.random() * 3) + 1;
-          return `${hour}h`;
+            // Generate a random hour between 1 and 3
+            const hour = Math.floor(Math.random() * 3) + 1;
+            return `${hour}h`;
         } else {
-          // Generate a random minute between 1 and 59
-          const minute = Math.floor(Math.random() * 59) + 1;
-          return `${minute}m`;
+            // Generate a random minute between 1 and 59
+            const minute = Math.floor(Math.random() * 59) + 1;
+            return `${minute}m`;
         }
-      }
+    }
 
 
 
     if (!post) return <p>Loading...</p>
     return (
-        <section className="post-details-container">
+        <main>
             <section className='post-details'>
-                <div className='img-side-details'>
-                     <img className="details-img" src= {post.imgUrl} alt="post image" />
-                </div>
 
-                <div className='header-details-modal'>
-                                <img className='profile-header-img' onClick={navigateProfileUser} src={post.by.imgUrl} alt="pst preview"></img>
-                                <h4 style={{ marginTop: '6px' }}>{post.by.fullname}</h4>
-                                <button onClick={openEllipsisModal}><img className="dots" src={dotsSvg}></img></button>
-                                {isEllipsisModalOpen && <EllipsisModal closeDotModal={closeEllipsisModal} onRemovePst={() => onRemovePost(post._id)}></EllipsisModal>}
+                <img className="img-post-details" src={post.imgUrl} alt="post image" />
+
+                <div className='header-post-details'>
+                    <div className='header-profile'>
+                        <img className='header-profile-img' onClick={navigateProfileUser} src={post.by.imgUrl} alt="pst preview"></img>
+                        <span className="header-profile-name">{post.by.fullname}</span>
+                    </div>
+                    <button className='btn-dots' onClick={openEllipsisModal}><img className="dots" src={dotsSvg}></img></button>
+                    {isEllipsisModalOpen && <EllipsisModal closeDotModal={closeEllipsisModal} onRemovePst={() => onRemovePost(post._id)}></EllipsisModal>}
                 </div>
-                        <div className='body-container-details-modal'>
-                            <section className='first'>
-                                <button onClick={navigateProfileUser}>
-                                    <img className='profile-details-img' src={post.by.imgUrl}></img>
-                                </button>
-                                <h4 className='post-by'>{post.by.fullname}</h4>
-                                <h4>{post.txt}</h4>
-                            </section>
-                            <div className='time-div'>
-                                <p className='timee'>{getRandomTimeStringV2()}</p>
-                            </div>
+                <div className='body-post-details'>
+                    <div className='body-container-details-modal'>
+                        <img className='body-profile-img' onClick={navigateProfileUser} src={post.by.imgUrl}></img>
+                        <div className='body-name-post'>
+                            <span className="body-profile-name">{post.by.fullname}</span><p className='body-text'>{post.txt}</p>
                         </div>
+                    </div>
+                    <div className='container-comment-list'>
+                        <CommentList pst={post} />
+                    </div>
+                </div>
 
-
-                        <CommentList pst={post} />          
-
+                <p className='time'>{getRandomTimeStringV2()}</p>
             </section>
             <div className="overlay" onClick={closeModalWithRouter}></div>
-        </section>
+        </main>
 
     )
 }

@@ -10,11 +10,7 @@ export function CommentList({ pst}) {
         <div className="list">
             {pst.comments.map((comment, index) => (
                 <CommentDetails key={index} pst={pst} comment={comment} />
-             
             ))}
-        </div>
-        <div className="2">
-        {/* <AllActionBtns pst={pst} /> */}
         </div>
         </section>
     )

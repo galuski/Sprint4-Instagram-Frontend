@@ -219,7 +219,7 @@ function createPost() {
         by: {
       _id: "u101",
       fullname: "Lionel Messi",
-      imgUrl: "../public/img/users/messi1.avif"
+      imgUrl: "../public/img/users/messi.jpg"
         },
         loc: {
           lat: 11.11,
@@ -262,19 +262,19 @@ function createPost() {
             id: "c2",
             by: {
               _id: "u4",
-              fullname: "Tomer12",
-              imgUrl: "tomer.jpg"
+              fullname: "Alberto Fernández",
+              imgUrl: "../public/img/users/alberto_fernandez.jpg"
             },
-            txt: "מדהיםםםםםםם",
+            txt: "Gracias por traer honor a nuestro país",
           },
           {
             id: "c3",
             by: {
               _id: "u5",
-              fullname: "Yovel",
-              imgUrl: "yoval.jpg"
+              fullname: "Diego Maradona",
+              imgUrl: "../public/img/users/maradona.png"
             },
-            txt: "מדהיםם",
+            txt: "Vos un dios como yo",
           }
         ],
         likedBy: [

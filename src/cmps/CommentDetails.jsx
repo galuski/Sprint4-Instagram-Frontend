@@ -4,9 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MenuComment } from './MenuComment';
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { closeModal, openModal, updatePost } from "../store/post.actions";
+import dots from '../../public/icons/dots.svg'
+import like from '../../public/icons/like.svg'
+import liked from '../../public/icons/liked.svg'
+import DefaultImg from '../../public/img/users/default_pic.jpg'
 
 export function CommentDetails({ pst, comment }) {
-    const [likeUrl, setLikeUrl] = useState("like.svg")
+    const [likeUrl, setLikeUrl] = useState(like)
     const [isLiked, setIsLiked] = useState(false)
     const user = useSelector(storeState => storeState.userModule.user)
     const [isMenuComment, setMenuComment] = useState(false)
@@ -28,13 +32,13 @@ export function CommentDetails({ pst, comment }) {
         const bIsLiked = pst.likedBy.find(user => userService.getLoggedinUser()._id === user._id) ? true : false
 
         setIsLiked(bIsLiked)
-        bIsLiked ? setLikeUrl("red-likes.svg") : setLikeUrl("like.svg")
+        bIsLiked ? setLikeUrl("red-likes.svg") : setLikeUrl(like)
     }, [])
 
 
     async function toggleLike() {
         if (isLiked) {
-            setLikeUrl("like.svg")
+            setLikeUrl(like)
             setIsLiked(false)
             setLikesCount(likesCount - 1)
             const pstCpy = { ...pst }
@@ -43,7 +47,7 @@ export function CommentDetails({ pst, comment }) {
             updatePost(pst)
 
         } else {
-            setLikeUrl("red-likes.svg")
+            setLikeUrl(liked)
             setIsLiked(true)
             setLikesCount(likesCount + 1)
             const pstCpy = { ...pst }
@@ -78,45 +82,29 @@ export function CommentDetails({ pst, comment }) {
       
     return (
         <section className="comment-details">
-            <div className="data-comment">
-                <div className='profile-comment-img'>
-                    <button onClick={navigateProfileUser}>
-                        <img src={comment.by.imgUrl || "emptyUser.jpeg"}></img>
+            <div className="comment">
+                    <button className='profile-comment-img' onClick={navigateProfileUser}>
+                        <img src={comment.by.imgUrl || DefaultImg}></img>
                     </button>
-                </div>
-                <section className='textual'>
-                    <div className='textual-1'>
-                        <h4>{comment.by.fullname}</h4>
-                        <h4 className='comment-txt'>{comment.txt}</h4>
-                    </div>
+
+                <div className='comment-data'>
+                        <span className="username-comment">{comment.by.fullname}</span>
+                        <p className='user-comment'>{comment.txt}</p>
+
 
                     <div className='textual-2'>
-                        <p className='date-time'>{getRandomTimeStringV2()}</p>
-                        {/* <p className='likes-on-comment'>3likes</p> */}
-                        {likesCount > 0 && <h4 className="count-likes">{likesCount} {likesCount === 1 ? 'like' : 'likes'}</h4>}
-
-                        {/* <button className='reply'>Reply</button> */}
-                        <p className='reply'>Reply</p>
-                        <button className='three-dot' onClick={toggleMenu}><img src="3dot.svg"></img></button>
+                        <p className='comment-date-time'>{getRandomTimeStringV2()}</p>
+                        {likesCount > 0 && <p className="comment-count-likes">{likesCount} {likesCount === 1 ? 'like' : 'likes'}</p>}
+                        <p className='comment-reply'>Reply</p>
+                        <button className='three-dot-comment' onClick={toggleMenu}><img src={dots}></img></button>
                         {isMenuVisible && <MenuComment comment={comment} onClose={toggleMenu} />}
                     </div>
-                </section>
-                {/* <button className='three-dot' onClick={openMenuComment}><img src="3dot.svg"></img></button> */}
+                </div>
                 {isMenuComment && <MenuComment comment={comment} />}
-                {/* <div className="like-btn">
-                    <button className="like" onClick={toggleLike}>
-                        <img className='like-img-red' src={likeUrl}></img>
-                    </button>
-                </div> */}
             </div>
-            <div className="like-btn">
-                <button className="like" onClick={toggleLike}>
-                    <img className='like-img-red' src={likeUrl}></img>
+                <button className="btn-like-comment" onClick={toggleLike}>
+                    <img src={likeUrl}></img>
                 </button>
-            </div>
-            {/* </div> */}
         </section>
-
-
     )
 }
