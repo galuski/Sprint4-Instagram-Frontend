@@ -69,8 +69,12 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
                 <div className='body-post-details'>
                     <div className='body-container-details-modal'>
                         <img className='body-profile-img' onClick={navigateProfileUser} src={post.by.imgUrl}></img>
+                        <div className='post-title'>
                         <div className='body-name-post'>
-                            <span className="body-profile-name">{post.by.fullname}</span><p className='body-text'>{post.txt}</p>
+                            <span className="body-profile-name">{post.by.fullname}</span>
+                            <p className='body-text'>{post.txt}</p>
+                        </div>
+                        <p className='time'>{getRandomTimeStringV2()}</p>
                         </div>
                     </div>
                     <div className='container-comment-list'>

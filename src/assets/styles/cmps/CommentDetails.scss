@@ -1,94 +1,93 @@
-*{
+* {
     margin: 0;
 }
 
 .comment-details {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    // justify-content: space-between;
+    // align-items: center;
     padding-top: 12px;
     margin-top: -5px;
 
     .comment {
         display: flex;
-        justify-content: space-between;
-        margin: 0 12px 0 12px;
-
-        img {
-            border-radius: 50%;
-            object-fit: cover;
-        }
+        flex-direction: column;
+        align-items: start;
+        margin: 0 12px 0 0;
     }
 
     .profile-comment-img {
         background: none;
         border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 16px;
+    }
 
-        img {
-            width: 32px;
-            height: 32px;
-            object-fit: cover;
-        }
+    .comment-data {
+        display: flex;
     }
 
     .three-dot-comment {
-        display: none;
+        margin: 0 0 0 12px;
         background: none;
         border: none;
-
+        width: 24px;
+        height: 24px;
+        filter: invert(100%);
     }
 
     &:hover {
         .three-dot-comment {
-            display:inline-block;
+            display: inline;
+            margin: 0 0 0 12px;
+            filter: invert(50%);
             cursor: pointer;
-
         }
     }
 }
 
 .comment-details {
     display: flex;
-    cursor: pointer;
 
     .username-comment {
+
         font-weight: bolder;
         margin-inline-end: 5px;
         float: left;
+
     }
 
-    .comment-data {
-        margin: 0 0 0 8px;
+    .comment-details-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        color: #737373;
+        margin-top: 8px;
 
-        .textual-2 {
-            display: flex;
-            align-items: center;
-            color: #737373;
+        .comment-date-time {
+            margin: 0 12px 0 0;
+        }
 
-            .comment-date-time {
-                margin: 0 12px 0 0;
-            }
+        .comment-count-likes {
+            margin: 0 12px 0 0;
+        }
 
-            .comment-count-likes {  
-                margin: 0 12px 0 0;
-            }
-
-            .likes-on-comment {
-                margin: 0 12px 0 0;
-            }
+        .likes-on-comment {
+            margin: 0 12px 0 0;
         }
     }
 
     .btn-like-comment {
         background: none;
         border: none;
-
-        img {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-        }
-
+        width: 12px;
+        height: 12px;
+        margin-left: auto;
+        align-self: start;
+        cursor: pointer;
     }
 
 

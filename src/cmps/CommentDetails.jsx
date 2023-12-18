@@ -27,7 +27,7 @@ export function CommentDetails({ pst, comment }) {
     }
 
 
-    
+
     useEffect(() => {
         const bIsLiked = pst.likedBy.find(user => userService.getLoggedinUser()._id === user._id) ? true : false
 
@@ -65,46 +65,43 @@ export function CommentDetails({ pst, comment }) {
     }
     function getRandomTimeStringV2() {
         // Decide randomly whether to return hours or minutes
-        const isHour = Math.random() < 0.5; 
-      
+        const isHour = Math.random() < 0.5;
+
         if (isHour) {
-          // Generate a random hour between 1 and 3
-          const hour = Math.floor(Math.random() * 3) + 1;
-          return `${hour}h`;
+            // Generate a random hour between 1 and 3
+            const hour = Math.floor(Math.random() * 3) + 1;
+            return `${hour}h`;
         } else {
-          // Generate a random minute between 1 and 59
-          const minute = Math.floor(Math.random() * 59) + 1;
-          return `${minute}m`;
+            // Generate a random minute between 1 and 59
+            const minute = Math.floor(Math.random() * 59) + 1;
+            return `${minute}m`;
         }
-      }
-      
-      // Example usage:
-      
+    }
+
+    // Example usage:
+
     return (
         <section className="comment-details">
+            <img className='profile-comment-img' onClick={navigateProfileUser}
+                src={comment.by.imgUrl || DefaultImg}>
+            </img>
             <div className="comment">
-                    <button className='profile-comment-img' onClick={navigateProfileUser}>
-                        <img src={comment.by.imgUrl || DefaultImg}></img>
-                    </button>
-
                 <div className='comment-data'>
-                        <span className="username-comment">{comment.by.fullname}</span>
-                        <p className='user-comment'>{comment.txt}</p>
-
-
-                    <div className='textual-2'>
-                        <p className='comment-date-time'>{getRandomTimeStringV2()}</p>
-                        {likesCount > 0 && <p className="comment-count-likes">{likesCount} {likesCount === 1 ? 'like' : 'likes'}</p>}
-                        <p className='comment-reply'>Reply</p>
-                        <button className='three-dot-comment' onClick={toggleMenu}><img src={dots}></img></button>
-                        {isMenuVisible && <MenuComment comment={comment} onClose={toggleMenu} />}
-                    </div>
+                    <span className="username-comment">{comment.by.fullname}</span>
+                    <p className='user-comment'>{comment.txt}</p>
                 </div>
+
+                <div className='comment-details-actions'>
+                    <p className='comment-date-time'>{getRandomTimeStringV2()}</p>
+                    {likesCount > 0 && <p className="comment-count-likes">{likesCount} {likesCount === 1 ? 'like' : 'likes'}</p>}
+                    <p className='comment-reply'>Reply</p>
+                    <img className='three-dot-comment' src={dots} onClick={toggleMenu}></img>
+                    {isMenuVisible && <MenuComment comment={comment} onClose={toggleMenu} />}
+                </div>
+
                 {isMenuComment && <MenuComment comment={comment} />}
             </div>
-                <button className="btn-like-comment" onClick={toggleLike}>
-                    <img src={likeUrl}></img>
-                </button>
+            <img className="btn-like-comment" src={likeUrl} onClick={toggleLike}></img>
         </section>
     )
 }
