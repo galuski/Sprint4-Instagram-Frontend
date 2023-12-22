@@ -28,8 +28,8 @@ export default function PostPreviewHeader({ post }) {
     return (
         <div className="post-preview-header">
             <div>
-                <img src={post.by?.imgUrl} alt="profile" />
-                <strong className="userName-preview">{userName}</strong>
+                <img className='preview-profile-img' src={post.by?.imgUrl} alt="profile" />
+                <strong className="username-preview">{userName}</strong>
             </div>
 
             <img className="dots" title="Ellipsis" onClick={openEllipsisModal} src={dotsSvg} alt="" />

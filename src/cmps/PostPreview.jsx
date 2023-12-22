@@ -1,8 +1,7 @@
 import PostPreviewHeader from '../cmps/PostPreviewHeader'
 import PostImage from '../cmps/PostImage'
-import PostActions from '../cmps/PostActions'
-import PostStats from './PostStats'
-import InputComment from '../cmps/InputComment'
+import PostPreviewFooter from '../cmps/PostPreviewFooter'
+
 
 export function PostPreview({ post, onDeletePost }) {
 
@@ -10,9 +9,7 @@ export function PostPreview({ post, onDeletePost }) {
         <section className="post-preview">
             <PostPreviewHeader post={post} />
             <PostImage img={post.imgUrl} />
-            <PostActions post={post} />
-            <PostStats post={post} />
-            <InputComment post={post} />
+            <PostPreviewFooter post={post} />
         </section>
     )
 }

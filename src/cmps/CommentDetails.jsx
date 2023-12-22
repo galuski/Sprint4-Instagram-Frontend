@@ -32,7 +32,7 @@ export function CommentDetails({ pst, comment }) {
         const bIsLiked = pst.likedBy.find(user => userService.getLoggedinUser()._id === user._id) ? true : false
 
         setIsLiked(bIsLiked)
-        bIsLiked ? setLikeUrl("red-likes.svg") : setLikeUrl(like)
+        bIsLiked ? setLikeUrl(liked) : setLikeUrl(like)
     }, [])
 
 

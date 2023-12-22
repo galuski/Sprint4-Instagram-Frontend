@@ -40,7 +40,7 @@ export default function InputComment({ post }) {
     }
 
     async function onSendComment() {
-        setCountComment((prevCount) => prevCount + 1);
+        setCountComment((countComment) => countComment + 1);
         const updatedPost = await postService.addComment(post._id, comment);
         dispatch({ type: SET_SELECTED_POST, post: updatedPost });
         setComment('');

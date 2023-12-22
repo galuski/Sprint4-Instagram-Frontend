@@ -1,0 +1,19 @@
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+
+    .like-comment-send img {
+        padding: 8px;
+    
+    }
+    
+    .save {
+        padding: 8px 0 8px 8px;
+    }
+    
+    .actions-container img:hover {
+        cursor: pointer;
+        opacity: .5;
+    }
+}
+

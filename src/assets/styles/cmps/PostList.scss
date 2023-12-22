@@ -25,12 +25,18 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
-.userName-preview {
+.username-preview {
     color: $clr-fill;
     font-weight: bold;
+    margin-inline-end: 4px;
     float: left;
+}
+
+.preview-profile-img{
+    margin-inline-end:  12px;
 }
 
 .post-preview-header div {
