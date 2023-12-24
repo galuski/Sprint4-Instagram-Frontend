@@ -11,7 +11,7 @@ import { NavbarButton } from './NavbarButton'
 export function Sidebar({ onCreate }) {
 
     // let userImgProfile = user.imgUrl
-    const user = userService.getLoggedinUser()
+    const user = userService.getLoggedInUser()
 
     let profileImg = user.imgUrl
 

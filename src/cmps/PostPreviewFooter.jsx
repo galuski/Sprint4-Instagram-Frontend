@@ -38,12 +38,12 @@ export default function PostPreviewFooter({ post }) {
     const [countComment, setCountComment] = useState(post.comments?.length || 0)
 
     var [likesCount, setLikesCount] = useState(likedBy?.length || 0)
-    let loggedUser = userService.getLoggedinUser()
+    let loggedUser = userService.getLoggedInUser()
 
 
 
     useEffect(() => {
-        const bIsLiked = post.likedBy.find(user => userService.getLoggedinUser()._id === user._id) ? true : false
+        const bIsLiked = post.likedBy.find(user => userService.getLoggedInUser()._id === user._id) ? true : false
 
         setIsLiked(bIsLiked)
         bIsLiked ? setLikeUrl(likedSvg) : setLikeUrl(likeSvg)

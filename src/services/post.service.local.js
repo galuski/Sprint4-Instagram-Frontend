@@ -152,7 +152,7 @@ async function addPostMsg(postId, txt) {
 
   const msg = {
     id: utilService.makeId(),
-    by: userService.getLoggedinUser(),
+    by: userService.getLoggedInUser(),
     txt
   }
   post.msgs.push(msg)
@@ -167,7 +167,7 @@ if (!post.comments) post.comments = [];
 
 const newComment = {
     id: utilService.makeId(),
-    by: userService.getLoggedinUser(),
+    by: userService.getLoggedInUser(),
     txt: comment
 };
 
@@ -185,7 +185,7 @@ function getEmptyPost() {
     txt: "",
     imgUrl: "",
     uploadTime: "now",
-    by: userService.getLoggedinUser(),
+    by: userService.getLoggedInUser(),
     loc: {
         lat: 11.11,
         lng: 22.22,
@@ -266,6 +266,19 @@ function createPost() {
               imgUrl: "../public/img/users/alberto_fernandez.jpg"
             },
             txt: "Gracias por traer honor a nuestro país",
+            likedBy:[
+              {
+                _id: "u3",
+                fullname: "Bob",
+                imgUrl: "http://some-img"
+              },
+              {
+                _id: "u3",
+                fullname: "Bob",
+                imgUrl: "http://some-img"
+              }
+
+            ]
           },
           {
             id: "c3",

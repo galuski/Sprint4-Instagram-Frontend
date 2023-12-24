@@ -20,7 +20,7 @@ export default function PostActions({ post }) {
 
 
     useEffect(() => {
-        const bIsLiked = post.likedBy.find(user => userService.getLoggedinUser()._id === user._id) ? true : false
+        const bIsLiked = post.likedBy.find(user => userService.getLoggedInUser()._id === user._id) ? true : false
     
         setIsLiked(bIsLiked)
         bIsLiked ? setLikeUrl(likedSvg) : setLikeUrl(likeSvg)

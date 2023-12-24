@@ -8,7 +8,7 @@ export const userService = {
     login,
     logout,
     signup,
-    getLoggedinUser,
+    getLoggedInUser,
     saveLocalUser,
     getUsers,
     getById,
@@ -41,13 +41,13 @@ function remove(userId) {
 }
 
 async function update({ _id, score }) {
-    const user = getLoggedinUser()
+    const user = getLoggedInUser()
     user.imgUrl = imgUrl
     // await storageService.put('user', user)
 
     // const user = await httpService.put(`user/${_id}`, {_id, score})
     // // Handle case in which admin updates other user's details
-    if (getLoggedinUser()._id === user._id) saveLocalUser(user)
+    if (getLoggedInUser()._id === user._id) saveLocalUser(user)
     return user
 }
 
@@ -74,7 +74,7 @@ async function logout() {
 }
 
 async function changeScore(by) {
-    const user = getLoggedinUser()
+    const user = getLoggedInUser()
     if (!user) throw new Error('Not loggedin')
     user.score = user.score + by || by
     await update(user)
@@ -89,7 +89,7 @@ function saveLocalUser(user) {
     return user
 }
 
-function getLoggedinUser() {
+function getLoggedInUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 

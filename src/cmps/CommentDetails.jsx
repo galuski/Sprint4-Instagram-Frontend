@@ -5,20 +5,20 @@ import { MenuComment } from './MenuComment';
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { closeModal, openModal, updatePost } from "../store/post.actions";
 import dots from '../../public/icons/dots.svg'
-import like from '../../public/icons/like.svg'
-import liked from '../../public/icons/liked.svg'
+import likeSvg from '../../public/icons/like.svg'
+import likedSvg from '../../public/icons/liked.svg'
 import DefaultImg from '../../public/img/users/default_pic.jpg'
 
-export function CommentDetails({ pst, comment }) {
-    const [likeUrl, setLikeUrl] = useState(like)
+export function CommentDetails({ post, comment }) {
+    const [likeUrl, setLikeUrl] = useState(likeSvg)
     const [isLiked, setIsLiked] = useState(false)
     const user = useSelector(storeState => storeState.userModule.user)
     const [isMenuComment, setMenuComment] = useState(false)
-    const { txt, imgUrl, by, _id, comments, likedBy, uploadTime } = pst
+    const { txt, imgUrl, by, _id, comments, likedBy, uploadTime } = post
     const [likesCount, setLikesCount] = useState(likedBy?.length || 0)
     const [isMenuVisible, setMenuVisible] = useState(false)
     const userId = user._id
-    let loggedUser = userService.getLoggedinUser()
+    let loggedUser = userService.getLoggedInUser()
 
     const navigate = useNavigate()
 
@@ -29,30 +29,30 @@ export function CommentDetails({ pst, comment }) {
 
 
     useEffect(() => {
-        const bIsLiked = pst.likedBy.find(user => userService.getLoggedinUser()._id === user._id) ? true : false
+        const bIsLiked = post.comments.find(user => userService.getLoggedInUser()._id === user._id) ? true : false
 
         setIsLiked(bIsLiked)
-        bIsLiked ? setLikeUrl(liked) : setLikeUrl(like)
+        bIsLiked ? setLikeUrl(likedSvg) : setLikeUrl(likeSvg)
     }, [])
 
 
     async function toggleLike() {
         if (isLiked) {
-            setLikeUrl(like)
+            setLikeUrl(likeSvg)
             setIsLiked(false)
             setLikesCount(likesCount - 1)
-            const pstCpy = { ...pst }
-            const idx = pst.likedBy.findIndex(user => user._id === loggedUser._id)
-            pstCpy.likedBy.splice(idx, 1)
-            updatePost(pst)
+            const postCopy = { ...post }
+            const idx = post.likedBy.findIndex(user => user._id === loggedUser._id)
+            postCopy.likedBy.splice(idx, 1)
+            updatePost(post)
 
         } else {
-            setLikeUrl(liked)
+            setLikeUrl(likedSvg)
             setIsLiked(true)
             setLikesCount(likesCount + 1)
-            const pstCpy = { ...pst }
-            pstCpy.likedBy.push(loggedUser)
-            updatePost(pst)
+            const postCopy = { ...post }
+            postCopy.likedBy.push(loggedUser)
+            updatePost(post)
         }
     }
 

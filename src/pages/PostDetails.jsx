@@ -14,7 +14,7 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
     const [isEllipsisModalOpen, setIsEllipsisModalOpen] = useState(false)
     const navigate = useNavigate()
     const post = useSelector(storeState => storeState.postModule.selectedPost)
-    let userLogged = userService.getLoggedinUser()
+    let userLogged = userService.getLoggedInUser()
     const user = useSelector(storeState => storeState.userModule.user)
     const userId = user._id
 
@@ -78,7 +78,7 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
                         </div>
                     </div>
                     <div className='container-comment-list'>
-                        <CommentList pst={post} />
+                        <CommentList post={post} />
                     </div>
                 </div>
 
