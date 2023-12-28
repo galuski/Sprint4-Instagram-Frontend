@@ -11,7 +11,7 @@
 .post-details {
     display: grid;
     grid-template-columns: 691px 16px 484px;
-    grid-template-rows: 60px 521px 40px 30px 40px;
+    grid-template-rows: 60px 484px 139px;
     background: white;
     border-radius: 0.5rem;
     position: fixed;
@@ -115,9 +115,15 @@
     display: flex;
 }
 
-.time {
-    margin-top: 8px;
+// .time {
+//     margin-top: 8px;
+//     grid-column: 3;
+//     grid-row: 3;
+//     color: #737373;
+// }
+
+.post-actions-container{
     grid-column: 3;
-    grid-row: 4/5;
-    color: #737373;
+    grid-row: 3;
+    padding: 6px 0 8px 0;
 }

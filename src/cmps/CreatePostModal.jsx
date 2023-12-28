@@ -14,7 +14,7 @@ import EmojisContainer from "./EmojisContainer";
 
 export function CreatePostModal({ onCloseModal, onAddPost }) {
     const dispatch = useDispatch();
-    
+
     const isLoading = useSelector(storeState => storeState.systemModule?.isLoading)
     const [selectedFile, setSelectedFile] = useState(null);
     const [text, setText] = useState('')
@@ -78,11 +78,10 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
                     <button className="btn-share" onClick={() => onAddPost(text, selectedFile)}>Share</button>
                 </div>
                 <div className="create-img-container">
-
                     <img className="create-img" src={selectedFile} alt="Uploaded" />
                     <div className="modal-edit-area">
                         <img className="profile-img-circle" src={profileImg || defaultImage} alt="profile" />
-                        <span className="userName-preview">{loggedUser.fullname}</span>
+                        <span className="username-create-post">{loggedUser.fullname}</span>
                     </div>
                     <textarea className="text-area" rows={10} maxLength={2200} onChange={handleChange} value={text} type="text" placeholder="Write a caption..." ></textarea>
                     <div className="div-chars-emoji">

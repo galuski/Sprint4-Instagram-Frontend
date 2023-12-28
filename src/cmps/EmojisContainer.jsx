@@ -32,7 +32,7 @@ export default function EmojiContainer({ onEmojiSelect }) {
         <div className='emojis-container'>
             {<Emoji unified={selectedEmoji} size={28} />}
 
-            <EmojiPicker height={350} width={250}  onEmojiClick={onClick} />
+            <EmojiPicker onEmojiClick={onClick} />
         </div>
     );
 }

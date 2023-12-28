@@ -66,71 +66,16 @@ async function removeComment(commentId) {
 
   // 2. If post found, remove the comment from it
   if (foundPost) {
-      foundPost.comments = foundPost.comments.filter(comment => comment.id !== commentId);
-      // 3. Save the modified post back to storage
-      const updatedPost = await storageService.put(STORAGE_KEY, foundPost);
-      return updatedPost
+    foundPost.comments = foundPost.comments.filter(comment => comment.id !== commentId);
+    // 3. Save the modified post back to storage
+    const updatedPost = await storageService.put(STORAGE_KEY, foundPost);
+    return updatedPost
   } else {
-      throw new Error('Comment not found!');
+    throw new Error('Comment not found!');
   }
 }
 
-// export const postsDemo = [
-//   {
-//     _id: "s101",
-//     txt: "El momento de mi vida ⭐⭐⭐",
-//     imgUrl: "./src/assets/img/posts/messiworldcup.jpg",
-//     by: {
-//       _id: "u101",
-//       fullname: "Lionel Messi",
-//       imgUrl: "./src/assets/img/users/messi1.avif"
-//     },
-//     loc: { // Optional
-//       lat: 11.11,
-//       lng: 22.22,
-//       name: "Tel Aviv"
-//     },
-//     comments: [],
-//     likedBy: [],
-//     tags: []
-//   },
-//   {
-//     _id: "s102",
-//     txt: "La boca, Bs As",
-//     imgUrl: "./src/assets/img/posts/laboca.jpg",
-//     by: {
-//       _id: "u101",
-//       fullname: "Gal Luski",
-//       imgUrl: "./src/assets/img/users/luski.jpg"
-//     },
-//     loc: { // Optional
-//       lat: 11.11,
-//       lng: 22.22,
-//       name: "Tel Aviv"
-//     },
-//     comments: [],
-//     likedBy: [],
-//     tags: []
-//   },
-//   {
-//     _id: "s103",
-//     txt: "Copa Libertadores final: Superclasico",
-//     imgUrl: "./src/assets/img/posts/olesuperclasico.jpg",
-//     by: {
-//       _id: "u102",
-//       fullname: "Ole",
-//       imgUrl: "./src/assets/img/users/ole.png"
-//     },
-//     loc: { // Optional
-//       lat: 11.11,
-//       lng: 22.22,
-//       name: "Tel Aviv"
-//     },
-//     comments: [],
-//     likedBy: [],
-//     tags: []
-//   }
-// ]
+
 
 async function save(post) {
 
@@ -162,22 +107,22 @@ async function addPostMsg(postId, txt) {
 }
 
 async function addComment(postId, comment) {
-const post = await getById(postId);
-if (!post.comments) post.comments = [];
+  const post = await getById(postId);
+  if (!post.comments) post.comments = [];
 
-const newComment = {
+  const newComment = {
     id: utilService.makeId(),
     by: userService.getLoggedInUser(),
     txt: comment
-};
+  };
 
-post.comments.push(newComment);
-const updatedPost = await storageService.put(STORAGE_KEY, post);
-return updatedPost
+  post.comments.push(newComment);
+  const updatedPost = await storageService.put(STORAGE_KEY, post);
+  return updatedPost
 }
 
 function getDefaultFilter() {
-return { id: '' }
+  return { id: '' }
 }
 
 function getEmptyPost() {
@@ -187,9 +132,9 @@ function getEmptyPost() {
     uploadTime: "now",
     by: userService.getLoggedInUser(),
     loc: {
-        lat: 11.11,
-        lng: 22.22,
-        name: "Tel Aviv"
+      lat: 11.11,
+      lng: 22.22,
+      name: "Tel Aviv"
     },
 
     comments: [
@@ -197,7 +142,7 @@ function getEmptyPost() {
     likedBy: [
     ],
     tags: []
-}
+  }
 }
 
 
@@ -217,14 +162,9 @@ function createPost() {
         imgUrl: "../public/img/posts/messiworldcup.jpg",
         uploadTime: utilService.randomTimeString(),
         by: {
-      _id: "u101",
-      fullname: "Lionel Messi",
-      imgUrl: "../public/img/users/messi.jpg"
-        },
-        loc: {
-          lat: 11.11,
-          lng: 22.22,
-          name: "Tel Aviv"
+          _id: "u101",
+          fullname: "Lionel Messi",
+          imgUrl: "../public/img/users/messi.jpg"
         },
         comments: [
           {
@@ -237,24 +177,19 @@ function createPost() {
             txt: "וואו",
             likedBy: [
               {
-                "_id": "u3",
-                "fullname": "Bob",
-                "imgUrl": "http://some-img"
+                _id: "u3",
+                fullname: "Bob",
+                imgUrl: "http://some-img"
               },
               {
-                "_id": "u3",
-                "fullname": "Bob",
-                "imgUrl": "http://some-img"
+                _id: "u3",
+                fullname: "Bob",
+                imgUrl: "http://some-img"
               },
               {
-                "_id": "u3",
-                "fullname": "Bob",
-                "imgUrl": "http://some-img"
-              },
-              {
-                "_id": "u3",
-                "fullname": "Bob",
-                "imgUrl": "http://some-img"
+                _id: "u3",
+                fullname: "Bob",
+                imgUrl: "http://some-img"
               },
             ]
           },
@@ -266,7 +201,7 @@ function createPost() {
               imgUrl: "../public/img/users/alberto_fernandez.jpg"
             },
             txt: "Gracias por traer honor a nuestro país",
-            likedBy:[
+            likedBy: [
               {
                 _id: "u3",
                 fullname: "Bob",
@@ -330,27 +265,3 @@ function createPost() {
   }
   return posts;
 }
-
-
-//   const user = {
-//     _id: "u101",
-//     username: "Muko",
-//     password: "mukmuk",
-//     fullname: "Muki Muka",
-//     imgUrl: "http://some-img",
-//     following: [
-//       {
-//         _id: "u106",
-//         fullname: "Dob",
-//         imgUrl: "http://some-img"
-//       }
-//     ],
-//     followers: [
-//       {
-//         _id: "u105",
-//         fullname: "Bob",
-//         imgUrl: "http://some-img"
-//       }
-//     ],
-//     savedStoryIds: ["s104", "s111", "s123"] // even better - use mini-story
-//   }

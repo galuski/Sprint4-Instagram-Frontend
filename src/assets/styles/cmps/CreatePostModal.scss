@@ -55,6 +55,13 @@
         margin-inline-start: 10px;
     }
 
+    .username-create-post{
+        color: $clr-fill;
+        font-weight: bold;
+        text-align: justify; 
+        white-space: nowrap;        
+    }
+
     .text-area {
         grid-column: 3/4;
         grid-row: 2/3;

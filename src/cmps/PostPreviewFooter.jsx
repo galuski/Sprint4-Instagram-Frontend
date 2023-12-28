@@ -87,7 +87,7 @@ export default function PostPreviewFooter({ post }) {
     }
 
     function openDetailsModal() {
-
+        
     }
 
     function onSendComment() {
@@ -181,7 +181,7 @@ export default function PostPreviewFooter({ post }) {
 
                             <button onClick={openMenuEmoji} className="emoji-post-btn"><img className="emjoi-btn1" src={emojiSvg}></img></button>
 
-                            <div className="emoji-picker-container">
+                            <div className="emojis-container">
                                 {showEmojiPicker && <EmojiPicker onEmojiClick={onClick} />}
                             </div>
 

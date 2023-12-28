@@ -1,5 +1,7 @@
 export default function PostStats({ post }) {
 
+    const likesCount = post.likedBy?.length
+
     return (
 
         <section className="post-stats">
@@ -13,9 +15,6 @@ export default function PostStats({ post }) {
                     {likesCount === 1 ? 'Be the first to like' : 'Be the first to like'}
                 </p>
             )}
-            <span className="userName-preview">{post.by?.fullname}</span>
-            <p>{post.txt}</p>
-            {post.comments ? <p className="comments-stats">View all {post.comments.length} comments</p> : null}
         </section>
 
     )
