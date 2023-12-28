@@ -170,11 +170,11 @@ function createPost() {
           {
             id: "c1",
             by: {
-              _id: "u103",
+              _id: "u101",
               fullname: "Gal Luski",
               imgUrl: "../public/img/users/luski.jpg"
             },
-            txt: "וואו",
+            txt: "GOAT 🐐",
             likedBy: [
               {
                 _id: "u3",

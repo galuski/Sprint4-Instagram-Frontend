@@ -99,12 +99,52 @@ function createUsers() {
     let users = utilService.loadFromStorage('user')
     if (!users || !users.length) {
         users = [
-              {
-                _id: "u103",
+            {
+                _id: "u101",
                 username: "luski",
                 password: "123456",
                 fullname: "Gal luski",
                 imgUrl: "../public/img/users/luski.jpg",
+                following: [],
+                followers: [],
+                savedStoryIds: []
+            },
+            {
+              _id: "u102",
+              username: "adidas",
+              password: "123456",
+              fullname: "adidas",
+              imgUrl: "../public/img/users/adidas.jpg",
+              following: [],
+              followers: [],
+              savedStoryIds: []
+            },
+              {
+                _id: "u103",
+                username: "default",
+                password: "123456",
+                fullname: "Default User",
+                imgUrl: "../public/img/users/default_pic.jpg",
+                following: [],
+                followers: [],
+                savedStoryIds: []
+              },
+              {
+                _id: "u104",
+                username: "kingJames",
+                password: "123456",
+                fullname: "Lebron James",
+                imgUrl: "../public/img/users/lebron_james.jpg",
+                following: [],
+                followers: [],
+                savedStoryIds: []
+              },
+              {
+                _id: "u105",
+                username: "ole",
+                password: "123456",
+                fullname: "Diario Ole",
+                imgUrl: "../public/img/users/ole.png",
                 following: [],
                 followers: [],
                 savedStoryIds: []

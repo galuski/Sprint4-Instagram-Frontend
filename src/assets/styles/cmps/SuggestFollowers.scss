@@ -1,0 +1,34 @@
+
+.suggest-profile-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 23px;
+}
+
+.suggest-profile-items{
+    display: flex;
+    align-items: center;
+}
+.suggest-profile-img{
+    width: 44px;
+    height: 44px;
+    border-Radius: 50%;
+    margin-inline-end: 12px;
+}
+
+.suggest-username{
+    font-family: $font-family1;
+    color: $clr-fill;
+    font-weight: bold;
+    
+}
+
+.switch-btn{
+    font-size: rem(12px);
+    font-family: $font-family1;
+    color: $clr-Btn;
+    font-weight: bold;
+    background: none;
+    border: none;
+}

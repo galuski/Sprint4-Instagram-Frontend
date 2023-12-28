@@ -1,29 +1,23 @@
 import { useEffect, useState } from "react"
 import { utilService } from "../services/util.service"
+import { useSelector } from "react-redux";
+import { SuggestUsersList } from "./SuggestUsersList";
 
-export  function SuggestFollowers({users}) {
+
+export function SuggestFollowers({ users }) {
+    const loggedUser = useSelector(storeState => storeState.userModule.user)
 
     return (
-        <>
-<h4 style={{padding:'10px',margin:'0'}}>Suggested to you</h4>
-             {users.map(user=><UserPreview  key={user._id} user={user}/>)}
-        </>
-    )
-}
-
-function UserPreview({ user }) {
-    return (
-        <>
-        <section style={{margin:'5px',display:'flex',textAlign:'center',justifyContent:'space-between'
-    ,padding:'10px'}}>
-            <div style={{display:'flex',alignItems:'center'}}>
-                <img style={{marginInlineEnd:'5px',width:'40px',height:'40px',borderRadius:'50%'}} src={user.imgUrl} alt="" />
-                <strong>{user.username}</strong>
+        <section className="suggestFollowers">
+           
+            <div className="suggest-profile-container">
+            <div className="suggest-profile-items">
+                <img className="suggest-profile-img" src={loggedUser.imgUrl} alt="Profile" />
+                <span className="suggest-username">{loggedUser.fullname}</span>
             </div>
-            <div>
-                <span>Follow</span>
+            <button className="switch-btn">Switch</button>
             </div>
-        </section>
-        </>
+            <SuggestUsersList users={users}/>
+            </section>
     )
 }
