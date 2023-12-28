@@ -7,7 +7,7 @@ const routes = [
     {
         path: '/',
         component: <LoginSignupPage />,
-        label: 'Home 🏠',
+        label: 'Instagram Login',
     },
     // {
     //     path: 'baba',
