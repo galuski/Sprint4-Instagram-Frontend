@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { utilService } from "../services/util.service"
 import { useSelector } from "react-redux";
 import { SuggestUsersList } from "./SuggestUsersList";
+import { Footer } from "./Footer";
 
 
 export function SuggestFollowers({ users }) {
@@ -18,6 +19,7 @@ export function SuggestFollowers({ users }) {
             <button className="switch-btn">Switch</button>
             </div>
             <SuggestUsersList users={users}/>
+            <Footer />
             </section>
     )
 }

@@ -1,0 +1,27 @@
+.footer{
+    color: #c7c7c7;
+    font-family: $font-family1;
+    font-size: rem(12px);
+    line-height: rem(16px);
+    font-weight: 400;
+    .footer-content{
+        color:#c7c7c7;
+        margin-top: 40px;
+ 
+    }
+    a{
+        color:#c7c7c7;
+        text-decoration: none;
+        cursor: default;
+
+    }
+
+    span{
+        font-size: 8px;
+    }
+    p{
+        font-size: rem(12px);
+        margin-top: 21px;
+        color:#c7c7c7;
+    }
+}
