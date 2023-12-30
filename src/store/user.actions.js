@@ -27,6 +27,17 @@ export async function removeUser(userId) {
     }
 }
 
+export async function updateUser(updatedUser) {
+    try {
+        console.log(updatedUser)
+        const user = await userService.update(updatedUser)
+        console.log(user)
+        store.dispatch({ type: UPDATE_USER, user })
+    } catch (err) {
+        console.log('Failed to update user', err)
+    }
+}
+
 export async function login(credentials) {
     try {
         const user = await userService.login(credentials)

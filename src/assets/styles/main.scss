@@ -20,6 +20,7 @@
 @import "views/ReviewIndex";
 @import "views/UserDetails";
 @import "views/PostDetails.scss";
+@import "views/ProfileUserPage.scss";
 
 // Components
 @import "cmps/PostList.scss";
@@ -39,6 +40,9 @@
 @import "cmps/SuggestUsersList.scss";
 @import "cmps/UserPreview.scss";
 @import "cmps/Footer.scss";
+@import "cmps/UserUpperPart.scss";
+@import "cmps/UserBottomPart.scss";
+@import "cmps/UploadUserPhotoModal.scss";
 
 
 

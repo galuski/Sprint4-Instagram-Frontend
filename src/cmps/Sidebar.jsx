@@ -5,12 +5,14 @@ import exploreSvg from '../../public/icons/explorer.svg'
 import reelsSvg from '../../public/icons/reels.svg'
 import messagesSvg from '../../public/icons/message.svg'
 import createSvg from '../../public/icons/create.svg'
-import {userService} from '../services/user.service'
+import { userService } from '../services/user.service'
 import { NavbarButton } from './NavbarButton'
+import { useNavigate } from 'react-router-dom';
+
 
 export function Sidebar({ onCreate }) {
 
-    // let userImgProfile = user.imgUrl
+    const navigate = useNavigate();
     const user = userService.getLoggedInUser()
 
     let profileImg = user.imgUrl
@@ -19,14 +21,14 @@ export function Sidebar({ onCreate }) {
 
     return (
         <nav className='side-bar'>
-                <div className='logo-side-bar'><img src={logo} alt="Instagram" /></div>
-                    <NavbarButton icon={homeSvg} title={'Home'} />
-                    <NavbarButton icon={searchSvg} title={'Search'} />
-                    <NavbarButton icon={exploreSvg} title={'Explore'} />
-                    <NavbarButton icon={reelsSvg} title={'Reels'} />
-                    <NavbarButton icon={messagesSvg} title={'Messages'} />
-                    <NavbarButton onClick={onCreate} icon={createSvg} title={'Create'} />
-                    <NavbarButton icon={profileImg} title={'Profile'} isProfile={true} />        
+            <div className='logo-side-bar'><img src={logo} alt="Instagram" /></div>
+            <NavbarButton icon={homeSvg} title={'Home'} />
+            <NavbarButton icon={searchSvg} title={'Search'} />
+            <NavbarButton icon={exploreSvg} title={'Explore'} />
+            <NavbarButton icon={reelsSvg} title={'Reels'} />
+            <NavbarButton icon={messagesSvg} title={'Messages'} />
+            <NavbarButton onClick={onCreate} icon={createSvg} title={'Create'} />
+            <NavbarButton icon={profileImg} title={'Profile'} onClick={() => navigate(`/profile/${user._id}`)} isProfile={true} />
         </nav>
     )
 }

@@ -1,6 +1,7 @@
 import { LoginSignupPage } from './pages/LoginSignUpPage.jsx'
 import {  HomePage } from './pages/HomePage.jsx'
 import { PostDetails } from './pages/PostDetails.jsx'
+import { ProfileUserPage } from './pages/ProfileUserPage.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -28,6 +29,11 @@ const routes = [
         path: '/pst/:pstId',
         component: <PostDetails />,
         label: 'Post Details'
+    },
+    {
+        path: '/profile/:userId/psts',
+        component: <ProfileUserPage />,
+        label: 'Profile Page'
     },
     // {
     //     path: 'review',
