@@ -1,0 +1,62 @@
+.explore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.explore .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 317px); /* 3 columns, each 317px wide */
+    grid-gap: 4px; /* Space between grid items */
+    justify-items: start;
+    width: 100%;
+    max-width: 1280px; /* Adjust if necessary to fit the grid properly */
+    margin: 0 auto; /* Centers the grid in the explore container */
+}
+
+.explore .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 317px; /* Width of grid item */
+    height: 317px; /* Height of grid item, equal to the width to make a square */
+    background: #f3f3f3;
+    border: 1px solid #e1e1e1;
+}
+
+.explore .grid-item img {
+    width: 317px; /* Forces the image width */
+    height: 317px; /* Forces the image height */
+    object-fit: fill; /* Forces the image to fill the space, could distort the image */
+}
+
+.explore .table-container {
+    width: 100%;
+    max-width: 951px; /* Adjusted to fit 3 images of 317px with some grid-gap */
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+

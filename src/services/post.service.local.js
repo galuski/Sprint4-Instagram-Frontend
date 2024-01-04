@@ -158,13 +158,13 @@ function createPost() {
     posts = [
       {
         _id: "s101",
-        txt: "El momento de mi vida ⭐⭐⭐",
-        imgUrl: "../public/img/posts/messiworldcup.jpg",
+        txt: "Bs As es mi segunda casa",
+        imgUrl: "/img/posts/floralis.JPG",
         uploadTime: utilService.randomTimeString(),
         by: {
           _id: "u101",
-          fullname: "Lionel Messi",
-          imgUrl: "../public/img/users/messi.jpg"
+          fullname: "Gal Luski",
+          imgUrl: "/img/users/luski.jpg"
         },
         comments: [
           {

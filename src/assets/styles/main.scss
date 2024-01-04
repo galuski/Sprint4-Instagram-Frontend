@@ -21,6 +21,7 @@
 @import "views/UserDetails";
 @import "views/PostDetails.scss";
 @import "views/ProfileUserPage.scss";
+@import "views/Explore.scss";
 
 // Components
 @import "cmps/PostList.scss";
@@ -40,7 +41,7 @@
 @import "cmps/SuggestUsersList.scss";
 @import "cmps/UserPreview.scss";
 @import "cmps/Footer.scss";
-@import "cmps/UserUpperPart.scss";
+@import "cmps/ProfileUserHeader.scss";
 @import "cmps/UserBottomPart.scss";
 @import "cmps/UploadUserPhotoModal.scss";
 

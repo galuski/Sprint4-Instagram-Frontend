@@ -1,26 +1,33 @@
 import { useSelector } from 'react-redux'
-import { UserUpperPart } from '../cmps/UserUpperPart'
+import { ProfileUserHeader } from '../cmps/ProfileUserHeader'
 import { UserBottomPart } from '../cmps/UserBottomPart'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Sidebar } from '../cmps/Sidebar'
 
 export function ProfileUserPage() {
     const user = useSelector(storeState => storeState.userModule.user)
     console.log('user', user)
-    const navigate = useNavigate('/')
     const { userId } = useParams()
+   
+    const navigate = useNavigate('/')
 
-    useEffect(() => { 
+    useEffect(() => {
         navigate(`/profile/${userId}/psts`)
     }, [])
 
     return (
         <section className='profile-user-page'>
-            <UserUpperPart />
+            <div className='side-bar-position'>
+                <Sidebar />
+            </div>
+            <main className='profile-user'>
+            <ProfileUserHeader />
             <UserBottomPart />
             <div className="nested-route">
                 <Outlet />
             </div>
+            </main>
         </section>
 
     )

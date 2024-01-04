@@ -104,7 +104,7 @@ function createUsers() {
                 username: "luski",
                 password: "123456",
                 fullname: "Gal luski",
-                imgUrl: "../public/img/users/luski.jpg",
+                imgUrl: "/img/users/luski.jpg",
                 following: [],
                 followers: [],
                 savedStoryIds: []
@@ -114,7 +114,7 @@ function createUsers() {
               username: "adidas",
               password: "123456",
               fullname: "adidas",
-              imgUrl: "../public/img/users/adidas.jpg",
+              imgUrl: "/img/users/adidas.jpg",
               following: [],
               followers: [],
               savedStoryIds: []
@@ -124,7 +124,7 @@ function createUsers() {
                 username: "default",
                 password: "123456",
                 fullname: "Default User",
-                imgUrl: "../public/img/users/default_pic.jpg",
+                imgUrl: "/img/users/default_pic.jpg",
                 following: [],
                 followers: [],
                 savedStoryIds: []
@@ -134,7 +134,7 @@ function createUsers() {
                 username: "kingJames",
                 password: "123456",
                 fullname: "Lebron James",
-                imgUrl: "../public/img/users/lebron_james.jpg",
+                imgUrl: "/img/users/lebron_james.jpg",
                 following: [],
                 followers: [],
                 savedStoryIds: []
@@ -144,7 +144,7 @@ function createUsers() {
                 username: "ole",
                 password: "123456",
                 fullname: "Diario Ole",
-                imgUrl: "../public/img/users/ole.png",
+                imgUrl: "/img/users/ole.png",
                 following: [],
                 followers: [],
                 savedStoryIds: []

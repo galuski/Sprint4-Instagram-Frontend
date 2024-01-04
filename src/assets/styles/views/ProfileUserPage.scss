@@ -1,12 +1,25 @@
 .profile-user-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
-    padding: 1.25rem;
-    font-size: 1.25rem;
-    
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: flex-start;
+    // height: 100vh;
+    // padding: 1.25rem;
+    // font-size: 1.25rem;
+    background-color: $clr-bg;
+    display: grid;
+    grid-template-columns: 244px 1fr 935px 1fr;
+    grid-template-rows: 29px 72px 1fr;
+  }
+
+  .side-bar-position{
+    grid-column: 1;
+    grid-row: 1/-1;
+  }
+
+  .profile-user{
+    grid-column: 3;
+    grid-row: 2/3;
   }
   
 .profile-user-page .nested-route ul {

@@ -16,19 +16,20 @@ export function Sidebar({ onCreate }) {
     const user = userService.getLoggedInUser()
 
     let profileImg = user.imgUrl
+    console.log("sss",profileImg)
 
 
 
     return (
         <nav className='side-bar'>
             <div className='logo-side-bar'><img src={logo} alt="Instagram" /></div>
-            <NavbarButton icon={homeSvg} title={'Home'} />
+            <NavbarButton icon={homeSvg} title={'Home'} onClick={() => navigate(`/pst`)} />
             <NavbarButton icon={searchSvg} title={'Search'} />
-            <NavbarButton icon={exploreSvg} title={'Explore'} />
+            <NavbarButton icon={exploreSvg} title={'Explore'} onClick={() => navigate('/explore')} />
             <NavbarButton icon={reelsSvg} title={'Reels'} />
             <NavbarButton icon={messagesSvg} title={'Messages'} />
             <NavbarButton onClick={onCreate} icon={createSvg} title={'Create'} />
-            <NavbarButton icon={profileImg} title={'Profile'} onClick={() => navigate(`/profile/${user._id}`)} isProfile={true} />
+            <NavbarButton icon={profileImg} title={'Profile'} onClick={() => navigate(`/profile/${user._id}/psts`)} isProfile={true} />
         </nav>
     )
 }

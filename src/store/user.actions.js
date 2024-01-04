@@ -1,4 +1,5 @@
 import { userService } from "../services/user.service.js";
+import { postService } from "../services/post.service.local.js";
 import { socketService } from "../services/socket.service.js";
 import { store } from '../store/store.js'
 
@@ -89,5 +90,21 @@ export async function loadUser(userId) {
     } catch (err) {
         showErrorMsg('Cannot load user')
         console.log('Cannot load user', err)
+    }
+}
+
+export async function loadUserLoggedPosts(userId) {
+    try {
+        const filterBy = { by: userId }
+
+        const userPosts = await postService.query(filterBy);
+
+
+        console.log('Posts for logged-in user:', userPosts);
+        return userPosts
+
+    } catch (err) {
+        console.log('Cannot load posts', err);
+        throw err;
     }
 }
