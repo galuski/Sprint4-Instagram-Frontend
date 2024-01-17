@@ -47,7 +47,7 @@ export function HomePage() {
                     <PostList posts={posts} />
                 </main>
                 <section className="suggest-followers">
-                    <SuggestFollowers users={users} />
+                    <SuggestFollowers users={users} posts={posts} />
                 </section>
             </section>
         </>

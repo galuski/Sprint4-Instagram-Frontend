@@ -1,12 +1,16 @@
 .explore {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: 244px 1fr 935px 1fr;
+    grid-template-rows: 29px 1fr;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    // padding: 20px;
 }
 
 .explore .grid {
+
     display: grid;
     grid-template-columns: repeat(3, 317px); /* 3 columns, each 317px wide */
     grid-gap: 4px; /* Space between grid items */
@@ -33,6 +37,8 @@
 }
 
 .explore .table-container {
+    grid-column: 3;
+    grid-row: 2;
     width: 100%;
     max-width: 951px; /* Adjusted to fit 3 images of 317px with some grid-gap */
     margin: 20px auto;
@@ -58,5 +64,10 @@ th, td {
 
 th {
     background-color: #f2f2f2;
+}
+
+.side-bar-position{
+    grid-column: 1;
+    grid-row: 1/-1;
 }
 

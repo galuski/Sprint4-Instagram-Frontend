@@ -7,6 +7,8 @@ import { userService } from '../services/user.service'
 import { postService } from '../services/post.service.local';
 import Settings from '../../public/icons/Settings.svg'
 import DefaultPic from '../../public/img/users/default_pic.jpg'
+import dotsSvg from '../../public/icons/dots.svg';
+import addUserSvg from '../../public/icons/add-user.svg';
 
 export function ProfileUserHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -51,7 +53,7 @@ export function ProfileUserHeader() {
 
                     <div className='profile-user-info-container'>
                         <div className='settings-area'>
-                            <p className={isCurrentUser ? 'current-user' : 'other-user'}>{currentUser?.username}</p>
+                            <p className={isCurrentUser ? 'current-user' : 'guest-user'}>{currentUser?.username}</p>
                             {isCurrentUser ? (
                                 <>
                                     <button className='edit-profile-btn'>Edit profile</button>
@@ -59,11 +61,11 @@ export function ProfileUserHeader() {
                                     <button className='settings-btn'><img src={Settings} alt='Settings Icon' /></button>
                                 </>
                             ) : (
-                                <div className='other-user'>
-                                    <button className='follow-button'>Follow</button>
-                                    <button className='message'>Message</button>
-                                    <button className='add-btn'><img src="addUser.svg"></img></button>
-                                    <button className='three-dot'><img src="3dot.svg"></img></button>
+                                <div className='guest-user-area'>
+                                    <button className='follow-btn'>Follow</button>
+                                    <button className='message-btn'>Message</button>
+                                    <button className='add-btn'><img src={addUserSvg}></img></button>
+                                    <button className='dots-btn'><img src={dotsSvg}></img></button>
                                 </div>
                             )}
                         </div>

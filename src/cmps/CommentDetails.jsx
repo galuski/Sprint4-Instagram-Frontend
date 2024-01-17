@@ -57,50 +57,24 @@ export function CommentDetails({ post, comment }) {
         }
     }
     
-
-    async function toggleLike() {
-        if (isLiked) {
-            setLikeUrl(likeSvg)
-            setIsLiked(false)
-            setLikesCount(likesCount - 1)
-            const postCopy = { ...post }
-            const idx = post.likedBy.findIndex(user => user._id === loggedUser._id)
-            postCopy.likedBy.splice(idx, 1)
-            updatePost(post)
-
-        } else {
-            setLikeUrl(likedSvg)
-            setIsLiked(true)
-            setLikesCount(likesCount + 1)
-            const postCopy = { ...post }
-            postCopy.likedBy.push(loggedUser)
-            updatePost(post)
-        }
-    }
-
-    function openMenuComment() {
-        setMenuComment(!isMenuComment)
-    }
-
     const navigateProfileUser = () => {
         navigate(`/profile/${comment.by._id}`)
     }
     function getRandomTimeStringV2() {
-        // Decide randomly whether to return hours or minutes
+
         const isHour = Math.random() < 0.5;
 
         if (isHour) {
-            // Generate a random hour between 1 and 3
+
             const hour = Math.floor(Math.random() * 3) + 1;
             return `${hour}h`;
         } else {
-            // Generate a random minute between 1 and 59
+  
             const minute = Math.floor(Math.random() * 59) + 1;
             return `${minute}m`;
         }
     }
 
-    // Example usage:
 
     return (
         <section className="comment-details">

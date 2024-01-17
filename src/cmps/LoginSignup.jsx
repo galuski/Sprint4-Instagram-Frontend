@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from './ImgUploader'
-
-// import { LoginSocialFacebook } from "reactjs-social-login";
-// import { FacebookLoginButton } from "react-social-login-buttons";
+ 
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
@@ -50,9 +47,6 @@ export function LoginSignup(props) {
 
     return (
         <div className="login-page">
-            {/* <div className="logo">
-                <img src="logo.svg"></img>
-            </div> */}
                 <p className='p-primary'>
                     Sign up to see photos and videos <br /> from your friends.
                 </p>
@@ -97,7 +91,7 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    {/* <ImgUploader onUploaded={onUploaded} /> */}
+                    
                     <button className='login-btn'>Sign up</button>
                 </form>}
             </div>

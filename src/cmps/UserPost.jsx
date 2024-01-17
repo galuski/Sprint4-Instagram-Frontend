@@ -27,14 +27,12 @@ export function UserPost() {
     }
 
     return (
-        <div className='user-pst'>
+        <div className='user-post'>
 
             <ul>
                 {userPosts.map((post, index) => (
                     <li key={index}>
-                        <div className='user-pst-preview' onMouseEnter={() => { toggleIcons(true) }} onMouseLeave={() => { toggleIcons(false) }}>
-                            {/* <p>{pst.txt}</p> */}
-                            {/* <p>{pst.tag}</p> */}
+                        <div className='user-post-preview' onMouseEnter={() => { toggleIcons(true) }} onMouseLeave={() => { toggleIcons(false) }}>
 
                             <Link to={`/profile/${post.by._id}/psts/${post._id}`}>
                                 <img src={post.imgUrl} alt="Post Image" />

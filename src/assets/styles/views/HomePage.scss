@@ -7,6 +7,14 @@
 
 }
 
+.side-bar {
+
+    grid-row: 1/-1;
+    position: sticky;
+    top: 0;
+
+}
+
 .post-list{
     grid-column:3/4 ;
     grid-row: 2/4;

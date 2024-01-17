@@ -2,7 +2,7 @@ import { postService } from "../services/post.service.local.js";
 import { userService } from "../services/user.service.js";
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_POST, REMOVE_POST, SET_POSTS, UPDATE_POST, OPEN_MODAL, CLOSE_MODAL, SET_SELECTED_POST } from "./post.reducer.js";
+import { ADD_POST, REMOVE_POST, SET_POSTS,REMOVE_COMMENT, UPDATE_POST, OPEN_MODAL, CLOSE_MODAL, SET_SELECTED_POST } from "./post.reducer.js";
 import { SET_SCORE } from "./user.reducer.js";
 
 // Action Creators:
@@ -22,6 +22,13 @@ export function getActionUpdatePost(post) {
     return {
         type: UPDATE_POST,
         post
+    }
+}
+
+export function getActionRemoveComment(commentId) {
+    return {
+        type: REMOVE_COMMENT,
+        commentId
     }
 }
 
@@ -89,7 +96,7 @@ export async function updatePost(post) {
 export async function removeComment(commentId) {
     try {
         const updatedPost = await postService.removeComment(commentId)
-        console.log('updatepost', updatedPost)
+        console.log('update post', updatedPost)
         store.dispatch(getActionRemoveComment(commentId))
     } catch (err) {
         console.log('err', err)

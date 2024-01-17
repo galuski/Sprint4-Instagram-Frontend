@@ -1,11 +1,4 @@
 .profile-user-page {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: flex-start;
-    // height: 100vh;
-    // padding: 1.25rem;
-    // font-size: 1.25rem;
     background-color: $clr-bg;
     display: grid;
     grid-template-columns: 244px 1fr 935px 1fr;
@@ -36,7 +29,7 @@
     align-items: center; /* Center image vertically */
     width: 309px; /* Set the width of image container */
     height: 309px; /* Set the height of image container */
-    background-color: #f0f0f0; /* Default background color */
+    background-color: $clr-bg; /* Default background color */
     overflow: hidden; /* Hide any part of the image that overflows the container */
 }
 

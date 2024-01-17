@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const SuggestUserPreview = ({ user }) => {
+const SuggestUserPreview = ({ user, post }) => {
     const [isFollowing, setIsFollowing] = useState();
     const [followStatus, setFollowStatus] = useState('Follow');
 
@@ -9,7 +10,6 @@ const SuggestUserPreview = ({ user }) => {
         if (isFollowing) {
             setFollowStatus('Following');
             setIsFollowing(false);
-
         } else {
             setFollowStatus('Follow');
             setIsFollowing(true);

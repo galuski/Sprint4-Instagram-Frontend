@@ -11,7 +11,7 @@ export function SuggestUsersList({ users }) {
         <>
             <h4 className="suggest-title">Suggested to you</h4>
             {suggestedUser.map(user => (
-                <SuggestUserPreview key={user._id} user={user} />
+                <SuggestUserPreview key={user._id} user={user}/>
             ))}
         </>
     );

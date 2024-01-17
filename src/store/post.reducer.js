@@ -3,6 +3,7 @@ export const REMOVE_POST = 'REMOVE_POST'
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
 export const SET_SELECTED_POST = 'SET_SELECTED_POST'
+export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 export const OPEN_MODAL = 'OPEN_MODAL'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 
@@ -43,21 +44,29 @@ export function postReducer(state = initialState, action) {
             case CLOSE_MODAL:
                 newState = { ...state, isModalOpen: false }
                 break
-        // case ADD_TO_postT:
-        //     newState = { ...state, cart: [...state.cart, action.car] }
-        //     break
-        // case REMOVE_FROM_CART:
-        //     cart = state.cart.filter(car => car._id !== action.carId)
-        //     newState = { ...state, cart }
-        //     break
-        // case CLEAR_CART:
-        //     newState = { ...state, cart: [] }
-        //     break
-        // case UNDO_REMOVE_CAR:
-        //     if (state.lastRemovedCar) {
-        //         newState = { ...state, posts: [...state.posts, state.lastRemovedCar], lastRemovedCar: null }
-        //     }
-        //     break
+                case REMOVE_COMMENT:
+            // Find the index of the post containing the comment
+            console.log('action.commentId', action.commentId)
+
+            const pstIdx = state.posts.findIndex(pst => pst.comments.some(comment => comment.id === action.commentId));
+            console.log('pstIdx', pstIdx)
+
+            if (pstIdx === -1) break;  // Exit if post not found
+
+            // Find the index of the comment to remove
+            const commentIdx = state.posts[pstIdx].comments.findIndex(comment => comment.id === action.commentId);
+
+            console.log('commentIdx', commentIdx)
+            if (commentIdx === -1) break; // Exit if comment not found
+
+            // Remove the comment without mutating the state directly
+            posts = [...state.posts];
+            posts[pstIdx] = { ...posts[pstIdx], comments: [...posts[pstIdx].comments.slice(0, commentIdx), ...posts[pstIdx].comments.slice(commentIdx + 1)] };
+
+            newState = { ...state, posts, selectedPost: posts[pstIdx] };
+            console.log('newState', newState)
+            break;        
+
         default:
     }
     return newState

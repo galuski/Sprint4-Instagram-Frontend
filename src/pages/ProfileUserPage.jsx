@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux'
 import { ProfileUserHeader } from '../cmps/ProfileUserHeader'
-import { UserBottomPart } from '../cmps/UserBottomPart'
+import { ProfileUserFooter } from '../cmps/ProfileUserFooter'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Sidebar } from '../cmps/Sidebar'
+import { Footer } from '../cmps/Footer'
 
 export function ProfileUserPage() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -23,7 +24,7 @@ export function ProfileUserPage() {
             </div>
             <main className='profile-user'>
             <ProfileUserHeader />
-            <UserBottomPart />
+            <ProfileUserFooter />
             <div className="nested-route">
                 <Outlet />
             </div>

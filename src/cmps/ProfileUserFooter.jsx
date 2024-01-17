@@ -6,7 +6,7 @@ import TaggedSvg from '../../public/icons/tagged.svg'
 
 
 
-export function UserBottomPart() {
+export function ProfileUserFooter() {
 
   const { userId } = useParams()
 
@@ -24,7 +24,7 @@ export function UserBottomPart() {
     );
   }
   return (
-    <section className="user-bottom-part">
+    <section className="profile-user-footer">
       <CustomNavLink to={`/profile/${userId}/psts`}><img src={PostsSvg} alt="Posts" />POSTS</CustomNavLink>
       <CustomNavLink to={`/profile/${userId}/reels`}><img src={ReelsSvg} alt="Reels" />REELS</CustomNavLink>
       <CustomNavLink to={`/profile/${userId}/saved`}><img src={SaveSvg} alt="Saved" />SAVED</CustomNavLink>

@@ -5,7 +5,7 @@
     align-content: center;
     justify-content: center;
     align-items: center;
-    margin: 0px;
+    margin: 0;
 
 }
 
@@ -41,7 +41,7 @@
     height: 32px;
     padding: 7px 16px 7px 16px;
     background-color: $clr-Btn ;
-    color: #ffffff;
+    color: $clr-bg;
     border: none;
     border-radius: 5px;
     margin: 10px;
@@ -70,14 +70,14 @@
 .p-primary {
     text-align: center;
     font-size: 1.2rem;
-    color: #737373;
+    color: $clr-text1;
 }
 
 .login-btn {
     width: 100%;
     padding: 10px;
     background-color: $clr-Btn ;
-    color: #ffffff;
+    color: $clr-bg;
     border: none;
     border-radius: 5px;
 }
@@ -100,12 +100,12 @@
 h6 {
     overflow: hidden;
     text-align: center;
-    color: #dbdbdb;
+    color: $clr-btn-profile-hover;
 }
 
 h6:before,
 h6:after {
-    background-color: #dbdbdb;
+    background-color: $clr-btn-profile-hover;
     content: "";
     display: inline-block;
     height: 1px;
@@ -158,5 +158,5 @@ select {
 .p-second {
     text-align: center;
     font-size: 0.8rem;
-    color: #737373;
+    color: $clr-text1;
 }

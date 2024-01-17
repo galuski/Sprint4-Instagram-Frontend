@@ -2,8 +2,15 @@ import dotsSvg from '../../public/icons/dots.svg'
 import { EllipsisModal } from './EllipsisModal'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function PostPreviewHeader({ post }) {
+    const navigate = useNavigate();
+
+    const navigateProfileUser = () => {
+        navigate(`/profile/${post.by._id}`);
+    }
 
     const userName = post.by?.fullname
     const [isEllipsisModalOpen, setIsEllipsisModalOpen] = useState(false)
@@ -28,7 +35,7 @@ export default function PostPreviewHeader({ post }) {
     return (
         <div className="post-preview-header">
             <div>
-                <img className='preview-profile-img' src={post.by?.imgUrl} alt="profile" />
+                <img className='preview-profile-img' onClick={navigateProfileUser} src={post.by?.imgUrl} alt="profile" />
                 <strong className="username-preview">{userName}</strong>
             </div>
 

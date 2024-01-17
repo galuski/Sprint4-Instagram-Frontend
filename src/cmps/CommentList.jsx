@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { CommentDetails } from './CommentDetails';
-// import { AllActionBtns } from './AllActionBtns';
 
 export function CommentList({ post }) {
     // const psts = useSelector(storeState => storeState.pstModule.psts) || [];
