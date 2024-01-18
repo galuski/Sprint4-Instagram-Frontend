@@ -1,0 +1,43 @@
+.profile-user-guest {
+    background-color: $clr-bg;
+    display: grid;
+    grid-template-columns: 244px 1fr 935px 1fr;
+    grid-template-rows: 29px 72px 1fr;
+  }
+
+  .side-bar-position{
+    grid-column: 1;
+    grid-row: 1/-1;
+  }
+
+  .profile-user{
+    grid-column: 3;
+    grid-row: 2/3;
+  }
+  
+.profile-user-guest .nested-route ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+    grid-gap: 5px; /* Smaller space between the items */
+    list-style: none; /* Removes default list styling */
+    padding: 0; /* Removes default padding */
+}
+
+.profile-user-guest .nested-route ul li {
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    width: 309px; /* Set the width of image container */
+    height: 309px; /* Set the height of image container */
+    background-color: $clr-bg; /* Default background color */
+    overflow: hidden; /* Hide any part of the image that overflows the container */
+}
+
+.profile-user-guest .nested-route ul li img {
+    max-width: 100%; /* Ensure image doesn't overflow the container horizontally */
+    max-height: 100%; /* Ensure image doesn't overflow the container vertically */
+    object-fit: cover; /* Image covers the whole area without distortion */
+    display: block; /* Remove any margins or spacing */
+}
+
+

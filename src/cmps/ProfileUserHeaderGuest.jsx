@@ -1,46 +1,73 @@
-
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Sidebar } from '../cmps/Sidebar'
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { UploadUserPhotoModal } from './UploadUserPhotoModal';
+import { useParams } from 'react-router-dom';
+import { userService } from '../services/user.service'
+import { postService } from '../services/post.service.local';
+import DefaultPic from '../../public/img/users/default_pic.jpg'
 import dotsSvg from '../../public/icons/dots.svg';
 import addUserSvg from '../../public/icons/add-user.svg';
 
 export function ProfileUserHeaderGuest() {
     const user = useSelector(storeState => storeState.userModule.user)
-    const pst = useSelector(storeState => storeState.pstModule.selectedPost)
-    console.log("pst from upper", pst)
+    const { userId } = useParams()
+    const [currentUser, setCurrentUser] = useState(null)
+    const [postCount, setPostCount] = useState(0)
+
+    let isCurrentUser = user._id === userId
+
+    useEffect(() => {
+        const loadUser = async () => {
+            try {
+                const currUser = await userService.getById(userId)
+                const postNum = await postService.getUserPostCount(userId)
+                setPostCount(postNum)
+                setCurrentUser(currUser)
+            } catch (err) {
+                console.log('Error loading user', err)
+            }
+        }
+
+        loadUser()
+
+
+        return () => {
+            // Component unmount
+        }
+    }, [userId]);
 
     return (
-        <section className="user-upper-part-other">
-            <div>
-                <Sidebar />
-            </div>
-            <section className='internal-user-upper-part'>
-                <div className='other-user-profile'>
-                    <img src={user.imgUrl} alt="User Placeholder" />
-                </div>
-                <div className='info-container'>
-                    <div className='info'>
-                        <h2>{user.username}</h2>
-                        <button>Following</button>
-                        <button><img src={addUserSvg}></img></button>
-                        <button><img src={dotsSvg}></img></button>
+        <>
+            <section className='profile-user-header'>
+                <div className='about-container'>
+                    <button className='profile-user-header-btn'>
+                        <img className="profile-user-header-img" src={currentUser?.imgUrl || DefaultPic} alt="User Img" />
+                    </button>
+                    <div className='profile-user-info-container'>
+                        <div className='settings-area'>
+                            <p className='guest-user'>{currentUser?.username}</p>
+
+                                <div className='guest-user-area'>
+                                    <button className='follow-btn'>Follow</button>
+                                    <button className='message-btn'>Message</button>
+                                    <button className='add-btn'><img src={addUserSvg}></img></button>
+                                    <button className='dots-btn'><img src={dotsSvg}></img></button>
+                                </div>
+                            
+                        </div>
+
+                        <div className='follows-area'>
+                            <span className='count-post'><strong>{postCount}</strong> posts</span>
+                            <span className='count-followers'><strong>{504}</strong> followers</span>
+                            <span className='count-following'><strong>{520}</strong> following</span>
+                        </div>
+                        <div className='name-area'>
+                            <span>{currentUser?.fullname}</span>
+                        </div>
 
                     </div>
-                    <section className='counts'>
-                        <div className='details-about-user'>
-
-                            <h4> <span className='count-post'>{10}</span>posts</h4>
-                            <h4> <span className='count-followers'>{10}</span>followers</h4>
-                            <h4><span className='count-following'>{20}</span> following</h4>
-                        </div>
-                        <div className='fullname-of-user'>
-                            <h4>{user.fullname}</h4>
-                        </div>
-
-                    </section>
                 </div>
             </section>
-        </section>
+        </>
     )
 }

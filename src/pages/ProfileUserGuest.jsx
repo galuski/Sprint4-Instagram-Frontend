@@ -1,19 +1,25 @@
-import { useSelector } from 'react-redux'
-import { ProfileUserFooter } from '../cmps/ProfileUserFooter'
+// import { useSelector } from 'react-redux'
+import { ProfileUserFooterGuest } from '../cmps/ProfileUserFooterGuest'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { ProfileUserHeaderGuest } from '../cmps/ProfileUserHeaderGuest'
+import { Sidebar } from '../cmps/Sidebar'
 
-export function OtherUserProfile() {
-    const user = useSelector(storeState => storeState.userModule.user)
-    console.log('user',user)
+
+export function ProfileUserGuest() {
+    // const user = useSelector(storeState => storeState.userModule.user)
 
     return (
-        <section className='profile-user-page'>
+        <section className='profile-user-guest'>
+            <div className='side-bar-position'>
+                <Sidebar />
+            </div>
+            <main className='profile-user'>
             <ProfileUserHeaderGuest />
-            <ProfileUserFooter />
+            <ProfileUserFooterGuest />
             <div className="nested-route">
-            <Outlet />
-        </div>
+                <Outlet />
+            </div>
+            </main>
         </section>
 
     )

@@ -3,14 +3,27 @@ import { EllipsisModal } from './EllipsisModal'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { userService } from '../services/user.service'
+
 
 
 export default function PostPreviewHeader({ post }) {
     const navigate = useNavigate();
+    const user = userService.getLoggedInUser()
 
-    const navigateProfileUser = () => {
-        navigate(`/profile/${post.by._id}`);
+    let isCurrentUser = user._id === post.by._id
+
+    function navigateProfileUser() {
+        if (isCurrentUser) {
+            navigate(`/profile/${post.by._id}/psts`);
+        } else {
+            navigate(`/profile-g/${post.by._id}/psts`);
+        }
     }
+    
+        
+        
+    
 
     const userName = post.by?.fullname
     const [isEllipsisModalOpen, setIsEllipsisModalOpen] = useState(false)

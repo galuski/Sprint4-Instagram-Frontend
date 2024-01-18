@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { ImgUploader } from './ImgUploader';
+// import { useSelector } from 'react-redux';
 import { UploadUserPhotoModal } from './UploadUserPhotoModal';
 import { useParams } from 'react-router-dom';
 import { userService } from '../services/user.service'
@@ -11,11 +10,13 @@ import dotsSvg from '../../public/icons/dots.svg';
 import addUserSvg from '../../public/icons/add-user.svg';
 
 export function ProfileUserHeader() {
-    const user = useSelector(storeState => storeState.userModule.user)
+    // const user = useSelector(storeState => storeState.userModule.user)
     const { userId } = useParams()
     const [currentUser, setCurrentUser] = useState(null)
     const [showMenu, setShowMenu] = useState(false)
     const [postCount, setPostCount] = useState(0)
+
+    const user = userService.getLoggedInUser()
 
     let isCurrentUser = user._id === userId
 
@@ -47,13 +48,13 @@ export function ProfileUserHeader() {
             <section className='profile-user-header'>
                 <div className='about-container'>
                     <button className='profile-user-header-btn' onClick={openMenu}>
-                        <img className="profile-user-header-img" src={currentUser?.imgUrl || DefaultPic} alt="User Img" />
+                        <img className="profile-user-header-img" src={user?.imgUrl || DefaultPic} alt="User Img" />
                     </button>
                     {showMenu && <UploadUserPhotoModal />}
 
                     <div className='profile-user-info-container'>
                         <div className='settings-area'>
-                            <p className={isCurrentUser ? 'current-user' : 'guest-user'}>{currentUser?.username}</p>
+                            <p className={isCurrentUser ? 'current-user' : 'guest-user'}>{user?.username}</p>
                             {isCurrentUser ? (
                                 <>
                                     <button className='edit-profile-btn'>Edit profile</button>

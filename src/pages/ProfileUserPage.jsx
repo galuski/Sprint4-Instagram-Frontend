@@ -4,18 +4,17 @@ import { ProfileUserFooter } from '../cmps/ProfileUserFooter'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Sidebar } from '../cmps/Sidebar'
-import { Footer } from '../cmps/Footer'
 
 export function ProfileUserPage() {
     const user = useSelector(storeState => storeState.userModule.user)
     console.log('user', user)
     const { userId } = useParams()
    
-    const navigate = useNavigate('/')
+    // const navigate = useNavigate('/')
 
-    useEffect(() => {
-        navigate(`/profile/${userId}/psts`)
-    }, [])
+    // useEffect(() => {
+    //     navigate(`/profile/${userId}/psts`)
+    // }, [])
 
     return (
         <section className='profile-user-page'>
