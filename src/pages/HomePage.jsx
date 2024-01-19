@@ -9,6 +9,7 @@ import { addPost, loadPosts, removePost } from "../store/post.actions"
 import { loadUsers } from "../store/user.actions"
 import { utilService } from "../services/util.service"
 import { postService } from "../services/post.service.local"
+import Logo from "../cmps/Logo"
 
 
 export function HomePage() {
@@ -40,6 +41,9 @@ export function HomePage() {
         <>
             {openCreate ? <div className="create-modal"><CreatePostModal onAddPost={onAddPost} onCloseModal={ToggleModal} /></div> : null}
             <section className={`home-page-container `} >
+            <div className="logo-mobile">
+                <Logo />
+            </div>
                 <section className="side-bar">
                     <Sidebar onCreate={setOpenCreate} />
                 </section>

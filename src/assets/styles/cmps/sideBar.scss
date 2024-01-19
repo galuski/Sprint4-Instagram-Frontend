@@ -45,3 +45,62 @@ section.side-bar {
     font-size: rem(16px);
     line-height: 1.25;
 }
+
+@media (max-width: $mobile-breakpoint) {
+    section.side-bar{
+        margin-inline-start: 0;
+    }
+    .side-bar{
+        display: flex;
+        gap: 30px;
+    }
+    
+    .logo-side-bar {
+        display: none;
+    }
+
+    .navbar-btn {
+        display: flex;
+        align-items: center;
+        background-color: $clr-bg;
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+        margin: 4px 0 4px 0;
+        border: none;
+        text-align: start;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    .icon {
+        margin: 0;
+    }
+    .title {
+        display: none;
+    }
+
+    .nb-search{
+        display: none;
+    }
+    .nb-reels{
+        display: none;
+    }
+
+    .nb-home{
+        order: 1;
+    }
+    .nb-explore{
+        order: 2;
+    }
+    .nb-create{
+        order: 3;
+    }
+    .nb-messages{
+        order: 4;
+    }
+    .nb-profile{
+        order: 5;
+    }
+
+}

@@ -114,3 +114,33 @@ input[type="text"].comment-input {
     border: none;
     cursor: pointer;
 }
+
+@media (max-width: $mobile-breakpoint) {
+
+    .post-preview-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 8px 12px 8px;
+    }
+    
+    .post-img-container {
+        width: 100%;
+        height: 289px;
+    
+        .post-img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .like-comment-send img {
+        padding: 8px 8px 8px 0;
+    
+    }
+
+    .save{
+        display: none;
+    }
+}

@@ -1,9 +1,9 @@
-.home-page-container{
+.home-page-container {
     background-color: $clr-bg;
     display: grid;
     grid-template-columns: 244px 1fr 468px 1fr 320px 1fr;
     grid-template-rows: 29px 72px 1fr;
-    
+
 
 }
 
@@ -15,12 +15,45 @@
 
 }
 
-.post-list{
-    grid-column:3/4 ;
+.post-list {
+    grid-column: 3/4;
     grid-row: 2/4;
 }
-.suggest-followers{
+
+.suggest-followers {
     grid-column: 5/6;
     grid-row: 2/4;
 }
 
+.logo-mobile {
+    display: none;
+}
+
+@media (max-width: $mobile-breakpoint) {
+    .home-page-container {
+        background-color: $clr-bg;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 1fr 48px;
+    }
+
+    .post-list {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .side-bar {
+        grid-row: 3;
+        position: sticky;
+        top: 0;
+    }
+
+    .suggest-followers {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: block;
+        grid-row: 1/1;
+    }
+}
