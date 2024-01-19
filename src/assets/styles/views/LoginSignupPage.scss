@@ -160,3 +160,167 @@ select {
     font-size: 0.8rem;
     color: $clr-text1;
 }
+
+
+@media (max-width: $mobile-breakpoint){
+    
+    .login-signup-page-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 30px;
+    
+    }
+    
+    .form-side {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        align-items: stretch;
+        justify-content: center;
+        width: 350px;
+    }
+
+    .banner-side {
+        display:none;
+
+    }
+
+    h6 {
+        overflow: hidden;
+        text-align: center;
+        color: $clr-text1;
+        font-size: rem(13px);
+    }
+    
+    h6:before,
+    h6:after {
+        background-color: $clr-text1;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 50%;
+    }
+    
+    h6:before {
+        right: 0.5em;
+        margin-left: -50%;
+    }
+    
+    h6:after {
+        left: 0.5em;
+        margin-right: -50%;
+    }
+
+    .form-side-user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .continue-btn {
+        display: block;
+        width: 159px;
+        height: 32px;
+        padding: 7px 16px 7px 16px;
+        background-color: $clr-Btn ;
+        color: $clr-bg;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+    }
+    
+    .logout-btn {
+        background: none;
+        border: none;
+        font-weight: bolder;
+        font-size: 14px;
+        border-radius: 2px;
+        box-shadow: none;
+        color: $clr-Btn;
+        cursor: pointer;
+    }
+    
+    .logo-login {
+        display: block;
+        width: 170px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    
+    .p-primary {
+        text-align: center;
+        font-size: 1.2rem;
+        color: $clr-text1;
+        margin: 30px 0;
+    }
+    
+    .login-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: $clr-Btn ;
+        color: $clr-bg;
+        border: none;
+        border-radius: 5px;
+    }
+    
+    .profile-login-img {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 24px 0 24px 0;
+    }
+    
+    .login-btn:hover {
+        background-color: $clr-Btn-hover;
+        cursor: pointer;
+    }
+
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    input[type=email],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type=password],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    .p-second {
+        text-align: center;
+        font-size: 0.8rem;
+        color: $clr-text1;
+    }
+}
