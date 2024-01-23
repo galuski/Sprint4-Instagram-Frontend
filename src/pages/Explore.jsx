@@ -4,6 +4,8 @@ import { loadPosts } from '../store/post.actions';
 import { showErrorMsg } from '../services/event-bus.service';
 import { Link, Outlet } from "react-router-dom";
 import { Sidebar } from '../cmps/Sidebar';
+import Logo from "../cmps/Logo"
+
 
 export function Explore() {
   const posts = useSelector((storeState) => storeState.postModule.posts) || [];
@@ -18,11 +20,14 @@ export function Explore() {
 
   return (
     <section className="explore">
+      <div className="logo-mobile">
+        <Logo />
+      </div>
       <div className='side-bar-position'>
         <Sidebar />
       </div>
       <div className="table-container">
-        <div className="grid">
+        <div className="grid-explorer">
           {posts.map((post) => (
             <div className="grid-item" key={post._id} >
               <Link to={`/explore/${post._id}`}>

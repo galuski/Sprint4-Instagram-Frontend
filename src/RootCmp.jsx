@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 import { ProfileUserPage } from './pages/ProfileUserPage.jsx'
 import { ProfileUserGuest } from './pages/ProfileUserGuest.jsx'
+import { Explore } from './pages/Explore.jsx'
 import { UserPostGuest } from './cmps/UserPostGuest.jsx'
 import { UserPost } from './cmps/UserPost.jsx'
 import { PostDetails } from './pages/PostDetails.jsx'
@@ -21,7 +22,11 @@ export function RootCmp() {
         <div>
             {/* <AppHeader /> */}
             <main>
+
                 <Routes>
+                <Route path='/explore' element={<Explore />}>
+                    <Route path=':pstId' element={<PostDetails />} />
+                </Route>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                     <Route path="user/:id" element={<UserDetails />} />
                     <Route element={<ProfileUserPage />} path="/profile/:userId/" >
@@ -34,7 +39,7 @@ export function RootCmp() {
                     </Route>
                 </Routes>
                 <Routes>
-                {/* {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)} */}
+               
                     <Route element={<ProfileUserGuest />} path="/profile-g/:userId/" >
                         <Route path="/profile-g/:userId/psts" element={<UserPostGuest />}>
                             <Route path=":pstId" element={<PostDetails />}></Route>
