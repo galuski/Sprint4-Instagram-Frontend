@@ -56,16 +56,24 @@ export function ProfileUserHeaderGuest() {
                             
                         </div>
 
-                        <div className='follows-area'>
+                        <div className='follows-area-guest'>
                             <span className='count-post'><strong>{postCount}</strong> posts</span>
                             <span className='count-followers'><strong>{504}</strong> followers</span>
                             <span className='count-following'><strong>{520}</strong> following</span>
                         </div>
-                        <div className='name-area'>
+                        <div className='name-area-guest'>
                             <span>{currentUser?.fullname}</span>
                         </div>
 
                     </div>
+                </div>
+                <div className='name-area-guest-mobile'>
+                    <span>{currentUser?.fullname}</span>
+                </div>
+                <div className='follows-area-guest-mobile'>
+                    <span className='count-post-guest-mobile'><strong>{postCount}</strong> posts</span>
+                    <span className='count-followers-guest-mobile'><strong>{504}</strong> followers</span>
+                    <span className='count-following-guest-mobile'><strong>{520}</strong> following</span>
                 </div>
             </section>
         </>
