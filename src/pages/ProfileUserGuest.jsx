@@ -10,7 +10,7 @@ export function ProfileUserGuest() {
 
     return (
         <section className='profile-user-guest'>
-            <div className='side-bar-position'>
+            <div className='side-bar-position-guest'>
                 <Sidebar />
             </div>
             <main className='profile-user'>

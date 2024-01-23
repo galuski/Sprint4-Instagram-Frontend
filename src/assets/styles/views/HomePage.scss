@@ -43,9 +43,9 @@
     }
 
     .side-bar {
-        grid-row: 3;
+        grid-row: 3/4; /* Set the grid row to 3 only */
         position: sticky;
-        top: 0;
+        bottom: 0;    
     }
 
     .suggest-followers {

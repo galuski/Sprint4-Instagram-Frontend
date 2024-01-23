@@ -53,6 +53,7 @@ section.side-bar {
     .side-bar{
         display: flex;
         gap: 30px;
+        background-color: $clr-bg;
     }
     
     .logo-side-bar {

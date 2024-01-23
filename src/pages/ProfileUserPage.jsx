@@ -4,12 +4,13 @@ import { ProfileUserFooter } from '../cmps/ProfileUserFooter'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Sidebar } from '../cmps/Sidebar'
+import Logo from "../cmps/Logo"
 
 export function ProfileUserPage() {
     const user = useSelector(storeState => storeState.userModule.user)
     console.log('user', user)
     const { userId } = useParams()
-   
+
     // const navigate = useNavigate('/')
 
     // useEffect(() => {
@@ -18,15 +19,18 @@ export function ProfileUserPage() {
 
     return (
         <section className='profile-user-page'>
-            <div className='side-bar-position'>
+            <div className="logo-mobile">
+                <Logo />
+            </div>
+            <div className='side-bar-position-profile'>
                 <Sidebar />
             </div>
             <main className='profile-user'>
-            <ProfileUserHeader />
-            <ProfileUserFooter />
-            <div className="nested-route">
-                <Outlet />
-            </div>
+                <ProfileUserHeader />
+                <ProfileUserFooter />
+                <div className="nested-route">
+                    <Outlet />
+                </div>
             </main>
         </section>
 

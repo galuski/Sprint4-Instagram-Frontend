@@ -17,8 +17,8 @@
   
 .profile-user-guest .nested-route ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
-    grid-gap: 5px; /* Smaller space between the items */
+    grid-template-columns: repeat(1, 1fr); /* Creates 3 columns */
+    grid-gap: 1px; /* Smaller space between the items */
     list-style: none; /* Removes default list styling */
     padding: 0; /* Removes default padding */
 }
@@ -40,4 +40,38 @@
     display: block; /* Remove any margins or spacing */
 }
 
+@media (max-width: $mobile-breakpoint) {
+  .profile-user-guest {
+      background-color: $clr-bg;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 44px 1fr 48px;
+  }
+  .side-bar-position-guest {
+    grid-column: 1;
+    grid-row: 3/4; /* Set the grid row to 3 only */
+    position: sticky;
+    bottom: 0;
+  }
+
+  .profile-user{
+    grid-column: 1;
+    grid-row: 2/3;
+  }
+
+  .profile-user-guest .nested-route ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Creates 3 columns */
+    grid-gap: 1px; /* Smaller space between the items */
+    list-style: none; /* Removes default list styling */
+    padding: 0; /* Removes default padding */
+}
+
+.profile-user-guest .nested-route ul li img {
+  max-width: 100%; /* Ensure image doesn't overflow the container horizontally */
+  max-height: 100%; /* Ensure image doesn't overflow the container vertically */
+  object-fit: cover; /* Image covers the whole area without distortion */
+  display: block; /* Remove any margins or spacing */
+}
+}
 

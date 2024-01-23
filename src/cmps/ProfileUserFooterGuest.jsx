@@ -25,10 +25,10 @@ export function ProfileUserFooterGuest() {
   }
   return (
     <section className="profile-user-footer">
-      <CustomNavLink to={`/profile-g/${userId}/psts`}><img src={PostsSvg} alt="Posts" />POSTS</CustomNavLink>
-      <CustomNavLink to={`/profile-g/${userId}/reels`}><img src={ReelsSvg} alt="Reels" />REELS</CustomNavLink>
-      <CustomNavLink to={`/profile-g/${userId}/saved`}><img src={SaveSvg} alt="Saved" />SAVED</CustomNavLink>
-      <CustomNavLink to={`/profile-g/${userId}/tagged`}><img src={TaggedSvg} alt="Tagged" />TAGGED</CustomNavLink>
+      <CustomNavLink to={`/profile-g/${userId}/psts`}><img src={PostsSvg} alt="Posts" /><p>POSTS</p></CustomNavLink>
+      <CustomNavLink to={`/profile-g/${userId}/reels`}><img src={ReelsSvg} alt="Reels" /><p>REELS</p></CustomNavLink>
+      <CustomNavLink to={`/profile-g/${userId}/saved`}><img src={SaveSvg} alt="Saved" /><p>SAVED</p></CustomNavLink>
+      <CustomNavLink to={`/profile-g/${userId}/tagged`}><img src={TaggedSvg} alt="Tagged" /><p>TAGGED</p></CustomNavLink>
     </section>
   )
 }

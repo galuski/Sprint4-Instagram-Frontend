@@ -54,33 +54,32 @@ export function ProfileUserHeader() {
 
                     <div className='profile-user-info-container'>
                         <div className='settings-area'>
-                            <p className={isCurrentUser ? 'current-user' : 'guest-user'}>{user?.username}</p>
-                            {isCurrentUser ? (
-                                <>
-                                    <button className='edit-profile-btn'>Edit profile</button>
-                                    <button className='view-archive-btn'>View Archive</button>
-                                    <button className='settings-btn'><img src={Settings} alt='Settings Icon' /></button>
-                                </>
-                            ) : (
-                                <div className='guest-user-area'>
-                                    <button className='follow-btn'>Follow</button>
-                                    <button className='message-btn'>Message</button>
-                                    <button className='add-btn'><img src={addUserSvg}></img></button>
-                                    <button className='dots-btn'><img src={dotsSvg}></img></button>
-                                </div>
-                            )}
+                            <p className='current-user'>{user?.username}</p>
+                            <div className='settings-area-btns'>
+                                <button className='edit-profile-btn'>Edit profile</button>
+                                <button className='view-archive-btn'>View Archive</button>
+                                <button className='settings-btn'><img src={Settings} alt='Settings Icon' /></button>
+                            </div>
                         </div>
 
-                        <div className='follows-area'>
+                        <div className='follows-area-profile'>
                             <span className='count-post'><strong>{postCount}</strong> posts</span>
                             <span className='count-followers'><strong>{504}</strong> followers</span>
                             <span className='count-following'><strong>{520}</strong> following</span>
                         </div>
-                        <div className='name-area'>
+                        <div className='name-area-profile'>
                             <span>{currentUser?.fullname}</span>
                         </div>
-
                     </div>
+                </div>
+                
+                <div className='name-area-profile-mobile'>
+                    <span>{currentUser?.fullname}</span>
+                </div>
+                <div className='follows-area-profile-mobile'>
+                    <span className='count-post-mobile'><strong>{postCount}</strong> posts</span>
+                    <span className='count-followers-mobile'><strong>{504}</strong> followers</span>
+                    <span className='count-following-mobile'><strong>{520}</strong> following</span>
                 </div>
             </section>
         </>

@@ -7,7 +7,6 @@
     font-weight: 600;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
     cursor: pointer;
     font-size: rem(12px);
     border-top: 1px solid #e0e0e0;
@@ -15,38 +14,38 @@
 
 .profile-user-footer a {
     text-decoration: none;
-    color: inherit;  
+    color: inherit;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    position: relative; 
+    position: relative;
 }
 
 
 .profile-user-footer a::before {
     content: '';
-    
+
     display: block;
     position: absolute;
     bottom: 100%;
-    left: 0; 
-    width: 100%; 
-    height: 1px; 
-    background: transparent; 
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: transparent;
     transition: background-color 0.3s;
 }
 
 
 .profile-user-footer a.active-link::before {
-    background: rgb(154, 154, 154); 
-    height: 1px; 
-   
+    background: rgb(154, 154, 154);
+    height: 1px;
+
 }
 
 .profile-user-footer a.active-link {
-    color: #000000; 
+    color: #000000;
     line-height: 4;
-    
+
 }
 
 .profile-user-footer img {
@@ -54,4 +53,27 @@
     height: 12px;
 }
 
+@media (max-width: $mobile-breakpoint) {
 
+    .profile-user-footer {
+        display: flex;
+        font-family: $font-family1;
+        gap: 5rem;
+        color: #737373;
+        background-color: $clr-bg;
+        font-weight: 600;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: rem(12px);
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .profile-user-footer img {
+        width: 20px;
+        height: 20px;
+    }
+    .profile-user-footer p {
+        display: none;
+    }
+}
