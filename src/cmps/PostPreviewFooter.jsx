@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { utilService } from "../services/util.service";
-import { postService } from "../services/post.service.local";
+import { postService } from "../services/post.service";
 import { useState, useEffect, useRef } from 'react'
 import EmojiPicker from 'emoji-picker-react';
 import { Emoji, EmojiStyle } from 'emoji-picker-react';
@@ -43,7 +43,8 @@ export default function PostPreviewFooter({ post }) {
 
 
     useEffect(() => {
-        const bIsLiked = post.likedBy.find(user => userService.getLoggedInUser()._id === user._id) ? true : false
+        console.log("ssss", post)
+        const bIsLiked = post?.likedBy.find(user => userService.getLoggedInUser()?._id === user?._id) ? true : false
 
         setIsLiked(bIsLiked)
         bIsLiked ? setLikeUrl(likedSvg) : setLikeUrl(likeSvg)
@@ -91,9 +92,20 @@ export default function PostPreviewFooter({ post }) {
     }
 
     function onSendComment() {
-        setCountComment(prevCount => prevCount + 1)
-        setNewComment(comment)
-        postService.addComment(post._id, comment);
+        setCountComment((prevCount) => prevCount + 1);
+        setNewComment(comment);
+        const fullComment = {
+            id: utilService.makeId(),
+            by: loggedUser,
+            txt: comment,
+            likedBy: []
+        }
+        post.comments.push(fullComment)
+
+        console.log("poooooost", post)
+        postService.save(post,post._id).then((updatedPost) => {
+            dispatch({ type: 'SET_SELECTED_POST', post: updatedPost });
+        });
         setComment('');
         setInputValue('');
     }

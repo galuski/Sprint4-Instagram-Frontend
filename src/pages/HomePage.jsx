@@ -8,7 +8,7 @@ import { CreatePostModal } from "../cmps/CreatePostModal"
 import { addPost, loadPosts, removePost } from "../store/post.actions"
 import { loadUsers } from "../store/user.actions"
 import { utilService } from "../services/util.service"
-import { postService } from "../services/post.service.local"
+import { postService } from "../services/post.service"
 import Logo from "../cmps/Logo"
 
 

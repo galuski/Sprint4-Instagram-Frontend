@@ -1,4 +1,4 @@
-import { postService } from '../services/post.service.local';
+import { postService } from '../services/post.service';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MenuComment } from './MenuComment';
@@ -37,7 +37,7 @@ export function CommentDetails({ post, comment }) {
 
 
     useEffect(() => {
-        const bIsLiked = post.comments.find(user => userService.getLoggedInUser()._id === user._id) ? true : false
+        const bIsLiked = post.comments.find(user => userService.getLoggedInUser()?._id === user?._id) ? true : false
 
         setIsLiked(bIsLiked)
         bIsLiked ? setLikeUrl(likedSvg) : setLikeUrl(likeSvg)
@@ -78,7 +78,7 @@ export function CommentDetails({ post, comment }) {
 
     return (
         <section className="comment-details">
-            <img className='profile-comment-img' onClick={navigateProfileUser}
+            <img className='profile-comment-img'
                 src={comment.by.imgUrl || DefaultImg}>
             </img>
             <div className="comment">

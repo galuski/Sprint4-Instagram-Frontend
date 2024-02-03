@@ -3,22 +3,21 @@ import { useSelector } from 'react-redux';
 import { UploadUserPhotoModal } from './UploadUserPhotoModal';
 import { useParams } from 'react-router-dom';
 import { userService } from '../services/user.service'
-import { postService } from '../services/post.service.local';
+import { postService } from '../services/post.service';
 import DefaultPic from '../../public/img/users/default_pic.jpg'
 import dotsSvg from '../../public/icons/dots.svg';
 import addUserSvg from '../../public/icons/add-user.svg';
 
 export function ProfileUserHeaderGuest() {
-    const user = useSelector(storeState => storeState.userModule.user)
+    // const user = useSelector(storeState => storeState.userModule.user)
     const { userId } = useParams()
     const [currentUser, setCurrentUser] = useState(null)
     const [postCount, setPostCount] = useState(0)
 
-    let isCurrentUser = user._id === userId
-
     useEffect(() => {
         const loadUser = async () => {
             try {
+                console.log('ddddddd')
                 const currUser = await userService.getById(userId)
                 const postNum = await postService.getUserPostCount(userId)
                 setPostCount(postNum)

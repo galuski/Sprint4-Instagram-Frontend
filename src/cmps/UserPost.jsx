@@ -14,7 +14,6 @@ export function UserPost() {
         loadUserLoggedPosts(userId)
             .then((posts) => {
                 setUserPosts(posts);
-                console.log('User posts:', posts);
             })
             .catch((err) => {
                 console.error('Error loading user posts', err);

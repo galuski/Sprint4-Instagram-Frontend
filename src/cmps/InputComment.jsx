@@ -4,7 +4,7 @@ import emojiSvg from '../../public/icons/emoji.svg';
 import EmojiPicker from 'emoji-picker-react';
 import { useDispatch } from 'react-redux';
 import { Emoji } from 'emoji-picker-react';
-import { postService } from "../services/post.service.local";
+import { postService } from "../services/post.service";
 
 import { SET_SELECTED_POST } from '../store/post.reducer';
 

@@ -21,7 +21,7 @@
   
 .profile-user-guest .nested-route ul {
     display: grid;
-    grid-template-columns: repeat(1, 1fr); /* Creates 3 columns */
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
     grid-gap: 1px; /* Smaller space between the items */
     list-style: none; /* Removes default list styling */
     padding: 0; /* Removes default padding */

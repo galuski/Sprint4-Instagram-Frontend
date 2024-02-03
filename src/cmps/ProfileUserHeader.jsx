@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { UploadUserPhotoModal } from './UploadUserPhotoModal';
 import { useParams } from 'react-router-dom';
 import { userService } from '../services/user.service'
-import { postService } from '../services/post.service.local';
+import { postService } from '../services/post.service';
 import Settings from '../../public/icons/Settings.svg'
 import DefaultPic from '../../public/img/users/default_pic.jpg'
 import dotsSvg from '../../public/icons/dots.svg';
@@ -15,30 +15,29 @@ export function ProfileUserHeader() {
     const [currentUser, setCurrentUser] = useState(null)
     const [showMenu, setShowMenu] = useState(false)
     const [postCount, setPostCount] = useState(0)
-
+    
     const user = userService.getLoggedInUser()
-
-    let isCurrentUser = user._id === userId
-
-    useEffect(() => {
-        const loadUser = async () => {
-            try {
-                const currUser = await userService.getById(userId)
-                const postNum = await postService.getUserPostCount(userId)
-                setPostCount(postNum)
-                setCurrentUser(currUser)
-            } catch (err) {
-                console.log('Error loading user', err)
-            }
+    
+useEffect(() => {
+    const loadUser = async () => {
+        try {
+            const currUser = await userService.getById(userId);
+            const postNum = await postService.getUserPostCount(userId);
+            setPostCount(postNum);
+            setCurrentUser(currUser);
+        } catch (err) {
+            console.log('Error loading user', err);
+            // Handle error loading user data
         }
+    };
 
-        loadUser()
+    loadUser();
 
+    return () => {
+        // Component unmount
+    };
+}, [userId]);
 
-        return () => {
-            // Component unmount
-        }
-    }, [userId]);
 
     function openMenu() {
         setShowMenu(!showMenu);

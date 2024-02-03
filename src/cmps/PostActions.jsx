@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { postService } from '../services/post.service.local';
+import { postService } from '../services/post.service';
 import { userService } from '../services/user.service';
+import { utilService } from '../services/util.service';
 import { updatePost } from '../store/post.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import EmojiPicker, { Emoji } from 'emoji-picker-react'; // Import Emoji from 'emoji-picker-react'
@@ -27,6 +28,8 @@ export default function PostActions() {
     const [countComment, setCountComment] = useState(post.comments?.length || 0);
     const [likesCount, setLikesCount] = useState(likedBy?.length || 0);
     const loggedUser = userService.getLoggedInUser();
+
+    const user = userService.getLoggedInUser()
 
     useEffect(() => {
 
@@ -75,6 +78,7 @@ export default function PostActions() {
             setIsLiked(false);
             setLikesCount((prevLikesCount) => prevLikesCount - 1);
             const pstCpy = { ...post };
+            console.log('copppy',pstCpy)
             const idx = pstCpy.likedBy.findIndex((user) => user._id === loggedUser._id);
             pstCpy.likedBy.splice(idx, 1);
             dispatch(updatePost(pstCpy));
@@ -88,15 +92,33 @@ export default function PostActions() {
         }
     }
 
+    // "id": "c1",
+    // "by": {
+    //   "_id": "65ba02a7c16f49717973f5d4",
+    //   "fullname": "Gal Luski",
+    //   "imgUrl": "https://res.cloudinary.com/dkyjustoe/image/upload/v1706689953/66490380_10218021740711740_2643470134949183488_n_z4nxhe.jpg"
+    // },
+    // "txt": "GOAT 🐐",
+    // "likedBy": []
     function onSendComment() {
         setCountComment((prevCount) => prevCount + 1);
         setNewComment(comment);
-        postService.addComment(post._id, comment).then((updatedPost) => {
+        const fullComment = {
+            id: utilService.makeId(),
+            by: loggedUser,
+            txt: comment,
+            likedBy: []
+        }
+        post.comments.push(fullComment)
+
+        console.log("poooooost", post)
+        postService.save(post,post._id).then((updatedPost) => {
             dispatch({ type: 'SET_SELECTED_POST', post: updatedPost });
         });
         setComment('');
         setInputValue('');
     }
+    
 
     function onClick(emojiData) {
         setComment((input) => input + (emojiData.isCustom ? emojiData.unified : emojiData.emoji));

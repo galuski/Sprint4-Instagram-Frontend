@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { postService } from '../services/post.service.local'
+import { postService } from '../services/post.service'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import { useEffect, useState } from 'react'
 import { EllipsisModal } from '../cmps/EllipsisModal'

@@ -1,4 +1,4 @@
-import { postService } from "../services/post.service.local.js";
+import { postService } from "../services/post.service.js";
 import { userService } from "../services/user.service.js";
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
@@ -72,9 +72,9 @@ export async function removePost(postId) {
 export async function addPost(post) {
 
     try {
-        const savedPost = await postService.save(post)
-        store.dispatch(getActionAddPost(savedPost))
-        return savedPost
+        const addPost = await postService.add(post)
+        store.dispatch(getActionAddPost(addPost))
+        return addPost
     } catch (err) {
         console.log('Cannot add post', err)
         throw err
@@ -84,8 +84,8 @@ export async function addPost(post) {
 export async function updatePost(post) {
     try {
         const savedPost = await postService.save(post);
-        console.log('Updated post:', savedPost);
         store.dispatch(getActionUpdatePost(savedPost));
+        console.log('Updated post:', savedPost);
         return savedPost;
     } catch (err) {
         console.error('An error occurred:', err);

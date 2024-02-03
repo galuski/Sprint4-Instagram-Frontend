@@ -1,6 +1,7 @@
 .user-post {
     background-color: $clr-bg;
 
+
     .user-post-preview {
         position: relative;
 
@@ -10,8 +11,4 @@
 
         }
     }
-}
-
-@media (max-width: $mobile-breakpoint) {
-
 }

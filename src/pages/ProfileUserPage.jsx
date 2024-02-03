@@ -8,7 +8,6 @@ import Logo from "../cmps/Logo"
 
 export function ProfileUserPage() {
     const user = useSelector(storeState => storeState.userModule.user)
-    console.log('user', user)
     const { userId } = useParams()
 
     // const navigate = useNavigate('/')

@@ -1,5 +1,5 @@
 import { userService } from "../services/user.service.js";
-import { postService } from "../services/post.service.local.js";
+import { postService } from "../services/post.service.js";
 import { socketService } from "../services/socket.service.js";
 import { store } from '../store/store.js'
 
@@ -97,10 +97,8 @@ export async function loadUserLoggedPosts(userId) {
     try {
         const filterBy = { by: userId }
 
-        const userPosts = await postService.query(filterBy);
+        const userPosts = await postService.filter(filterBy);
 
-
-        console.log('Posts for logged-in user:', userPosts);
         return userPosts
 
     } catch (err) {

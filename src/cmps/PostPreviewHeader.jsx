@@ -10,10 +10,11 @@ import { userService } from '../services/user.service'
 export default function PostPreviewHeader({ post }) {
     const navigate = useNavigate();
     const user = userService.getLoggedInUser()
-
-    let isCurrentUser = user._id === post.by._id
+    // console.log('post.by',post.by?._id, user?._id)
+    let isCurrentUser = user?._id === post.by?._id
 
     function navigateProfileUser() {
+
         if (isCurrentUser) {
             navigate(`/profile/${post.by._id}/psts`);
         } else {
@@ -44,7 +45,6 @@ export default function PostPreviewHeader({ post }) {
         setIsEllipsisModalOpen(false)
         enableBodyScroll(document.body)
     }
-
     return (
         <div className="post-preview-header">
             <div>

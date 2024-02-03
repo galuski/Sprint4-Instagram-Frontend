@@ -3,8 +3,8 @@ export const uploadService = {
   uploadImg
 }
 async function uploadProfileImg(ev) {
-  const CLOUD_NAME = "dlhba5lfd"
-  const UPLOAD_PRESET = "lisy74ma"
+  const CLOUD_NAME = "dkyjustoe"
+  const UPLOAD_PRESET = "xkdpkuk3"
   const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
   try {
@@ -24,8 +24,8 @@ async function uploadProfileImg(ev) {
   }
 }
 async function uploadImg(ev) {
-  const CLOUD_NAME = "dlhba5lfd"
-  const UPLOAD_PRESET = "lisy74ma"
+  const CLOUD_NAME = "dkyjustoe"
+  const UPLOAD_PRESET = "xkdpkuk3"
   const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
   try {
