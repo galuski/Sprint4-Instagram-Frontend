@@ -138,7 +138,7 @@ function getEmptyPost() {
         imgUrl: "",
         by: {
             _id: loggedUser._id,
-            fullName: loggedUser.fullname,
+            fullname: loggedUser.fullname,
             imgUrl: loggedUser.imgUrl
         },
 

@@ -1,4 +1,4 @@
-import logo from '../../public/icons/logo.svg'
+import logo from '../../public/instagrama.png'
 import homeSvg from '../../public/icons/home.svg'
 import searchSvg from '../../public/icons/search.svg'
 import exploreSvg from '../../public/icons/explorer.svg'
