@@ -3,9 +3,7 @@ import { utilService } from "../services/util.service"
 import { useSelector } from "react-redux";
 import { SuggestUsersList } from "./SuggestUsersList";
 import { useNavigate } from 'react-router-dom';
-
 import { Footer } from "./Footer";
-
 
 export function SuggestFollowers({ users }) {
     const loggedUser = useSelector(storeState => storeState.userModule.user)

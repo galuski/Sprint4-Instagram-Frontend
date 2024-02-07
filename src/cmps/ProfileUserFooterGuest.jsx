@@ -4,8 +4,6 @@ import ReelsSvg from '../../public/icons/reels.svg'
 import SaveSvg from '../../public/icons/save.svg'
 import TaggedSvg from '../../public/icons/tagged.svg'
 
-
-
 export function ProfileUserFooterGuest() {
 
   const { userId } = useParams()

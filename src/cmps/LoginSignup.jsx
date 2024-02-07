@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
- 
+
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
@@ -47,9 +47,9 @@ export function LoginSignup(props) {
 
     return (
         <div className="login-page">
-                <p className='p-primary'>
-                    Sign up to see photos and videos <br /> from your friends.
-                </p>
+            <p className='p-primary'>
+                Sign up to see photos and videos <br /> from your friends.
+            </p>
 
             {<form className="login-form" onSubmit={onLogin}>
                 <select
@@ -91,7 +91,7 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    
+
                     <button className='login-btn'>Sign up</button>
                 </form>}
             </div>

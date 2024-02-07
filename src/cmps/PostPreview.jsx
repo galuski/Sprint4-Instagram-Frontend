@@ -2,7 +2,6 @@ import PostPreviewHeader from '../cmps/PostPreviewHeader'
 import PostImage from '../cmps/PostImage'
 import PostPreviewFooter from '../cmps/PostPreviewFooter'
 
-
 export function PostPreview({ post, onDeletePost }) {
 
     return (

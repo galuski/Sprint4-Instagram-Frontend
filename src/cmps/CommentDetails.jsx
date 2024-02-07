@@ -1,9 +1,7 @@
-import { postService } from '../services/post.service';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { MenuComment } from './MenuComment';
-import { useParams, useNavigate, Link } from 'react-router-dom'
-import { closeModal, openModal, updatePost} from "../store/post.actions";
+import { useNavigate } from 'react-router-dom'
 import dots from '../../public/icons/dots.svg'
 import likeSvg from '../../public/icons/like.svg'
 import likedSvg from '../../public/icons/liked.svg'
@@ -25,16 +23,12 @@ export function CommentDetails({ post, comment }) {
     const [likesCommentCount, setLikesCommentCount] = useState(comment.likedBy?.length || 0)
 
     const [isMenuVisible, setMenuVisible] = useState(false)
-    const userId = user._id
-    let loggedUser = userService.getLoggedInUser()
 
     const navigate = useNavigate()
 
     const toggleMenu = () => {
         setMenuVisible(!isMenuVisible);
     }
-
-
 
     useEffect(() => {
         const bIsLiked = post.comments.find(user => userService.getLoggedInUser()?._id === user?._id) ? true : false
@@ -43,7 +37,6 @@ export function CommentDetails({ post, comment }) {
         bIsLiked ? setLikeUrl(likedSvg) : setLikeUrl(likeSvg)
 
     }, [])
-
 
     async function toggleLikeComment() {
         if (isLikedComment) {
@@ -74,7 +67,6 @@ export function CommentDetails({ post, comment }) {
             return `${minute}m`;
         }
     }
-
 
     return (
         <section className="comment-details">

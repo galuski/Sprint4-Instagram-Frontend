@@ -7,12 +7,8 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 export const OPEN_MODAL = 'OPEN_MODAL'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 
-// export const UNDO_REMOVE_CAR = 'UNDO_REMOVE_CAR'
-
 const initialState = {
     posts: [],
-    // cart: [],
-    // lastRemovedCar: null
 }
 
 export function postReducer(state = initialState, action) {

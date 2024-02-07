@@ -27,10 +27,4 @@ export function Footer() {
             </div>
         </section>
     )
-
-
-
-
 }
-
-

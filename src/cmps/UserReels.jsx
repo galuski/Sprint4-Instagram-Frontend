@@ -1,5 +1,5 @@
 export function UserReel(){
     return(
-        <h2>user reel coming soon</h2>
+        <h2>user reels</h2>
     )
 }

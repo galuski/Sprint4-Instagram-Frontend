@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { userService } from "../services/user.service";
+import { closeModal, openModal, updatePost } from "../store/post.actions";
 import { utilService } from "../services/util.service";
 import { postService } from "../services/post.service";
 import { useState, useEffect, useRef } from 'react'
 import EmojiPicker from 'emoji-picker-react';
 import { Emoji, EmojiStyle } from 'emoji-picker-react';
-import { PostDetails } from "../pages/PostDetails";
 
 import likeSvg from '../../public/icons/like.svg'
 import commentSvg from '../../public/icons/comment.svg'
@@ -13,14 +14,6 @@ import sendSvg from '../../public/icons/share.svg'
 import saveSvg from '../../public/icons/save.svg'
 import likedSvg from '../../public/icons/liked.svg'
 import emojiSvg from '../../public/icons/emoji.svg'
-
-
-import { userService } from "../services/user.service";
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
-
-
-import { closeModal, openModal, updatePost } from "../store/post.actions";
 
 export default function PostPreviewFooter({ post }) {
 
@@ -32,15 +25,11 @@ export default function PostPreviewFooter({ post }) {
     const [selectedEmoji, setSelectedEmoji] = useState("")
     const [showEmojiPicker, setShowEmojiPicker] = useState(false)
 
-
-
     const [newComment, setNewComment] = useState('')
     const [countComment, setCountComment] = useState(post.comments?.length || 0)
 
     var [likesCount, setLikesCount] = useState(likedBy?.length || 0)
     let loggedUser = userService.getLoggedInUser()
-
-
 
     useEffect(() => {
         console.log("ssss", post)
@@ -176,14 +165,11 @@ export default function PostPreviewFooter({ post }) {
                         <input className='post-preview-input' type="text" placeholder="Add a comment..." value={comment} onChange={(e) => { setComment(e.target.value); setInputValue(e.target.value) }}
 
                             onKeyDown={(e) => {
-                                if (e.key === 'Enter' && !e.shiftKey) {  // Check for Enter key press without Shift
-                                    e.preventDefault();  // Prevent default to avoid newline in input
-                                    onSendComment();     // Call the function to handle comment submission
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    e.preventDefault();
+                                    onSendComment();    
                                 }
                             }}
-
-
-
                         />
                         <div className="emoji-Post">
                             {<Emoji unified={selectedEmoji} size={28} />}

@@ -93,8 +93,6 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
                     </div>
                     <button onClick={onCloseModal} className="close-modal"><img src={close} alt="close" /></button>
                 </div>
-
-
             </section>
         )
 
@@ -119,5 +117,3 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
         </section>
     )
 }
-
-

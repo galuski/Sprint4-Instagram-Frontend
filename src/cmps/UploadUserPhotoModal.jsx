@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { ImgUploader } from "./ImgUploader"
 import { updateUser } from "../store/user.actions"
 
-
 export function UploadUserPhotoModal() {
     const [isUploadWindowOpen, setUploadWindow] = useState(false)
     const [isMenuOpen, setMenuOpen] = useState(true)

@@ -10,7 +10,6 @@ export function UserPostGuest() {
     const { userId } = useParams()
 
     useEffect(() => {
-        // Load user posts and update the state when they are loaded
         loadUserLoggedPosts(userId)
             .then((posts) => {
                 setUserPosts(posts);

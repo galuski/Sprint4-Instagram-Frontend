@@ -1,14 +1,10 @@
-// import { useSelector } from 'react-redux'
 import { ProfileUserFooterGuest } from '../cmps/ProfileUserFooterGuest'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { ProfileUserHeaderGuest } from '../cmps/ProfileUserHeaderGuest'
 import { Sidebar } from '../cmps/Sidebar'
 import Logo from "../cmps/Logo"
 
-
-
 export function ProfileUserGuest() {
-    // const user = useSelector(storeState => storeState.userModule.user)
 
     return (
         <section className='profile-user-guest'>
@@ -26,6 +22,5 @@ export function ProfileUserGuest() {
                 </div>
             </main>
         </section>
-
     )
 }

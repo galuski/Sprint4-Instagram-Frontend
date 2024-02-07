@@ -10,12 +10,6 @@ export function ProfileUserPage() {
     const user = useSelector(storeState => storeState.userModule.user)
     const { userId } = useParams()
 
-    // const navigate = useNavigate('/')
-
-    // useEffect(() => {
-    //     navigate(`/profile/${userId}/psts`)
-    // }, [])
-
     return (
         <section className='profile-user-page'>
             <div className="logo-mobile">
@@ -32,6 +26,5 @@ export function ProfileUserPage() {
                 </div>
             </main>
         </section>
-
     )
 }

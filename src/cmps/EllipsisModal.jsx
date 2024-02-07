@@ -2,13 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { removePost } from "../store/post.actions";
 import { useNavigate } from 'react-router-dom';
 
-
-
 export function EllipsisModal({ closeEllipsisModal, pst }) {
 
   const modalRef = useRef(null);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -33,7 +30,6 @@ export function EllipsisModal({ closeEllipsisModal, pst }) {
         console.error('Error deleting post:', error);
       });
   }
-  
 
   return (
     <div className="modal-overlay">

@@ -3,7 +3,6 @@ export default function PostStats({ post }) {
     const likesCount = post.likedBy?.length
 
     return (
-
         <section className="post-stats">
             {likesCount > 0 && (
                 <p className="likes-stats"><strong>
@@ -16,6 +15,5 @@ export default function PostStats({ post }) {
                 </p>
             )}
         </section>
-
     )
 }

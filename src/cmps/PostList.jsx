@@ -1,4 +1,3 @@
-// import { useSelector } from 'react-redux'
 import { PostPreview } from "./PostPreview"
 export function PostList({ posts, onDeletePost }) {
     return (

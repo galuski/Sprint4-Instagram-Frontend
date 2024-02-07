@@ -21,11 +21,9 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
     const user = useSelector(storeState => storeState.userModule.user)
     const userId = user._id
 
-
     function closeModalWithRouter() {
         navigate(-1)
     }
-
 
     const { pstId } = useParams()
 
@@ -38,15 +36,12 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
     }
 
     function getRandomTimeStringV2() {
-        // Decide randomly whether to return hours or minutes
         const isHour = Math.random() < 0.5;
 
         if (isHour) {
-            // Generate a random hour between 1 and 3
             const hour = Math.floor(Math.random() * 3) + 1;
             return `${hour}h`;
         } else {
-            // Generate a random minute between 1 and 59
             const minute = Math.floor(Math.random() * 59) + 1;
             return `${minute}m`;
         }
@@ -88,11 +83,11 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
                     <div className='body-container-details-modal'>
                         <img className='body-profile-img' onClick={navigateProfileUser} src={post.by.imgUrl}></img>
                         <div className='post-title'>
-                        <div className='body-name-post'>
-                            <span className="body-profile-name">{post.by.fullname}</span>
-                            <p className='body-text'>{post.txt}</p>
-                        </div>
-                        <p className='time'>{getRandomTimeStringV2()}</p>
+                            <div className='body-name-post'>
+                                <span className="body-profile-name">{post.by.fullname}</span>
+                                <p className='body-text'>{post.txt}</p>
+                            </div>
+                            <p className='time'>{getRandomTimeStringV2()}</p>
                         </div>
                     </div>
                     <div className='container-comment-list'>
@@ -100,13 +95,10 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
                     </div>
                 </div>
                 <div className='post-actions-container'>
-                <PostActions post = {post} />
+                    <PostActions post={post} />
                 </div>
-
-
             </section>
             <div className="overlay" onClick={closeModalWithRouter}></div>
         </main>
-
     )
 }

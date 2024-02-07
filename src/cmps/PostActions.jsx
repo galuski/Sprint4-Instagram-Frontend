@@ -58,15 +58,12 @@ export default function PostActions() {
     }
 
     function getRandomTimeStringV2() {
-        // Decide randomly whether to return hours or minutes
         const isHour = Math.random() < 0.5;
 
         if (isHour) {
-            // Generate a random hour between 1 and 3
             const hour = Math.floor(Math.random() * 3) + 1;
             return `${hour}h`;
         } else {
-            // Generate a random minute between 1 and 59
             const minute = Math.floor(Math.random() * 59) + 1;
             return `${minute}m`;
         }
@@ -78,7 +75,6 @@ export default function PostActions() {
             setIsLiked(false);
             setLikesCount((prevLikesCount) => prevLikesCount - 1);
             const pstCpy = { ...post };
-            console.log('copppy',pstCpy)
             const idx = pstCpy.likedBy.findIndex((user) => user._id === loggedUser._id);
             pstCpy.likedBy.splice(idx, 1);
             dispatch(updatePost(pstCpy));
@@ -92,14 +88,6 @@ export default function PostActions() {
         }
     }
 
-    // "id": "c1",
-    // "by": {
-    //   "_id": "65ba02a7c16f49717973f5d4",
-    //   "fullname": "Gal Luski",
-    //   "imgUrl": "https://res.cloudinary.com/dkyjustoe/image/upload/v1706689953/66490380_10218021740711740_2643470134949183488_n_z4nxhe.jpg"
-    // },
-    // "txt": "GOAT 🐐",
-    // "likedBy": []
     function onSendComment() {
         setCountComment((prevCount) => prevCount + 1);
         setNewComment(comment);
@@ -125,7 +113,7 @@ export default function PostActions() {
     }
 
     function openDetailsModal() {
-        // Implement your logic for opening details modal
+
     }
 
     return (

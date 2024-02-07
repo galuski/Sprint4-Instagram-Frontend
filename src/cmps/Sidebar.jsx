@@ -9,7 +9,6 @@ import { userService } from '../services/user.service'
 import { NavbarButton } from './NavbarButton'
 import { useNavigate } from 'react-router-dom';
 
-
 export function Sidebar({ onCreate }) {
 
     const navigate = useNavigate();

@@ -5,8 +5,6 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { userService } from '../services/user.service'
 
-
-
 export default function PostPreviewHeader({ post }) {
     const navigate = useNavigate();
     const user = userService.getLoggedInUser()
@@ -22,10 +20,6 @@ export default function PostPreviewHeader({ post }) {
         }
     }
     
-        
-        
-    
-
     const userName = post.by?.fullname
     const [isEllipsisModalOpen, setIsEllipsisModalOpen] = useState(false)
 
