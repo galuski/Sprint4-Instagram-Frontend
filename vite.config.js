@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: '../backend/public',
-    emptyOutDir: true
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 1600
   }
 })
