@@ -48,7 +48,7 @@ export function LoginSignupPage() {
   return (
     <section className="login-signup-page-container">
       <div className="banner-side">
-        <img className="img-banner" src='..\..\public\img\mobile.png' alt="mobile banner" />
+        <img className="img-banner" src='..\..\public\mobile.png' alt="mobile banner" />
       </div>
 
       <div className="form-side">
