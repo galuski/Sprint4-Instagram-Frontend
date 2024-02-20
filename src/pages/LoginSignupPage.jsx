@@ -5,6 +5,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { login, logout, signup } from '../store/user.actions.js'
 import { useNavigate } from 'react-router-dom';
 import Logo from "../cmps/Logo.jsx"
+import mobileBanner from '../../public/mobile.png'
 
 export function LoginSignupPage() {
   const user = useSelector(storeState => storeState.userModule.user)
@@ -48,7 +49,7 @@ export function LoginSignupPage() {
   return (
     <section className="login-signup-page-container">
       <div className="banner-side">
-        <img className="img-banner" src='..\..\public\mobile.png' alt="mobile banner" />
+        <img className="img-banner" src={mobileBanner} alt="mobile banner" />
       </div>
 
       <div className="form-side">
