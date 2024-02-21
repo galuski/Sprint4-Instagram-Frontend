@@ -141,10 +141,13 @@ th {
         background-color: #f2f2f2;
     }
     
-    .side-bar-position{
-        grid-column: 1;
-        grid-row: 3/4;
+    .side-bar-position {
+        position: fixed; /* Position the sidebar fixed to the viewport */
+        bottom: 0; /* Position it at the bottom */
+        left: 0; /* Adjust as needed */
+        width: 100%; /* Make it full width */
     }
+    
     
     .logo-mobile {
         display: block;
