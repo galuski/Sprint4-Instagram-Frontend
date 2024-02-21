@@ -33,7 +33,7 @@
     .home-page-container {
         background-color: $clr-bg;
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: auto;
         grid-template-rows: 50px 1fr 48px;
     }
 
