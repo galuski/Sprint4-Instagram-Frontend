@@ -89,7 +89,7 @@ th {
     
     .explore .grid-explorer {
         display: grid;
-        grid-template-columns: repeat(3, 118px);
+        grid-template-columns: repeat(3, 1fr);
         grid-gap: 1px;
         width: 100%;
         margin: 0 ;
