@@ -58,10 +58,10 @@
 }
 
   .side-bar-position-guest {
-    grid-column: 1;
-    grid-row: 3/4; /* Set the grid row to 3 only */
-    position: sticky;
-    bottom: 0;
+    position: fixed; /* Position the sidebar fixed to the viewport */
+    bottom: 0; /* Position it at the bottom */
+    left: 0; /* Adjust as needed */
+    width: 100%; /* Make it full width */
   }
 
   .profile-user{
