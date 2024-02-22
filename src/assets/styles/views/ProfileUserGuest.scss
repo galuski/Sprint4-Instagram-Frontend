@@ -50,6 +50,7 @@
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 48px 1fr 48px;
+      overflow-x: hidden;
   }
 
   .logo-mobile {
@@ -94,8 +95,4 @@
   object-fit: cover; /* Image covers the whole area without distortion */
   display: block; /* Remove any margins or spacing */
 }
-
-
-
 }
-
