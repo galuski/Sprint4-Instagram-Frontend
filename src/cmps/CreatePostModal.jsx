@@ -59,6 +59,7 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
     };
 
     if (isLoading) {
+        console.log('llllllllloding')
         return (
             <section className="create-modal-container">
                 <div className="modal-header">
