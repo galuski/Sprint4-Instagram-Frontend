@@ -44,9 +44,9 @@ async function update({ _id, imgUrl }) {
     // const user = await asyncStorageService.get('user', _id)
     // const user = getLoggedInUser()
     user.imgUrl = imgUrl
-    console.log
-    // await asyncStorageService.put('user', user)
-    const user = await httpService.put(`user/${_id}`, {_id, imgUrl})
+    await asyncStorageService.put('user', user)
+
+    const user = await httpService.put(`user/${_id}`, {_id, score})
     // // Handle case in which admin updates other user's details
     if (getLoggedInUser()._id === user._id) saveLocalUser(user)
     console.log('user from service', user)
@@ -71,7 +71,7 @@ async function signup(userCred) {
 }
 
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     return await httpService.post('auth/logout')
 }
 

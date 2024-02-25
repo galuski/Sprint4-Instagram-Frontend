@@ -44,6 +44,7 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
         setText(event.target.value);
     }
     async function handleAddPhoto(ev) {
+        console.log('ev', ev)
         try {
             dispatch({
                 type: LOADING_START
@@ -59,7 +60,6 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
     };
 
     if (isLoading) {
-        console.log('llllllllloding')
         return (
             <section className="create-modal-container">
                 <div className="modal-header">
