@@ -44,6 +44,7 @@ async function update({ _id, imgUrl }) {
     // const user = await asyncStorageService.get('user', _id)
     // const user = getLoggedInUser()
     user.imgUrl = imgUrl
+    console.log
     // await asyncStorageService.put('user', user)
     const user = await httpService.put(`user/${_id}`, {_id, imgUrl})
     // // Handle case in which admin updates other user's details
