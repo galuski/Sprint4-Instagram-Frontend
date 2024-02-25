@@ -48,8 +48,8 @@ async function update({ _id, imgUrl }) {
 
     const user = await httpService.put(`user/${_id}`, {_id, score})
     // // Handle case in which admin updates other user's details
-    if (getLoggedInUser()._id === user._id) saveLocalUser(user)
-    console.log('user from service', user)
+    // if (getLoggedInUser()._id === user._id) saveLocalUser(user)
+    // console.log('user from service', user)
     return user
 }
 

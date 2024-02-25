@@ -18,7 +18,7 @@ export function HomePage() {
     useEffect(() => {
         loadPosts()
         loadUsers()
-    }, [])
+    }, [users])
     const [openCreate, setOpenCreate] = useState(false)
     function ToggleModal(ev) {
         ev.preventDefault()
