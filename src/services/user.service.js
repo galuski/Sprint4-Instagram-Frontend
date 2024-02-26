@@ -43,14 +43,16 @@ function remove(userId) {
 async function update({ _id, imgUrl }) {
     // const user = await asyncStorageService.get('user', _id)
     // const user = getLoggedInUser()
+    console.log('_id in service (last step frontend: ', _id)
     console.log('user in service (last step frontend: ', user)
+    console.log('imgUrl in service (last step frontend: ', imgUrl)
     user.imgUrl = imgUrl
-    await asyncStorageService.put('user', user)
+    // await asyncStorageService.put('user', user)
 
     const user = await httpService.put(`user/${_id}`, {_id, imgUrl})
     // // Handle case in which admin updates other user's details
-    if (getLoggedInUser()._id === user._id) saveLocalUser(user)
-    console.log('user from service', user)
+    // if (getLoggedInUser()._id === user._id) saveLocalUser(user)
+    // console.log('user from service', user)
     return user
 }
 
