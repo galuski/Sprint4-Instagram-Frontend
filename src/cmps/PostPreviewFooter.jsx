@@ -32,7 +32,7 @@ export default function PostPreviewFooter({ post }) {
     let loggedUser = userService.getLoggedInUser()
 
     useEffect(() => {
-        console.log("ssss", post)
+    
         const bIsLiked = post?.likedBy.find(user => userService.getLoggedInUser()?._id === user?._id) ? true : false
 
         setIsLiked(bIsLiked)
@@ -91,7 +91,6 @@ export default function PostPreviewFooter({ post }) {
         }
         post.comments.push(fullComment)
 
-        console.log("poooooost", post)
         postService.save(post,post._id).then((updatedPost) => {
             dispatch({ type: 'SET_SELECTED_POST', post: updatedPost });
         });

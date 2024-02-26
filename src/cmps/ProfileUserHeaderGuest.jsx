@@ -17,7 +17,6 @@ export function ProfileUserHeaderGuest() {
     useEffect(() => {
         const loadUser = async () => {
             try {
-                console.log('ddddddd')
                 const currUser = await userService.getById(userId)
                 const postNum = await postService.getUserPostCount(userId)
                 setPostCount(postNum)

@@ -99,7 +99,6 @@ export default function PostActions() {
         }
         post.comments.push(fullComment)
 
-        console.log("poooooost", post)
         postService.save(post,post._id).then((updatedPost) => {
             dispatch({ type: 'SET_SELECTED_POST', post: updatedPost });
         });

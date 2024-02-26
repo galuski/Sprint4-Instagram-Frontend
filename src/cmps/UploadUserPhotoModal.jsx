@@ -19,8 +19,8 @@ export function UploadUserPhotoModal() {
     async function onUploaded(imgUrl) {
         const updatedUser = { ...user }
         updatedUser.imgUrl = imgUrl
+        console.log('first: imgUrl', imgUrl)
         await updateUser(updatedUser)
-        // navigate to profile
         closeMenu()
     }
 
@@ -28,7 +28,6 @@ export function UploadUserPhotoModal() {
         const updatedUser = { ...user }
         updatedUser.imgUrl = null
         await updateUser(updatedUser)
-        // navigate to profile
         closeMenu()
     }
 
