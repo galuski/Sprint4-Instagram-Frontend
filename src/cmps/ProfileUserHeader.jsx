@@ -36,7 +36,7 @@ useEffect(() => {
     return () => {
        
     };
-}, [imgUrl]);
+}, [userId]);
 
 
     function openMenu() {
