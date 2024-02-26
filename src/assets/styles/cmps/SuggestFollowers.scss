@@ -15,13 +15,14 @@
     height: 44px;
     border-radius: 50%;
     margin-inline-end: 12px;
+    cursor: pointer;
 }
 
 .suggest-username{
     font-family: $font-family1;
     color: $clr-fill;
     font-weight: bold;
-    
+    cursor: pointer;
 }
 
 .switch-btn{

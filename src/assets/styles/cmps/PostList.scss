@@ -26,6 +26,7 @@
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .username-preview {
@@ -33,6 +34,7 @@
     font-weight: bold;
     margin-inline-end: 4px;
     float: left;
+    cursor: pointer;
 }
 
 .preview-profile-img{
