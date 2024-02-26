@@ -16,27 +16,29 @@ export function ProfileUserHeader() {
     const [showMenu, setShowMenu] = useState(false)
     const [postCount, setPostCount] = useState(0)
     
-    // Fetch user data and update state
-    useEffect(() => {
-        const loadUser = async () => {
-            try {
-                const currUser = await userService.getById(userId);
-                const postNum = await postService.getUserPostCount(userId);
-                setPostCount(postNum);
-                setCurrentUser(currUser);
-            } catch (err) {
-                console.log('Error loading user', err);
-                // Handle error loading user data
-            }
-        };
+    const user = userService.getLoggedInUser()
+    
+useEffect(() => {
+    const loadUser = async () => {
+        try {
+            const currUser = await userService.getById(userId);
+            const postNum = await postService.getUserPostCount(userId);
+            setPostCount(postNum);
+            setCurrentUser(currUser);
+        } catch (err) {
+            console.log('Error loading user', err);
+            // Handle error loading user data
+        }
+    };
 
-        loadUser();
+    loadUser();
 
-        // Cleanup function
-        return () => {};
-    }, [userId]);
+    return () => {
+       
+    };
+}, [imgUrl]);
 
-    // Function to handle menu toggle
+
     function openMenu() {
         setShowMenu(!showMenu);
     }
