@@ -44,9 +44,9 @@ async function update({ _id, imgUrl }) {
     // const user = await asyncStorageService.get('user', _id)
     // const user = getLoggedInUser()
     console.log('_id in service (last step frontend: ', _id)
-    console.log('user in service (last step frontend: ', user)
     console.log('imgUrl in service (last step frontend: ', imgUrl)
-    user.imgUrl = imgUrl
+    // console.log('user in service (last step frontend: ', user)
+    // user.imgUrl = imgUrl
     // await asyncStorageService.put('user', user)
 
     const user = await httpService.put(`user/${_id}`, {_id, imgUrl})
