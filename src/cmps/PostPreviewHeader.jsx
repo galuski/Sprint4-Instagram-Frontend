@@ -24,6 +24,11 @@ export default function PostPreviewHeader({ post }) {
     const [isEllipsisModalOpen, setIsEllipsisModalOpen] = useState(false)
 
     useEffect(() => {
+        console.log("New imgUrl:", post.by?.imgUrl);
+    }, [post.by?.imgUrl]);
+    
+
+    useEffect(() => {
 
         return () => {
             clearAllBodyScrollLocks()
