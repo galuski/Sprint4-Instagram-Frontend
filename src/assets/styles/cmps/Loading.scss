@@ -1,16 +1,16 @@
 .loading-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   min-height: 100vh;
 }
 
 .loading-instagram {
   width: 96px;
-
 }
 
 .loading-meta {
   width: 64px;
+  align-self: flex-end;
 }
