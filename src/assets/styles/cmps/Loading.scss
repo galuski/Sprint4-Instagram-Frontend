@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .loading-instagram {
@@ -13,4 +14,25 @@
 .loading-meta {
   width: 4rem;
   margin-bottom: 10px;
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .loading-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100svh;
+  }
+  
+  .loading-instagram {
+    width: 6rem;
+    margin: auto;
+  }
+  
+  .loading-meta {
+    width: 4rem;
+    margin-bottom: 10px;
+  }
+
 }
