@@ -27,7 +27,7 @@ export function HomePage() {
     const loadPage = () => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 2000);
+        }, 2500);
     }
 
     const [openCreate, setOpenCreate] = useState(false)
