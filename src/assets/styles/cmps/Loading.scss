@@ -6,10 +6,9 @@
   height: 100vh;
 }
 
-.loading-instagram, .loading-meta {
-  margin: auto;
-}
 
-.loading-instagram {
-  margin-bottom: 20px;
+
+.loading-meta {
+  justify-content: end;
+  align-items: center;
 }
