@@ -5,6 +5,7 @@ import { SuggestFollowers } from "../cmps/SuggestFollowers"
 import React, { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { CreatePostModal } from "../cmps/CreatePostModal"
+import { Loading } from '../cmps/Loading'
 import { addPost, loadPosts, removePost } from "../store/post.actions"
 import { loadUsers } from "../store/user.actions"
 import { utilService } from "../services/util.service"
@@ -15,10 +16,19 @@ import Logo from "../cmps/Logo"
 export function HomePage() {
     const posts = useSelector(storeState => storeState.postModule.posts)
     const users = useSelector(storeState => storeState.userModule.users)
+    const [isLoading, setIsLoading] = useState(true)
+
     useEffect(() => {
         loadPosts()
         loadUsers()
     }, [])
+
+    const loadPage = () => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+    }
+
     const [openCreate, setOpenCreate] = useState(false)
     function ToggleModal(ev) {
         ev.preventDefault()
@@ -37,6 +47,8 @@ export function HomePage() {
             setOpenCreate(state => !state)
         }
     }
+
+    if (isLoading) return <Loading />;
     return (
         <>
             {openCreate ? <div className="create-modal"><CreatePostModal onAddPost={onAddPost} onCloseModal={ToggleModal} /></div> : null}
