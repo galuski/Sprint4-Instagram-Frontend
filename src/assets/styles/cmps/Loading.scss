@@ -23,16 +23,15 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-
   }
-  
+
   .loading-instagram {
-    width: 32px;
-    
-  }
-  
-  .loading-meta {
-    width: 16px;
+    width: 4rem;
+    margin: auto;
   }
 
+  .loading-meta {
+    width: 2rem;
+    margin-bottom: 10px;
+  }
 }
