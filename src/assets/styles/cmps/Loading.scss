@@ -1,18 +1,15 @@
 .loading-page {
   display: flex;
   flex-direction: column;
-}
-
-.loading-instagram {
-  display: block;
-  width: 96px;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+
+.loading-instagram, .loading-meta {
+  margin: auto;
 }
 
 .loading-meta {
-  display: block;
-  width: 64px;
-  align-items: center;
-  justify-content: end;
+  margin-top: 20px;
 }
