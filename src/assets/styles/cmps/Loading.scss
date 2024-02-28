@@ -5,12 +5,14 @@
 
 .loading-instagram {
   width: 96px;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .loading-meta {
   width: 64px;
+  display: flex;
   justify-content: end;
   align-items: center;
 }
