@@ -22,6 +22,7 @@ export function CreatePostModal({ onCloseModal, onAddPost }) {
     const loggedUser = useSelector(storeState => storeState.userModule.user)
     let profileImg = loggedUser.imgUrl
 
+
     const handleShowEmojis = () => {
         if (showEmojis == true) {
             setShowEmojis(false)

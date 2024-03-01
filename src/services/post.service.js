@@ -136,9 +136,9 @@ function getEmptyPost() {
         txt: "",
         imgUrl: "",
         by: {
-            _id: loggedUser._id,
-            fullname: loggedUser.fullname,
-            imgUrl: loggedUser.imgUrl
+            _id: loggedUser?._id || '',
+            fullname: loggedUser?.fullname || '',
+            imgUrl: loggedUser?.imgUrl || ''
         },
 
         comments: [
