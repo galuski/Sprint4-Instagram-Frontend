@@ -19,10 +19,10 @@ export function HomePage() {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        loadPage()
         loadPosts()
         loadUsers()
-    }, [posts])
+        loadPage()
+    }, [])
 
     const loadPage = () => {
         setTimeout(() => {
