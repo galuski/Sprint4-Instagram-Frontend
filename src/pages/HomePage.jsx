@@ -22,7 +22,7 @@ export function HomePage() {
         loadPage()
         loadPosts()
         loadUsers()
-    }, [users])
+    }, [posts])
 
     const loadPage = () => {
         setTimeout(() => {
