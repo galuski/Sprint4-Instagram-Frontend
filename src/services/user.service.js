@@ -9,12 +9,12 @@ export const userService = {
     logout,
     signup,
     getLoggedInUser,
-    saveLocalUser,
+    // saveLocalUser,
     getUsers,
     getById,
     remove,
     update,
-    changeScore
+    // changeScore
 }
 
 // createUsers()
