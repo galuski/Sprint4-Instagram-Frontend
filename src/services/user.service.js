@@ -9,12 +9,11 @@ export const userService = {
     logout,
     signup,
     getLoggedInUser,
-    // saveLocalUser,
+    saveLocalUser,
     getUsers,
     getById,
     remove,
     update,
-    // changeScore
 }
 
 // createUsers()
@@ -78,21 +77,13 @@ async function logout() {
     return await httpService.post('auth/logout')
 }
 
-// async function changeScore(by) {
-//     const user = getLoggedInUser()
-//     if (!user) throw new Error('Not loggedin')
-//     user.score = user.score + by || by
-//     await update(user)
-//     return user.score
-// }
 
-
-// function saveLocalUser(user) {
-//     const { _id, fullname, imgUrl, username } = user;
-//     const userToSave = { _id, fullname, imgUrl, username, score: user.score }
-//     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
-//     return user
-// }
+function saveLocalUser(user) {
+    const { _id, fullname, imgUrl, username } = user;
+    const userToSave = { _id, fullname, imgUrl, username}
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
+    return user
+}
 
 function getLoggedInUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
