@@ -14,9 +14,10 @@ export const userService = {
     getById,
     remove,
     update,
+    changeScore
 }
 
-// createUsers()
+createUsers()
 
 window.userService = userService
 
@@ -60,16 +61,16 @@ async function login(userCred) {
     // const user = users.find(user => user.username === userCred.username)
     const user = await httpService.post('auth/login', userCred)
     if (user) {
-        return (user)
+        return saveLocalUser(user)
     }
 }
 
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-    // userCred.score = 10000
+    userCred.score = 10000
     // const user = await storageService.post('user', userCred)
     const user = await httpService.post('auth/signup', userCred)
-    return (user)
+    return saveLocalUser(user)
 }
 
 async function logout() {
@@ -77,10 +78,18 @@ async function logout() {
     return await httpService.post('auth/logout')
 }
 
+async function changeScore(by) {
+    const user = getLoggedInUser()
+    if (!user) throw new Error('Not loggedin')
+    user.score = user.score + by || by
+    await update(user)
+    return user.score
+}
+
 
 function saveLocalUser(user) {
     const { _id, fullname, imgUrl, username } = user;
-    const userToSave = { _id, fullname, imgUrl, username}
+    const userToSave = { _id, fullname, imgUrl, username, score: user.score }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
     return user
 }
