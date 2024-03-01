@@ -26,6 +26,8 @@ export function HomePage() {
 
     useEffect(() => { // Added useEffect for refreshing the page
         loadPage();
+        loadPosts()
+        loadUsers()
     }, []);
 
     const loadPage = () => {
