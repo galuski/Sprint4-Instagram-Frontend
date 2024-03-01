@@ -87,12 +87,12 @@ async function changeScore(by) {
 }
 
 
-function saveLocalUser(user) {
-    const { _id, fullname, imgUrl, username } = user;
-    const userToSave = { _id, fullname, imgUrl, username, score: user.score }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
-    return user
-}
+// function saveLocalUser(user) {
+//     const { _id, fullname, imgUrl, username } = user;
+//     const userToSave = { _id, fullname, imgUrl, username, score: user.score }
+//     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
+//     return user
+// }
 
 function getLoggedInUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
@@ -100,65 +100,65 @@ function getLoggedInUser() {
 
 
 
-function createUsers() {
-    let users = utilService.loadFromStorage('user')
-    if (!users || !users.length) {
-        users = [
-            {
-                _id: "u101",
-                username: "luski",
-                password: "123456",
-                fullname: "Gal luski",
-                imgUrl: "/img/users/luski.jpg",
-                following: [],
-                followers: [],
-                savedStoryIds: []
-            },
-            {
-              _id: "u102",
-              username: "adidas",
-              password: "123456",
-              fullname: "adidas",
-              imgUrl: "/img/users/adidas.jpg",
-              following: [],
-              followers: [],
-              savedStoryIds: []
-            },
-              {
-                _id: "u103",
-                username: "default",
-                password: "123456",
-                fullname: "Default User",
-                imgUrl: "/img/users/default_pic.jpg",
-                following: [],
-                followers: [],
-                savedStoryIds: []
-              },
-              {
-                _id: "u104",
-                username: "kingJames",
-                password: "123456",
-                fullname: "Lebron James",
-                imgUrl: "/img/users/Lebron_James.jpg",
-                following: [],
-                followers: [],
-                savedStoryIds: []
-              },
-              {
-                _id: "u105",
-                username: "ole",
-                password: "123456",
-                fullname: "Diario Ole",
-                imgUrl: "/img/users/ole.png",
-                following: [],
-                followers: [],
-                savedStoryIds: []
-              },
-            ]
+// function createUsers() {
+//     let users = utilService.loadFromStorage('user')
+//     if (!users || !users.length) {
+//         users = [
+//             {
+//                 _id: "u101",
+//                 username: "luski",
+//                 password: "123456",
+//                 fullname: "Gal luski",
+//                 imgUrl: "/img/users/luski.jpg",
+//                 following: [],
+//                 followers: [],
+//                 savedStoryIds: []
+//             },
+//             {
+//               _id: "u102",
+//               username: "adidas",
+//               password: "123456",
+//               fullname: "adidas",
+//               imgUrl: "/img/users/adidas.jpg",
+//               following: [],
+//               followers: [],
+//               savedStoryIds: []
+//             },
+//               {
+//                 _id: "u103",
+//                 username: "default",
+//                 password: "123456",
+//                 fullname: "Default User",
+//                 imgUrl: "/img/users/default_pic.jpg",
+//                 following: [],
+//                 followers: [],
+//                 savedStoryIds: []
+//               },
+//               {
+//                 _id: "u104",
+//                 username: "kingJames",
+//                 password: "123456",
+//                 fullname: "Lebron James",
+//                 imgUrl: "/img/users/Lebron_James.jpg",
+//                 following: [],
+//                 followers: [],
+//                 savedStoryIds: []
+//               },
+//               {
+//                 _id: "u105",
+//                 username: "ole",
+//                 password: "123456",
+//                 fullname: "Diario Ole",
+//                 imgUrl: "/img/users/ole.png",
+//                 following: [],
+//                 followers: [],
+//                 savedStoryIds: []
+//               },
+//             ]
     
-        utilService.saveToStorage('user', users)
-    }
-}
+//         utilService.saveToStorage('user', users)
+//     }
+// }
 
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
