@@ -17,7 +17,7 @@ export const userService = {
     changeScore
 }
 
-createUsers()
+// createUsers()
 
 window.userService = userService
 
