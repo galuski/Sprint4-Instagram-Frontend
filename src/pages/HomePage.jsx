@@ -1,38 +1,32 @@
 import { Sidebar } from "../cmps/Sidebar"
 import { PostList } from "../cmps/PostList"
 import { SuggestFollowers } from "../cmps/SuggestFollowers"
-import React, { useEffect, useRef, useState } from "react"
-import { useSelector, useDispatch } from "react-redux" // Added useDispatch
+import React, { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { CreatePostModal } from "../cmps/CreatePostModal"
 import { Loading } from '../cmps/Loading'
-import { addPost, loadPosts, removePost } from "../store/post.actions"
+import { addPost, loadPosts } from "../store/post.actions"
 import { loadUsers } from "../store/user.actions"
-import { utilService } from "../services/util.service"
 import { postService } from "../services/post.service"
 import Logo from "../cmps/Logo"
 
-
 export function HomePage() {
-    const dispatch = useDispatch(); // Added useDispatch
+    const dispatch = useDispatch();
     const posts = useSelector(storeState => storeState.postModule.posts)
     const users = useSelector(storeState => storeState.userModule.users)
     const [isLoading, setIsLoading] = useState(true)
+    const [refreshCount, setRefreshCount] = useState(0);
 
     useEffect(() => {
-        loadPage()
-        loadPosts()
-        loadUsers()
-    }, [])
-
-    useEffect(() => { // Added useEffect for refreshing the page
         loadPage();
-        loadPosts()
-        loadUsers()
-    }, []);
+        loadPosts();
+        loadUsers();
+    }, [refreshCount]);
 
     const loadPage = () => {
         setTimeout(() => {
             setIsLoading(false);
+            setRefreshCount(prevCount => prevCount + 1);
         }, 2500);
     }
 
@@ -47,7 +41,7 @@ export function HomePage() {
             const newPost = postService.getEmptyPost()
             newPost.txt = txt
             newPost.imgUrl = file
-            dispatch(addPost(newPost)); // Dispatch addPost action
+            dispatch(addPost(newPost));
         } catch (error) {
             console.log(error)
         } finally {
