@@ -17,19 +17,22 @@ export function HomePage() {
     const posts = useSelector(storeState => storeState.postModule.posts)
     const users = useSelector(storeState => storeState.userModule.users)
     const [isLoading, setIsLoading] = useState(true)
-
+    const loggedUser = useSelector(storeState => storeState.userModule.user)
+    
+    
     useEffect(() => {
         loadPage()
-        loadPosts()
         loadUsers()
+        loadPosts()
     }, [])
-
+    
     const loadPage = () => {
         setTimeout(() => {
             setIsLoading(false);
         }, 2500);
     }
-
+    console.log("logdin user: ", loggedUser)
+    
     const [openCreate, setOpenCreate] = useState(false)
     function ToggleModal(ev) {
         ev.preventDefault()
@@ -52,6 +55,7 @@ export function HomePage() {
     if (isLoading) return <Loading />;
     return (
         <>
+        console.log()
             {openCreate ? <div className="create-modal"><CreatePostModal onAddPost={onAddPost} onCloseModal={ToggleModal} /></div> : null}
             <section className={`home-page-container `} >
                 <div className="logo-mobile">
