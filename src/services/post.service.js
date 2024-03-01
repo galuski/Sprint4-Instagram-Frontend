@@ -1,10 +1,9 @@
 // import { storageService } from './async-storage.service.js'
+import { userService } from './user.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
 
 const loggedUser = userService.getLoggedInUser();
-
 
 const STORAGE_KEY = 'postDB'
 const BASE_URL = 'post'
@@ -137,9 +136,9 @@ function getEmptyPost() {
         txt: "",
         imgUrl: "",
         by: {
-            _id: loggedUser?._id,
-            fullname: loggedUser?.fullname,
-            imgUrl: loggedUser?.imgUrl
+            _id: loggedUser._id,
+            fullname: loggedUser.fullname,
+            imgUrl: loggedUser.imgUrl
         },
 
         comments: [
