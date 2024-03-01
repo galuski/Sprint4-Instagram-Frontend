@@ -132,6 +132,7 @@ console.log('userID', userId)
 
 
 function getEmptyPost() {
+    console.log('log user: ',loggedUser)
     return {
         txt: "",
         imgUrl: "",
