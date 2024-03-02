@@ -134,7 +134,7 @@ export default function PostActions() {
                         {likesCount === 1 ? 'Be the first to like' : 'Be the first to like'}
                     </p>
                 )}
-                {/* <p className='time'>{ms(Date.now() - (post.time))}</p> */}
+                <p className='time'>{ms(Date.now() - (post.time))}</p>
             </div>
 
             {post.comments.map(comment => (
