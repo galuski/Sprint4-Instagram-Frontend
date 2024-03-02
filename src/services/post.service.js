@@ -3,8 +3,6 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const loggedUser = userService.getLoggedInUser();
-
 
 const STORAGE_KEY = 'postDB'
 const BASE_URL = 'post'
@@ -131,8 +129,7 @@ console.log('userID', userId)
 }
 
 
-function getEmptyPost() {
-    
+function getEmptyPost(loggedUser) {
     return {
         txt: "",
         imgUrl: "",
@@ -141,31 +138,14 @@ function getEmptyPost() {
             fullname: loggedUser.fullname,
             imgUrl: loggedUser.imgUrl
         },
-
-        comments: [
-            // {
-            //     id: utilService.makeId(),
-            //     by: {
-            //         _id: utilService.makeId(),
-            //         fullname: "",
-            //         imgUrl: ""
-            //     },
-            //     txt: "good one!",
-            //     likedBy: [
-            //         {
-            //             "_id": utilService.makeId(),
-            //             "fullname": "",
-            //             "imgUrl": ""
-            //         }
-            //     ]
-            // }
-        ],
-            likedBy: [
-    ],
-    comment: null,
-    updatedPost: null
-    }
+        comments: [],
+        likedBy: [],
+        comment: null,
+        updatedPost: null
+    };
 }
+
+
 
 
 

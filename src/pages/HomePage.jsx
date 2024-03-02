@@ -41,7 +41,7 @@ export function HomePage() {
 
     async function onAddPost(txt, file) {
         try {
-            const newPost = postService.getEmptyPost()
+            const newPost = postService.getEmptyPost(loggedUser)
             newPost.txt = txt
             newPost.imgUrl = file
             dispatch(addPost(newPost)); // Dispatch addPost action
@@ -55,7 +55,6 @@ export function HomePage() {
     if (isLoading) return <Loading />;
     return (
         <>
-        console.log()
             {openCreate ? <div className="create-modal"><CreatePostModal onAddPost={onAddPost} onCloseModal={ToggleModal} /></div> : null}
             <section className={`home-page-container `} >
                 <div className="logo-mobile">
