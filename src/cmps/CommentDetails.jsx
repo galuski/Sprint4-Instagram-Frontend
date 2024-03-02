@@ -47,6 +47,15 @@ export function CommentDetails({ post, comment }) {
         navigate(`/profile/${comment.by._id}`)
     }
 
+    // Function to format time difference or display "now" if less than a second
+    const getTimeDifference = (timeDifference) => {
+        if (timeDifference < 1000) {
+            return 'now';
+        } else {
+            return ms(timeDifference);
+        }
+    }
+
     return (
         <section className="comment-details">
             <img className='profile-comment-img' src={comment.by.imgUrl || DefaultImg} alt="profile"></img>
@@ -58,7 +67,7 @@ export function CommentDetails({ post, comment }) {
 
                 <div className='comment-details-actions'>
                     {/* Display time difference for the comment */}
-                    <p className='comment-date-time'>{ms(Date.now() - comment.time)}</p>
+                    <p className='comment-date-time'>{getTimeDifference(Date.now() - comment.time)}</p>
                     {likesCommentCount > 0 && <p className="comment-count-likes">{likesCommentCount} {likesCommentCount === 1 ? 'like' : 'likes'}</p>}
                     <p className='comment-reply'>Reply</p>
                     <img className='three-dot-comment' src={dots} onClick={toggleMenu} alt="menu"></img>
