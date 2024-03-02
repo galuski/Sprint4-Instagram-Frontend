@@ -90,13 +90,13 @@ export default function PostActions() {
         }
         post.comments.push(fullComment)
 
-        postService.save(post,post._id).then((updatedPost) => {
+        postService.save(post, post._id).then((updatedPost) => {
             dispatch({ type: 'SET_SELECTED_POST', post: updatedPost });
         });
         setComment('');
         setInputValue('');
     }
-    
+
 
     function onClick(emojiData) {
         setComment((input) => input + (emojiData.isCustom ? emojiData.unified : emojiData.emoji));
@@ -134,8 +134,15 @@ export default function PostActions() {
                         {likesCount === 1 ? 'Be the first to like' : 'Be the first to like'}
                     </p>
                 )}
-                <p className='time'>{ms(Date.now()-(post.time))}</p>
+                {/* <p className='time'>{ms(Date.now() - (post.time))}</p> */}
             </div>
+
+            {post.comments.map(comment => (
+                <div key={comment.id} className="comment">
+                    <p>{comment.txt}</p>
+                    <p className='time'>{ms(Date.now() - comment.time)}</p>
+                </div>
+            ))}
 
             <div className="comment-actions-container" ref={emojiPickerRef}>
                 <div className="actions-emoji-Post">
