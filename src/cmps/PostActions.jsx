@@ -97,6 +97,7 @@ export default function PostActions() {
             id: utilService.makeId(),
             by: loggedUser,
             txt: comment,
+            time: Date.now(),
             likedBy: []
         }
         post.comments.push(fullComment)

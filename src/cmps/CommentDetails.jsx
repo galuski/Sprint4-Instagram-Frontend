@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import ms from ms;
+import ms from ms;
 import { MenuComment } from './MenuComment';
 import { useNavigate } from 'react-router-dom'
 import dots from '../../public/icons/dots.svg'
@@ -81,7 +81,7 @@ export function CommentDetails({ post, comment }) {
                 </div>
 
                 <div className='comment-details-actions'>
-                    <p className='comment-date-time'>{getRandomTimeStringV2()}</p>
+                    <p className='comment-date-time'>{ms(Date.now()-(post.time))}</p>
                     {likesCommentCount > 0 && <p className="comment-count-likes">{likesCommentCount} {likesCommentCount === 1 ? 'like' : 'likes'}</p>}
                     <p className='comment-reply'>Reply</p>
                     <img className='three-dot-comment' src={dots} onClick={toggleMenu}></img>
