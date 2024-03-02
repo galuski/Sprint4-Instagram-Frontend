@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ms from ms;
+// import ms from ms;
 import { MenuComment } from './MenuComment';
 import { useNavigate } from 'react-router-dom'
 import dots from '../../public/icons/dots.svg'
