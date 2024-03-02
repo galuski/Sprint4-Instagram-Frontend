@@ -11,6 +11,7 @@ import { loadPost } from '../store/post.actions'
 import dotsSvg from '../../public/icons/dots.svg'
 import PostActions from '../cmps/PostActions'
 import PostStats from '../cmps/PostStats'
+import ms from 'ms'
 
 export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePost }) {
     // const [pst, setPst] = useState(null)
@@ -87,7 +88,7 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
                                 <span className="body-profile-name">{post.by.fullname}</span>
                                 <p className='body-text'>{post.txt}</p>
                             </div>
-                            <p className='time'>{getRandomTimeStringV2()}</p>
+                            <p className='time'>{ms((post.time)-Date.now()) || getRandomTimeStringV2()}</p>
                         </div>
                     </div>
                     <div className='container-comment-list'>
