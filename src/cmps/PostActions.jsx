@@ -137,6 +137,13 @@ export default function PostActions() {
                 <p className='time'>{ms(Date.now() - (post.time))}</p>
             </div>
 
+            {post.comments.map(comment => (
+                <div key={comment.id} className="comment">
+                    <p>{comment.txt}</p>
+                    <p className='time'>{ms(Date.now() - comment.time)}</p>
+                </div>
+            ))}
+
             <div className="comment-actions-container" ref={emojiPickerRef}>
                 <div className="actions-emoji-Post">
                     {<Emoji unified={selectedEmoji} size={28} />}
