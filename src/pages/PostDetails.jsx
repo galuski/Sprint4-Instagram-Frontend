@@ -88,7 +88,7 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
                                 <span className="body-profile-name">{post.by.fullname}</span>
                                 <p className='body-text'>{post.txt}</p>
                             </div>
-                            <p className='time'>{ms((post.time)-Date.now()) || getRandomTimeStringV2()}</p>
+                            <p className='time'>{ms(Date.now()-(post.time))}</p>
                         </div>
                     </div>
                     <div className='container-comment-list'>

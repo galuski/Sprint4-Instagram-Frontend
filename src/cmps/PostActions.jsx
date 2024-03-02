@@ -12,6 +12,8 @@ import sendSvg from '../../public/icons/share.svg';
 import saveSvg from '../../public/icons/save.svg';
 import likedSvg from '../../public/icons/liked.svg';
 import emojiSvg from '../../public/icons/emoji.svg';
+import ms from 'ms'
+
 
 export default function PostActions() {
     const dispatch = useDispatch();
@@ -143,7 +145,7 @@ export default function PostActions() {
                         {likesCount === 1 ? 'Be the first to like' : 'Be the first to like'}
                     </p>
                 )}
-                <p className='time'>{getRandomTimeStringV2()}</p>
+                <p className='time'>{ms(Date.now()-(post.time))}</p>
 
             </div>
 
