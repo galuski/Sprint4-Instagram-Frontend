@@ -59,18 +59,6 @@ export default function PostActions() {
         setShowEmojiPicker(!showEmojiPicker);
     }
 
-    function getRandomTimeStringV2() {
-        const isHour = Math.random() < 0.5;
-
-        if (isHour) {
-            const hour = Math.floor(Math.random() * 3) + 1;
-            return `${hour}h`;
-        } else {
-            const minute = Math.floor(Math.random() * 59) + 1;
-            return `${minute}m`;
-        }
-    }
-
     async function toggleLike() {
         if (isLiked) {
             setLikeUrl(likeSvg);

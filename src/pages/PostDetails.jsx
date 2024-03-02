@@ -36,18 +36,6 @@ export function PostDetails({ openEllipsisModal, closeEllipsisModal, onRemovePos
         navigate(`/profile/${post.by._id}`);
     }
 
-    function getRandomTimeStringV2() {
-        const isHour = Math.random() < 0.5;
-
-        if (isHour) {
-            const hour = Math.floor(Math.random() * 3) + 1;
-            return `${hour}h`;
-        } else {
-            const minute = Math.floor(Math.random() * 59) + 1;
-            return `${minute}m`;
-        }
-    }
-
     useEffect(() => {
 
         return () => {
