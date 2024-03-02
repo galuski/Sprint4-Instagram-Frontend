@@ -147,7 +147,6 @@ export default function PostPreviewFooter({ post }) {
                         )}
                     </div>
 
-
                     {newComment &&
                         (<div className="new-comment">
                             <div className="new-comment-user">
