@@ -12,7 +12,7 @@ import sendSvg from '../../public/icons/share.svg';
 import saveSvg from '../../public/icons/save.svg';
 import likedSvg from '../../public/icons/liked.svg';
 import emojiSvg from '../../public/icons/emoji.svg';
-import ms from 'ms'
+// import ms from 'ms'
 
 
 export default function PostActions() {
@@ -134,7 +134,7 @@ export default function PostActions() {
                         {likesCount === 1 ? 'Be the first to like' : 'Be the first to like'}
                     </p>
                 )}
-                <p className='time' style={{ color: 'white' }}>{ms(Date.now() - (post.time))}</p>
+
             </div>
 
             <div className="comment-actions-container" ref={emojiPickerRef}>
