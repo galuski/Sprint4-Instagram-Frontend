@@ -133,6 +133,7 @@ function getEmptyPost(loggedUser) {
     return {
         txt: "",
         imgUrl: "",
+        time: Date.now(),
         by: {
             _id: loggedUser._id,
             fullname: loggedUser.fullname,
