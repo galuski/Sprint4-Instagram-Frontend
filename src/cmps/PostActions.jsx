@@ -135,7 +135,6 @@ export default function PostActions() {
                     </p>
                 )}
                 <p className='time'>{ms(Date.now()-(post.time))}</p>
-
             </div>
 
             <div className="comment-actions-container" ref={emojiPickerRef}>
