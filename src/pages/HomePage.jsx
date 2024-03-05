@@ -31,8 +31,7 @@ export function HomePage() {
             setIsLoading(false);
         }, 2500);
     }
-    console.log("logdin user: ", loggedUser)
-    
+ 
     const [openCreate, setOpenCreate] = useState(false)
     function ToggleModal(ev) {
         ev.preventDefault()

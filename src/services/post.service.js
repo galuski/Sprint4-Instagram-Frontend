@@ -39,8 +39,7 @@ async function remove(postId) {
 async function save(post, postId) {
  
     var savedPost
-    console.log('post1',post)
-    console.log('postID1',postId)
+
     if (post) {
         savedPost = await httpService.put(`post/${postId}`, post)
 

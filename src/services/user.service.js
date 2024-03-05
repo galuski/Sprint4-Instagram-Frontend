@@ -43,8 +43,6 @@ function remove(userId) {
 async function update({ _id, imgUrl }) {
     // const user = await asyncStorageService.get('user', _id)
     // const user = getLoggedInUser()
-    console.log('_id in service (last step frontend: ', _id)
-    console.log('imgUrl in service (last step frontend: ', imgUrl)
     // console.log('user in service (last step frontend: ', user)
     // user.imgUrl = imgUrl
     // await asyncStorageService.put('user', user)

@@ -8,7 +8,6 @@ import { userService } from '../services/user.service'
 export default function PostPreviewHeader({ post }) {
     const navigate = useNavigate();
     const user = userService.getLoggedInUser()
-    // console.log('post.by',post.by?._id, user?._id)
     let isCurrentUser = user?._id === post.by?._id
 
     function navigateProfileUser() {
@@ -24,7 +23,7 @@ export default function PostPreviewHeader({ post }) {
     const [isEllipsisModalOpen, setIsEllipsisModalOpen] = useState(false)
 
     useEffect(() => {
-        console.log("New imgUrl:", post.by?.imgUrl);
+
     }, [post.by?.imgUrl]);
     
 
